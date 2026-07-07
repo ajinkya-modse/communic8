@@ -4,19 +4,6 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
-  const [playbookProgress, setPlaybookProgress] = useState(0);
-  const playbookTrackRef = useRef(null);
-
-  const handlePlaybookScroll = () => {
-    const track = playbookTrackRef.current;
-    if (track) {
-      const totalScroll = track.scrollWidth - track.clientWidth;
-      if (totalScroll > 0) {
-        const progress = (track.scrollLeft / totalScroll) * 100;
-        setPlaybookProgress(progress);
-      }
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,8 +36,6 @@ export default function Home() {
     const observer = new IntersectionObserver(revealCallback, observerOptions);
 
     const animateTargets = [
-      ...document.querySelectorAll(".founder-card"),
-      ...document.querySelectorAll(".playbook-card"),
       ...document.querySelectorAll(".metric-item"),
       document.querySelector(".bio-card"),
       document.querySelector(".section-title"),
@@ -284,132 +269,288 @@ export default function Home() {
 
         {/* Playbook / Initiatives Section */}
         <section id="playbook" className="playbook-section">
-          <h2 className="section-title">Our playbook.</h2>
-
-          {/* Custom Scroll Progress Bar */}
-          <div className="playbook-progress-container">
-            <div className="playbook-progress-bar">
-              <div 
-                className="playbook-progress-fill" 
-                style={{ width: `${playbookProgress}%` }}
-              ></div>
-            </div>
-          </div>
+          {/* Frosted Blurry glow elements behind cards */}
+          <div className="playbook-blur-orb orb-1"></div>
+          <div className="playbook-blur-orb orb-2"></div>
           
-          <div 
-            ref={playbookTrackRef}
-            onScroll={handlePlaybookScroll}
-            className="playbook-track"
-          >
-            {/* Playbook Card 1 */}
-            <div className="playbook-card">
-              <div className="playbook-content">
-                <h3 className="playbook-card-title">Personal Branding &amp; Copywriting</h3>
-                <ul className="playbook-list">
-                  <li>
-                    <strong className="list-head">Content Strategy &amp; Tone:</strong> 
-                    Tailored voice matching your industry authority.
-                  </li>
-                  <li>
-                    <strong className="list-head">Daily Ghostwriting:</strong> 
-                    5 high-impact text and carousel posts per week.
-                  </li>
-                  <li>
-                    <strong className="list-head">Profile Optimization:</strong> 
-                    Professional banner, headline, and about section.
-                  </li>
-                  <li>
-                    <strong className="list-head">Strategic Engagement:</strong> 
-                    High-value commenting on target accounts.
-                  </li>
-                </ul>
-              </div>
-              <div className="playbook-img-container">
-                <img src="/assets/playbook_copywriting.jpg" alt="Copywriting work on laptop" className="playbook-img" />
-              </div>
-            </div>
+          <h2 className="section-title">Our playbook.</h2>
+          
+          <div className="playbook-slider-container">
+            <div className="playbook-slide-track">
+              <div className="playbook-group">
+                {/* Playbook Card 1 */}
+                <div className="playbook-card card-dark">
+                  <div className="playbook-content">
+                    <h3 className="playbook-card-title">Personal Branding &amp; Copywriting</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Content Strategy &amp; Tone:</strong> 
+                        Tailored voice matching your industry authority.
+                      </li>
+                      <li>
+                        <strong className="list-head">Daily Ghostwriting:</strong> 
+                        5 high-impact text and carousel posts per week.
+                      </li>
+                      <li>
+                        <strong className="list-head">Profile Optimization:</strong> 
+                        Professional banner, headline, and about section.
+                      </li>
+                      <li>
+                        <strong className="list-head">Strategic Engagement:</strong> 
+                        High-value commenting on target accounts.
+                      </li>
+                    </ul>
+                    {/* Torn Edge on Right */}
+                    <div className="torn-edge-container right-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_copywriting.jpg" alt="Copywriting work on laptop" className="playbook-img" />
+                  </div>
+                </div>
 
-            {/* Playbook Card 2 */}
-            <div className="playbook-card">
-              <div className="playbook-content">
-                <h3 className="playbook-card-title">Lead Generation &amp; Outreach</h3>
-                <ul className="playbook-list">
-                  <li>
-                    <strong className="list-head">Targeted Outreach:</strong> 
-                    Direct messaging campaigns with 20%+ response rates.
-                  </li>
-                  <li>
-                    <strong className="list-head">ICP Connection Building:</strong> 
-                    Growing your network with 500+ prospects monthly.
-                  </li>
-                  <li>
-                    <strong className="list-head">Inbound Funnel Setup:</strong> 
-                    Capturing profile views and converting them to leads.
-                  </li>
-                  <li>
-                    <strong className="list-head">Analytics Dashboard:</strong> 
-                    Weekly reporting on pipeline and performance.
-                  </li>
-                </ul>
-              </div>
-              <div className="playbook-img-container">
-                <img src="/assets/playbook_outreach.jpg" alt="Business professionals shaking hands" className="playbook-img" />
-              </div>
-            </div>
+                {/* Playbook Card 2 */}
+                <div className="playbook-card card-light flex-reverse">
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_outreach.jpg" alt="Business professionals shaking hands" className="playbook-img" />
+                  </div>
+                  <div className="playbook-content">
+                    {/* Torn Edge on Left */}
+                    <div className="torn-edge-container left-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <h3 className="playbook-card-title">Lead Generation &amp; Outreach</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Targeted Outreach:</strong> 
+                        Direct messaging campaigns with 20%+ response rates.
+                      </li>
+                      <li>
+                        <strong className="list-head">ICP Connection Building:</strong> 
+                        Growing your network with 500+ prospects monthly.
+                      </li>
+                      <li>
+                        <strong className="list-head">Inbound Funnel Setup:</strong> 
+                        Capturing profile views and converting them to leads.
+                      </li>
+                      <li>
+                        <strong className="list-head">Analytics Dashboard:</strong> 
+                        Weekly reporting on pipeline and performance.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
-            {/* Playbook Card 3 */}
-            <div className="playbook-card">
-              <div className="playbook-content">
-                <h3 className="playbook-card-title">Executive Ghostwriting &amp; Authority</h3>
-                <ul className="playbook-list">
-                  <li>
-                    <strong className="list-head">Thought Leadership Strategy:</strong> 
-                    Positioning you as the go-to authority in your niche.
-                  </li>
-                  <li>
-                    <strong className="list-head">Deep-Dive Carousels:</strong> 
-                    Beautiful, high-yield PDF slides with 10k+ average views.
-                  </li>
-                  <li>
-                    <strong className="list-head">PR &amp; Newsjacking:</strong> 
-                    Turning breaking industry trends into viral commentary.
-                  </li>
-                  <li>
-                    <strong className="list-head">Newsletter Integration:</strong> 
-                    Funneling profile views into email subscribers.
-                  </li>
-                </ul>
-              </div>
-              <div className="playbook-img-container">
-                <img src="/assets/playbook_authority.jpg" alt="Executive presenting ideas" className="playbook-img" />
-              </div>
-            </div>
+                {/* Playbook Card 3 */}
+                <div className="playbook-card card-dark">
+                  <div className="playbook-content">
+                    <h3 className="playbook-card-title">Executive Ghostwriting &amp; Authority</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Thought Leadership Strategy:</strong> 
+                        Positioning you as the go-to authority in your niche.
+                      </li>
+                      <li>
+                        <strong className="list-head">Deep-Dive Carousels:</strong> 
+                        Beautiful, high-yield PDF slides with 10k+ average views.
+                      </li>
+                      <li>
+                        <strong className="list-head">PR &amp; Newsjacking:</strong> 
+                        Turning breaking industry trends into viral commentary.
+                      </li>
+                      <li>
+                        <strong className="list-head">Newsletter Integration:</strong> 
+                        Funneling profile views into email subscribers.
+                      </li>
+                    </ul>
+                    {/* Torn Edge on Right */}
+                    <div className="torn-edge-container right-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_authority.jpg" alt="Executive presenting ideas" className="playbook-img" />
+                  </div>
+                </div>
 
-            {/* Playbook Card 4 */}
-            <div className="playbook-card">
-              <div className="playbook-content">
-                <h3 className="playbook-card-title">Corporate Advocacy &amp; Training</h3>
-                <ul className="playbook-list">
-                  <li>
-                    <strong className="list-head">Employee Advocacy Programs:</strong> 
-                    Turning your team into brand ambassadors on LinkedIn.
-                  </li>
-                  <li>
-                    <strong className="list-head">Executive Cohorts:</strong> 
-                    Training your leadership team to write and share insights.
-                  </li>
-                  <li>
-                    <strong className="list-head">LinkedIn Workshops:</strong> 
-                    Interactive virtual masterclasses for your staff.
-                  </li>
-                  <li>
-                    <strong className="list-head">Brand Governance:</strong> 
-                    Setting corporate templates, guidelines, and compliance.
-                  </li>
-                </ul>
+                {/* Playbook Card 4 */}
+                <div className="playbook-card card-light flex-reverse">
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_advocacy.jpg" alt="Corporate training workshop" className="playbook-img" />
+                  </div>
+                  <div className="playbook-content">
+                    {/* Torn Edge on Left */}
+                    <div className="torn-edge-container left-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <h3 className="playbook-card-title">Corporate Advocacy &amp; Training</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Employee Advocacy Programs:</strong> 
+                        Turning your team into brand ambassadors on LinkedIn.
+                      </li>
+                      <li>
+                        <strong className="list-head">Executive Cohorts:</strong> 
+                        Training your leadership team to write and share insights.
+                      </li>
+                      <li>
+                        <strong className="list-head">LinkedIn Workshops:</strong> 
+                        Interactive virtual masterclasses for your staff.
+                      </li>
+                      <li>
+                        <strong className="list-head">Brand Governance:</strong> 
+                        Setting corporate templates, guidelines, and compliance.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div className="playbook-img-container">
-                <img src="/assets/playbook_advocacy.jpg" alt="Corporate training workshop" className="playbook-img" />
+
+              <div className="playbook-group">
+                {/* Playbook Card 1 (Duplicate) */}
+                <div className="playbook-card card-dark">
+                  <div className="playbook-content">
+                    <h3 className="playbook-card-title">Personal Branding &amp; Copywriting</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Content Strategy &amp; Tone:</strong> 
+                        Tailored voice matching your industry authority.
+                      </li>
+                      <li>
+                        <strong className="list-head">Daily Ghostwriting:</strong> 
+                        5 high-impact text and carousel posts per week.
+                      </li>
+                      <li>
+                        <strong className="list-head">Profile Optimization:</strong> 
+                        Professional banner, headline, and about section.
+                      </li>
+                      <li>
+                        <strong className="list-head">Strategic Engagement:</strong> 
+                        High-value commenting on target accounts.
+                      </li>
+                    </ul>
+                    {/* Torn Edge on Right */}
+                    <div className="torn-edge-container right-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_copywriting.jpg" alt="Copywriting work on laptop" className="playbook-img" />
+                  </div>
+                </div>
+
+                {/* Playbook Card 2 (Duplicate) */}
+                <div className="playbook-card card-light flex-reverse">
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_outreach.jpg" alt="Business professionals shaking hands" className="playbook-img" />
+                  </div>
+                  <div className="playbook-content">
+                    {/* Torn Edge on Left */}
+                    <div className="torn-edge-container left-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <h3 className="playbook-card-title">Lead Generation &amp; Outreach</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Targeted Outreach:</strong> 
+                        Direct messaging campaigns with 20%+ response rates.
+                      </li>
+                      <li>
+                        <strong className="list-head">ICP Connection Building:</strong> 
+                        Growing your network with 500+ prospects monthly.
+                      </li>
+                      <li>
+                        <strong className="list-head">Inbound Funnel Setup:</strong> 
+                        Capturing profile views and converting them to leads.
+                      </li>
+                      <li>
+                        <strong className="list-head">Analytics Dashboard:</strong> 
+                        Weekly reporting on pipeline and performance.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Playbook Card 3 (Duplicate) */}
+                <div className="playbook-card card-dark">
+                  <div className="playbook-content">
+                    <h3 className="playbook-card-title">Executive Ghostwriting &amp; Authority</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Thought Leadership Strategy:</strong> 
+                        Positioning you as the go-to authority in your niche.
+                      </li>
+                      <li>
+                        <strong className="list-head">Deep-Dive Carousels:</strong> 
+                        Beautiful, high-yield PDF slides with 10k+ average views.
+                      </li>
+                      <li>
+                        <strong className="list-head">PR &amp; Newsjacking:</strong> 
+                        Turning breaking industry trends into viral commentary.
+                      </li>
+                      <li>
+                        <strong className="list-head">Newsletter Integration:</strong> 
+                        Funneling profile views into email subscribers.
+                      </li>
+                    </ul>
+                    {/* Torn Edge on Right */}
+                    <div className="torn-edge-container right-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_authority.jpg" alt="Executive presenting ideas" className="playbook-img" />
+                  </div>
+                </div>
+
+                {/* Playbook Card 4 (Duplicate) */}
+                <div className="playbook-card card-light flex-reverse">
+                  <div className="playbook-img-container">
+                    <img src="/assets/playbook_advocacy.jpg" alt="Corporate training workshop" className="playbook-img" />
+                  </div>
+                  <div className="playbook-content">
+                    {/* Torn Edge on Left */}
+                    <div className="torn-edge-container left-edge">
+                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <h3 className="playbook-card-title">Corporate Advocacy &amp; Training</h3>
+                    <ul className="playbook-list">
+                      <li>
+                        <strong className="list-head">Employee Advocacy Programs:</strong> 
+                        Turning your team into brand ambassadors on LinkedIn.
+                      </li>
+                      <li>
+                        <strong className="list-head">Executive Cohorts:</strong> 
+                        Training your leadership team to write and share insights.
+                      </li>
+                      <li>
+                        <strong className="list-head">LinkedIn Workshops:</strong> 
+                        Interactive virtual masterclasses for your staff.
+                      </li>
+                      <li>
+                        <strong className="list-head">Brand Governance:</strong> 
+                        Setting corporate templates, guidelines, and compliance.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -413,7 +413,32 @@ a {
 /* Playbook Section Styles */
 .playbook-section {
   background: #f5f5f7;
-  padding: 100px 24px;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.playbook-blur-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.16;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.playbook-blur-orb.orb-1 {
+  background: #ff6f3c;
+  top: -10%;
+  left: -15%;
+}
+
+.playbook-blur-orb.orb-2 {
+  background: #ff6f3c;
+  bottom: -10%;
+  right: -15%;
 }
 
 .section-title {
@@ -421,78 +446,109 @@ a {
   font-weight: 800;
   color: #1a1a1a;
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 75px;
   letter-spacing: -1px;
-}
-
-.playbook-progress-container {
-  max-width: 1100px;
-  margin: 0 auto 30px;
-  padding: 0 4%;
-}
-
-.playbook-progress-bar {
-  width: 150px;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.1);
   position: relative;
+  z-index: 5;
 }
 
-.playbook-progress-fill {
-  height: 100%;
-  background: #ff6f3c;
-  width: 0%;
-  transition: width 0.15s ease-out;
-}
-
-.playbook-track {
+.playbook-slider-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
   display: flex;
-  overflow-x: auto;
-  gap: 30px;
-  padding: 10px 4% 40px;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  align-items: center;
+  padding: 20px 0 50px;
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  z-index: 2;
 }
 
-.playbook-track::-webkit-scrollbar {
-  display: none;
+.playbook-slide-track {
+  display: flex;
+  width: max-content;
+  animation: scrollMarqueePlaybook 42s linear infinite;
+  gap: 50px;
+  padding-right: 50px;
+}
+
+.playbook-slider-container:hover .playbook-slide-track {
+  animation-play-state: paused;
+}
+
+.playbook-group {
+  display: flex;
+  align-items: stretch;
+  gap: 50px;
+}
+
+@keyframes scrollMarqueePlaybook {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .playbook-card {
-  background: #ffffff;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
   display: flex;
   align-items: stretch;
-  min-height: 400px;
-  flex: 0 0 780px;
+  min-height: 420px;
+  flex: 0 0 760px;
   max-width: 90vw;
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid rgba(0,0,0,0.02);
+  white-space: normal; /* text wrap inside cards! */
+  position: relative;
 }
 
 .playbook-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.055);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.07);
+}
+
+.playbook-card.card-dark {
+  background: #161618;
+  color: #ffffff;
+}
+
+.playbook-card.card-light {
+  background: #f4f4f6;
+  color: #1a1a1a;
+}
+
+.flex-reverse {
+  flex-direction: row-reverse;
 }
 
 .playbook-content {
-  flex: 1.25;
-  padding: 55px;
+  flex: 1.2;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
 .playbook-card-title {
   font-size: 1.8rem;
   font-weight: 800;
-  color: #1a1a1a;
   margin-bottom: 24px;
   letter-spacing: -0.5px;
-  line-height: 1.2;
+  line-height: 1.25;
+}
+
+.card-dark .playbook-card-title {
+  color: #ffffff;
+}
+
+.card-light .playbook-card-title {
+  color: #1a1a1a;
 }
 
 .playbook-list {
@@ -504,10 +560,17 @@ a {
 
 .playbook-list li {
   font-size: 0.95rem;
-  color: #444444;
   line-height: 1.55;
   position: relative;
   padding-left: 20px;
+}
+
+.card-dark .playbook-list li {
+  color: #cccccc;
+}
+
+.card-light .playbook-list li {
+  color: #4a4a4a;
 }
 
 .playbook-list li::before {
@@ -520,8 +583,15 @@ a {
 }
 
 .list-head {
-  color: #1a1a1a;
   font-weight: 700;
+}
+
+.card-dark .list-head {
+  color: #ffffff;
+}
+
+.card-light .list-head {
+  color: #1a1a1a;
 }
 
 .playbook-img-container {
@@ -542,6 +612,39 @@ a {
 .playbook-card:hover .playbook-img {
   filter: grayscale(0%) contrast(1.05) brightness(1);
   transform: scale(1.02);
+}
+
+/* Torn Edge SVG */
+.torn-edge-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.torn-edge-container.right-edge {
+  right: -24px;
+}
+
+.torn-edge-container.left-edge {
+  left: -24px;
+}
+
+.card-dark .torn-edge-container {
+  color: #161618;
+}
+
+.card-light .torn-edge-container {
+  color: #f4f4f6;
+}
+
+.torn-edge {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Metrics Section Styles */
@@ -750,6 +853,9 @@ a {
   }
   .playbook-img-container {
     height: 250px;
+  }
+  .torn-edge-container {
+    display: none;
   }
   .bio-card {
     flex-direction: column;
