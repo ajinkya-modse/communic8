@@ -146,6 +146,7 @@ const DIAGNOSTIC_QUESTIONS = [
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const lenisRef = useRef(null);
   const playbookSliderRef = useRef(null);
   const [assessmentStep, setAssessmentStep] = useState(0);
@@ -289,6 +290,7 @@ export default function Home() {
 
   const handleSmoothScroll = (e, targetId) => {
     e.preventDefault();
+    setMobileMenuOpen(false);
     const targetElement = document.querySelector(targetId);
     if (targetElement && lenisRef.current) {
       const navbar = document.querySelector(".navbar");
@@ -356,34 +358,74 @@ export default function Home() {
   return (
     <>
       {/* Navigation */}
-      <header className="header">
-        <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-          <div className="logo">
-            COMMUNIC8<span className="dot">.</span>
+      <header className={`header ${scrolled ? "scrolled" : ""}`}>
+        <nav className={`navbar ${scrolled ? "scrolled" : ""} ${mobileMenuOpen ? "menu-open" : ""}`}>
+          <div className="navbar-main">
+            <div className="logo" onClick={(e) => handleSmoothScroll(e, "#top")}>
+              COMMUNIC8<span className="dot">.</span>
+            </div>
+            
+            <div className="nav-links">
+              <a href="#problems" onClick={(e) => handleSmoothScroll(e, "#problems")} className="nav-link">
+                The Problems
+              </a>
+              <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")} className="nav-link">
+                Our System
+              </a>
+              <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")} className="nav-link">
+                Services
+              </a>
+              <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="nav-link">
+                Case Studies
+              </a>
+              <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")} className="nav-link">
+                Diagnostic
+              </a>
+              <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")} className="nav-link">
+                Metrics
+              </a>
+            </div>
+            
+            <div className="nav-actions">
+              <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="btn-cta">
+                Book a GTM Readiness Conversation
+              </a>
+              
+              <button 
+                className={`hamburger-btn ${mobileMenuOpen ? "active" : ""}`}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle Navigation"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
           </div>
-          <div className="nav-links">
-            <a href="#problems" onClick={(e) => handleSmoothScroll(e, "#problems")} className="nav-link">
+          
+          <div className="mobile-menu">
+            <a href="#problems" onClick={(e) => handleSmoothScroll(e, "#problems")} className="mobile-nav-link">
               The Problems
             </a>
-            <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")} className="nav-link">
+            <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")} className="mobile-nav-link">
               Our System
             </a>
-            <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")} className="nav-link">
+            <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")} className="mobile-nav-link">
               Services
             </a>
-            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="nav-link">
+            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="mobile-nav-link">
               Case Studies
             </a>
-            <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")} className="nav-link">
+            <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")} className="mobile-nav-link">
               Diagnostic
             </a>
-            <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")} className="nav-link">
+            <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")} className="mobile-nav-link">
               Metrics
             </a>
+            <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="mobile-btn-cta">
+              Book a GTM Readiness Conversation
+            </a>
           </div>
-          <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="btn-cta">
-            Book a GTM Readiness Conversation
-          </a>
         </nav>
       </header>
 
