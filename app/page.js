@@ -1,11 +1,123 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Lenis from "lenis";
+
+const PROBLEMS = [
+  {
+    number: 1,
+    title: "Marketing is not treated as a real business function",
+    reality: "Production, quality, and maintenance have daily reviews and owners. Marketing happens \"whenever there is time.\" Without ownership, growth is left to chance.",
+    costs: [
+      "Growth is accidental, driven only by old references.",
+      "Invisibility costs an estimated 20–30% of annual enquiries."
+    ],
+    wayForward: "Run marketing like a production line—with an owner and a target."
+  },
+  {
+    number: 2,
+    title: "You have a process for everything, except marketing",
+    reality: "You have SOPs for machine setups and dispatch. Yet, the single function responsible for bringing in customers runs with no system.",
+    costs: [
+      "Capabilities built over decades remain invisible to buyers.",
+      "Stop-and-start efforts waste past spend without compounding."
+    ],
+    wayForward: "Standardize marketing just like a machining process."
+  },
+  {
+    number: 3,
+    title: "You have never been shown what GTM really is",
+    reality: "Marketing isn't random posting. A proper Go-to-Market (GTM) system is a structured engine that delivers your value to target buyers consistently.",
+    costs: [
+      "You compete on price because you aren't positioned on value.",
+      "Winning clients takes 2–3x more effort than a structured GTM model."
+    ],
+    wayForward: "Stop chasing customers. Build a system that brings them to you."
+  },
+  {
+    number: 4,
+    title: "Generic agencies have misguided you",
+    reality: "B2C agencies apply retail social media strategies to industrial setups. When they fail, manufacturers conclude that marketing doesn't work.",
+    costs: [
+      "Wasted budget on consumer likes that don't translate to B2B orders.",
+      "Lost years while competitors quietly build industry authority."
+    ],
+    wayForward: "Selling precision components requires shop-floor understanding."
+  },
+  {
+    number: 5,
+    title: "Chasing the cheapest option is costing you the most",
+    reality: "Negotiating on the shop floor is healthy; buying cheap marketing is self-sabotage. Substandard work damages your brand and forces you to pay twice.",
+    costs: [
+      "Low-quality output that repels premium buyers.",
+      "Huge opportunity cost: one lost contract can equal 10 years of retainers."
+    ],
+    wayForward: "The real question is the cost of remaining invisible."
+  },
+  {
+    number: 6,
+    title: "Your market presence is in part-time, untrained hands",
+    reality: "With no dedicated owner, marketing lands on whoever is free—like an admin or HR. Your primary growth driver is treated as a sideline task.",
+    costs: [
+      "Inconsistent, cheap messaging tells buyers you aren't premium.",
+      "Untrained staff are set up to fail, leading to wasted time."
+    ],
+    wayForward: "You wouldn't let an untrained operator run your CNC. Treat your brand similarly."
+  },
+  {
+    number: 7,
+    title: "You know LinkedIn and GTM matter, but something holds you back",
+    reality: "Knowing you need a digital presence is easy; starting is hard. Firefighting on the plant floor keeps you from taking the first step.",
+    costs: [
+      "The gap between you and active competitors widens every week.",
+      "Competitors build relationships with your potential buyers in the silence."
+    ],
+    wayForward: "We remove the friction. We set it up and run it for you."
+  },
+  {
+    number: 8,
+    title: "Full of ideas, but firefighting kills execution",
+    reality: "Promoters have great ideas, but operational breakdowns, labor issues, and payment follow-ups kill execution. Firefighting always wins.",
+    costs: [
+      "Owner is trapped working in the factory instead of on it.",
+      "Competitors execute the ideas you left on the backburner."
+    ],
+    wayForward: "You bring the vision; we provide the execution engine."
+  },
+  {
+    number: 9,
+    title: "No structure, no consistency, no link to your goals",
+    reality: "Marketing in short bursts followed by months of silence resets progress. Without alignment with your business plan, it remains a pure expense.",
+    costs: [
+      "Wasted energy—like heating metal and letting it cool repeatedly.",
+      "Missing out on compounding: steady effort yields 10x the pipeline."
+    ],
+    wayForward: "We build the structure that makes consistency automatic."
+  }
+];
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const lenisRef = useRef(null);
+  const playbookSliderRef = useRef(null);
 
   useEffect(() => {
+    // Initialize Lenis smooth scroll for weighted momentum scroll
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
+    });
+    lenisRef.current = lenis;
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
     const handleScroll = () => {
       if (window.scrollY > 60) {
         setScrolled(true);
@@ -37,6 +149,7 @@ export default function Home() {
 
     const animateTargets = [
       ...document.querySelectorAll(".metric-item"),
+      ...document.querySelectorAll(".problem-card"),
       document.querySelector(".bio-card"),
       document.querySelector(".section-title"),
       document.querySelector(".metrics-heading"),
@@ -49,16 +162,98 @@ export default function Home() {
       }
     });
 
+    // Playbook/Case Studies slider drag-to-scroll & auto-scroll
+    const slider = playbookSliderRef.current;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let marqueeFrameId;
+    let speed = 0.8; // scroll speed (pixels per frame)
+    let isHovered = false;
+
+    const handleMouseDown = (e) => {
+      isDown = true;
+      slider.classList.add("active");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    };
+
+    const handleMouseLeave = () => {
+      isDown = false;
+      slider.classList.remove("active");
+      isHovered = false;
+    };
+
+    const handleMouseUp = () => {
+      isDown = false;
+      slider.classList.remove("active");
+    };
+
+    const handleMouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5; // Drag sensitivity multiplier
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleMouseEnter = () => {
+      isHovered = true;
+    };
+
+    if (slider) {
+      slider.addEventListener("mousedown", handleMouseDown);
+      slider.addEventListener("mouseleave", handleMouseLeave);
+      slider.addEventListener("mouseup", handleMouseUp);
+      slider.addEventListener("mousemove", handleMouseMove);
+      slider.addEventListener("mouseenter", handleMouseEnter);
+
+      // Auto scroll animation frame loop
+      const updateMarquee = () => {
+        if (slider) {
+          if (!isDown && !isHovered) {
+            slider.scrollLeft += speed;
+          }
+
+          const halfWidth = slider.scrollWidth / 2;
+          if (slider.scrollLeft >= halfWidth) {
+            slider.scrollLeft -= halfWidth;
+          } else if (slider.scrollLeft <= 0) {
+            slider.scrollLeft += halfWidth;
+          }
+        }
+        marqueeFrameId = requestAnimationFrame(updateMarquee);
+      };
+
+      marqueeFrameId = requestAnimationFrame(updateMarquee);
+    }
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
+      lenis.destroy();
+      if (slider) {
+        slider.removeEventListener("mousedown", handleMouseDown);
+        slider.removeEventListener("mouseleave", handleMouseLeave);
+        slider.removeEventListener("mouseup", handleMouseUp);
+        slider.removeEventListener("mousemove", handleMouseMove);
+        slider.removeEventListener("mouseenter", handleMouseEnter);
+      }
+      cancelAnimationFrame(marqueeFrameId);
     };
   }, []);
 
   const handleSmoothScroll = (e, targetId) => {
     e.preventDefault();
     const targetElement = document.querySelector(targetId);
-    if (targetElement) {
+    if (targetElement && lenisRef.current) {
+      const navbar = document.querySelector(".navbar");
+      const navbarHeight = navbar ? navbar.offsetHeight : 80;
+      lenisRef.current.scrollTo(targetElement, {
+        offset: -(navbarHeight + 20),
+        duration: 1.4,
+      });
+    } else if (targetElement) {
       const navbar = document.querySelector(".navbar");
       const navbarHeight = navbar ? navbar.offsetHeight : 80;
       const targetPosition =
@@ -82,18 +277,24 @@ export default function Home() {
             COMMUNIC8<span className="dot">.</span>
           </div>
           <div className="nav-links">
-            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="nav-link">
-              Playbook
+            <a href="#problems" onClick={(e) => handleSmoothScroll(e, "#problems")} className="nav-link">
+              The Problems
             </a>
-            <a href="#founders" onClick={(e) => handleSmoothScroll(e, "#founders")} className="nav-link">
-              Founders
+            <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")} className="nav-link">
+              Our System
+            </a>
+            <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")} className="nav-link">
+              Services
+            </a>
+            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="nav-link">
+              Case Studies
             </a>
             <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")} className="nav-link">
               Metrics
             </a>
           </div>
           <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="btn-cta">
-            Book Your Strategy Call
+            Book a GTM Readiness Conversation
           </a>
         </nav>
       </header>
@@ -105,8 +306,8 @@ export default function Home() {
             <div className="hero-bg-overlay"></div>
             <img src="/assets/hero_background.jpg" alt="Collaborative creative team" className="hero-bg-img" />
             <div className="hero-content">
-              <h1 className="hero-title">LinkedIn Growth and Personal Branding ?</h1>
-              <p className="hero-subtitle">Communic8 is your team!</p>
+              <h1 className="hero-title">Communic8 helps Indian manufacturing MSMEs stay consistent in their growth journey.</h1>
+              <p className="hero-subtitle">You have a process for everything on your shop floor. Marketing shouldn't be the exception.</p>
             </div>
           </div>
         </section>
@@ -184,83 +385,173 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Founders Section */}
-        <section id="founders" className="founders-section">
-          <h3 className="founders-heading">Founders we've scaled</h3>
-          <div className="founders-slider-container">
-            <div className="founders-slide-track">
-              <div className="founders-group">
-                <div className="founder-card">
-                  <img src="/assets/founder_1.jpg" alt="Sarah Jenkins" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Sarah Jenkins</span>
-                    <span className="founder-title">Co-Founder, SaaSify</span>
+        {/* Problems Section */}
+        <section id="problems" className="problems-section">
+          <div className="problems-container">
+            <div className="problems-intro">
+              <h2 className="problems-subtitle">You run a tight factory. So why is growth still so hard?</h2>
+              <p className="problems-intro-desc">
+                After meeting hundreds of manufacturers — from a 500 sq. ft. tool room to plants spread across acres — we found the same 9 problems, again and again. Read them honestly. If even 3 sound like your company, it is worth a conversation.
+              </p>
+            </div>
+
+            <div className="problems-grid">
+              {PROBLEMS.map((problem) => (
+                <div key={problem.number} className="problem-card">
+                  <span className="problem-num">{String(problem.number).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="problem-title">{problem.title}</h3>
+                    <p className="problem-reality">{problem.reality}</p>
+                    <div className="problem-cost-container">
+                      <h4 className="problem-cost-header">Silent cost:</h4>
+                      <ul className="problem-cost-list">
+                        {problem.costs.map((cost, idx) => (
+                          <li key={idx}>{cost}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
+                  <p className="problem-way-forward">{problem.wayForward}</p>
                 </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_2.jpg" alt="Alex Rivera" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Alex Rivera</span>
-                    <span className="founder-title">CEO, FinFlow</span>
-                  </div>
-                </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_3.jpg" alt="Elena Rostova" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Elena Rostova</span>
-                    <span className="founder-title">Founder, Edurise</span>
-                  </div>
-                </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_4.jpg" alt="Marcus Vance" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Marcus Vance</span>
-                    <span className="founder-title">Partner, Apex Capital</span>
-                  </div>
-                </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_5.jpg" alt="David Chen" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">David Chen</span>
-                    <span className="founder-title">CEO, HealthSync</span>
-                  </div>
+              ))}
+            </div>
+
+            <div className="problems-outro">
+              <p className="problems-outro-text">
+                If even 3 of these 9 sound like your company — you do not have a marketing problem. You have a structure problem. And structure is exactly what we build.
+              </p>
+              <a href="#consultation" className="btn-problems-cta">
+                Book a GTM Readiness Conversation
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* The System We Install Section */}
+        <section id="system" className="system-section">
+          <div className="system-container">
+            <h2 className="system-title">The System We Install</h2>
+            <div className="system-roadmap">
+              {/* Step 1 */}
+              <div className="roadmap-item">
+                <div className="roadmap-node">01</div>
+                <div className="roadmap-card problem-card" style={{ transitionDelay: "0ms" }}>
+                  <span className="roadmap-pillar">Pillar 1</span>
+                  <h3 className="roadmap-card-title">GTM Standardization</h3>
+                  <p className="roadmap-card-focus">Phase 1: Meeting-Ready in 30 Days</p>
+                  <ul className="roadmap-card-list">
+                    <li>Standardized Capabilities Deck (no more explaining your toolroom from scratch).</li>
+                    <li>High-definition Factory Walkthrough video.</li>
+                    <li>Credibility sheets and case studies tailored for Tier 1 / OEM buyers.</li>
+                  </ul>
                 </div>
               </div>
-              <div className="founders-group">
-                <div className="founder-card">
-                  <img src="/assets/founder_1.jpg" alt="Sarah Jenkins" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Sarah Jenkins</span>
-                    <span className="founder-title">Co-Founder, SaaSify</span>
+
+              {/* Step 2 */}
+              <div className="roadmap-item">
+                <div className="roadmap-node">02</div>
+                <div className="roadmap-card problem-card" style={{ transitionDelay: "150ms" }}>
+                  <span className="roadmap-pillar">Pillar 2</span>
+                  <h3 className="roadmap-card-title">The Reputation Engine</h3>
+                  <p className="roadmap-card-focus">Phase 2: Monthly Visibility Retainer</p>
+                  <ul className="roadmap-card-list">
+                    <li>Industry-specific authority positioning on LinkedIn.</li>
+                    <li>Continuous B2B content marketing showcasing shop-floor capabilities.</li>
+                    <li>Regular communication reaching foreign buyers and procurement heads.</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="roadmap-item">
+                <div className="roadmap-node">03</div>
+                <div className="roadmap-card problem-card" style={{ transitionDelay: "300ms" }}>
+                  <span className="roadmap-pillar">Pillar 3</span>
+                  <h3 className="roadmap-card-title">The Review & Cadence</h3>
+                  <p className="roadmap-card-focus">Phase 3: Governance & Structure</p>
+                  <ul className="roadmap-card-list">
+                    <li>Weekly reviews matching your production and quality meetings.</li>
+                    <li>Alignment with your Annual Business Plan and 5-year growth goals.</li>
+                    <li>Direct hand-off of inquiries to your sales desk.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services & Retainers Section */}
+        <section id="services" className="services-section">
+          <div className="services-container">
+            <h2 className="services-title">Services & Retainers</h2>
+            <p className="services-subtitle">Durable-First B2B Manufacturing Growth Offerings</p>
+            
+            <div className="services-grid">
+              {/* Card 1: GTM Standardization */}
+              <div className="service-card problem-card" style={{ transitionDelay: "0ms" }}>
+                <div>
+                  <span className="service-badge-project">One-Time Project</span>
+                  <h3 className="service-title-text">Go-To-Market (GTM) Standardization</h3>
+                  <p className="service-focus-text">Making Your Factory Meeting-Ready in 30 Days</p>
+                  <div className="service-body">
+                    <p className="service-desc">
+                      Standardizes your marketing and sales assets so you can present capabilities instantly to Tier 1 and OEM buyers.
+                    </p>
+                    <ul className="service-list">
+                      <li>Custom Capabilities Deck (shop-floor focused)</li>
+                      <li>High-Definition Corporate Video Walkthrough</li>
+                      <li>Case Studies and Pitch Assets templates</li>
+                    </ul>
                   </div>
                 </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_2.jpg" alt="Alex Rivera" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Alex Rivera</span>
-                    <span className="founder-title">CEO, FinFlow</span>
+                <div className="service-footer">
+                  <a href="#consultation" className="btn-service">Book a GTM Readiness Conversation</a>
+                </div>
+              </div>
+
+              {/* Card 2: Reputation Management */}
+              <div className="service-card recommended problem-card" style={{ transitionDelay: "150ms" }}>
+                <div className="recommended-badge">Recommended default</div>
+                <div>
+                  <span className="service-badge-retainer">Ongoing Retainer</span>
+                  <h3 className="service-title-text">Reputation Management</h3>
+                  <p className="service-focus-text">Hands-Free Monthly Credibility Engine</p>
+                  <div className="service-body">
+                    <p className="service-desc">
+                      Maintains constant market visibility and builds long-term authority among foreign buyers, procurement heads, and OEMs.
+                    </p>
+                    <ul className="service-list">
+                      <li>B2B LinkedIn authority positioning</li>
+                      <li>Continuous case studies and shop-floor storytelling</li>
+                      <li>Active reach out and connection building</li>
+                    </ul>
                   </div>
                 </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_3.jpg" alt="Elena Rostova" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Elena Rostova</span>
-                    <span className="founder-title">Founder, Edurise</span>
+                <div className="service-footer">
+                  <a href="#consultation" className="btn-service btn-recommended">Install the Reputation Engine</a>
+                </div>
+              </div>
+
+              {/* Card 3: Lead Nurturing */}
+              <div className="service-card screened problem-card" style={{ transitionDelay: "300ms" }}>
+                <div className="screened-lock-badge">Invitation & Review Only</div>
+                <div>
+                  <span className="service-badge-premium">Premium Retainer</span>
+                  <h3 className="service-title-text">Lead Nurturing</h3>
+                  <p className="service-focus-text">Active Pipeline Building & Filtering</p>
+                  <div className="service-body">
+                    <p className="service-desc">
+                      For operationally stable factories ready to handle new buyers. We run active nurturing campaigns and filter inquiries.
+                    </p>
+                    <ul className="service-list">
+                      <li>End-to-end GTM campaign execution</li>
+                      <li>Buyer inquiry pre-qualification and vetting</li>
+                      <li>Direct pipeline hand-off to your sales desk</li>
+                    </ul>
                   </div>
                 </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_4.jpg" alt="Marcus Vance" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">Marcus Vance</span>
-                    <span className="founder-title">Partner, Apex Capital</span>
-                  </div>
-                </div>
-                <div className="founder-card">
-                  <img src="/assets/founder_5.jpg" alt="David Chen" className="founder-avatar" />
-                  <div className="founder-info">
-                    <span className="founder-name">David Chen</span>
-                    <span className="founder-title">CEO, HealthSync</span>
-                  </div>
+                <div className="service-footer">
+                  <span className="service-lock-note">Requires Operational Readiness Review</span>
                 </div>
               </div>
             </div>
@@ -273,31 +564,31 @@ export default function Home() {
           <div className="playbook-blur-orb orb-1"></div>
           <div className="playbook-blur-orb orb-2"></div>
           
-          <h2 className="section-title">Our playbook.</h2>
+          <h2 className="section-title">Case Studies &amp; Testimonials</h2>
           
-          <div className="playbook-slider-container">
+          <div ref={playbookSliderRef} className="playbook-slider-container" data-lenis-prevent>
             <div className="playbook-slide-track">
               <div className="playbook-group">
-                {/* Playbook Card 1 */}
+                {/* Case Study 1 */}
                 <div className="playbook-card card-dark">
                   <div className="playbook-content">
-                    <h3 className="playbook-card-title">Personal Branding &amp; Copywriting</h3>
+                    <h3 className="playbook-card-title">Case Study: Pune MSME</h3>
                     <ul className="playbook-list">
                       <li>
-                        <strong className="list-head">Content Strategy &amp; Tone:</strong> 
-                        Tailored voice matching your industry authority.
+                        <strong className="list-head">The Action:</strong> 
+                        Standardised GTM assets and installed the Reputation Engine for a precision-machining manufacturer.
                       </li>
                       <li>
-                        <strong className="list-head">Daily Ghostwriting:</strong> 
-                        5 high-impact text and carousel posts per week.
+                        <strong className="list-head">OEM Reach:</strong> 
+                        4,500+ high-intent procurement decision-makers reached.
                       </li>
                       <li>
-                        <strong className="list-head">Profile Optimization:</strong> 
-                        Professional banner, headline, and about section.
+                        <strong className="list-head">Positive Interest:</strong> 
+                        250+ active business interests and meeting requests.
                       </li>
                       <li>
-                        <strong className="list-head">Strategic Engagement:</strong> 
-                        High-value commenting on target accounts.
+                        <strong className="list-head">Assets Delivered:</strong> 
+                        Meeting-ready capabilities decks and repeatable GTM assets.
                       </li>
                     </ul>
                     {/* Torn Edge on Right */}
@@ -308,14 +599,14 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_copywriting.jpg" alt="Copywriting work on laptop" className="playbook-img" />
+                    <img src="/assets/playbook_copywriting.jpg" alt="Factory CNC machine operating" className="playbook-img" />
                   </div>
                 </div>
 
-                {/* Playbook Card 2 */}
+                {/* Testimonial 1 */}
                 <div className="playbook-card card-light flex-reverse">
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_outreach.jpg" alt="Business professionals shaking hands" className="playbook-img" />
+                    <img src="/assets/playbook_outreach.jpg" alt="Sanjay D., Managing Director" className="playbook-img" />
                   </div>
                   <div className="playbook-content">
                     {/* Torn Edge on Left */}
@@ -324,48 +615,34 @@ export default function Home() {
                         <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
                       </svg>
                     </div>
-                    <h3 className="playbook-card-title">Lead Generation &amp; Outreach</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">Targeted Outreach:</strong> 
-                        Direct messaging campaigns with 20%+ response rates.
-                      </li>
-                      <li>
-                        <strong className="list-head">ICP Connection Building:</strong> 
-                        Growing your network with 500+ prospects monthly.
-                      </li>
-                      <li>
-                        <strong className="list-head">Inbound Funnel Setup:</strong> 
-                        Capturing profile views and converting them to leads.
-                      </li>
-                      <li>
-                        <strong className="list-head">Analytics Dashboard:</strong> 
-                        Weekly reporting on pipeline and performance.
-                      </li>
-                    </ul>
+                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Precision Auto Components, Pune</span>
+                    <h3 className="playbook-card-title">Sanjay D. (MD)</h3>
+                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
+                      "Before Communic8, we were invisible to foreign buyers. Ajinkya understood our shop floor. The GTM deck and walkthrough video they built did more than 5 years of cold sales chasing."
+                    </p>
                   </div>
                 </div>
 
-                {/* Playbook Card 3 */}
+                {/* Case Study 2 */}
                 <div className="playbook-card card-dark">
                   <div className="playbook-content">
-                    <h3 className="playbook-card-title">Executive Ghostwriting &amp; Authority</h3>
+                    <h3 className="playbook-card-title">Case Study: Chennai Stamping</h3>
                     <ul className="playbook-list">
                       <li>
-                        <strong className="list-head">Thought Leadership Strategy:</strong> 
-                        Positioning you as the go-to authority in your niche.
+                        <strong className="list-head">The Action:</strong> 
+                        Produced a high-definition factory walkthrough video and implemented a LinkedIn visibility program.
                       </li>
                       <li>
-                        <strong className="list-head">Deep-Dive Carousels:</strong> 
-                        Beautiful, high-yield PDF slides with 10k+ average views.
+                        <strong className="list-head">Buyer Inquiries:</strong> 
+                        Secured direct RFQs from Tier 1 procurement managers within 90 days.
                       </li>
                       <li>
-                        <strong className="list-head">PR &amp; Newsjacking:</strong> 
-                        Turning breaking industry trends into viral commentary.
+                        <strong className="list-head">Market Positioning:</strong> 
+                        Established brand authority for sheet-metal stamping capabilities.
                       </li>
                       <li>
-                        <strong className="list-head">Newsletter Integration:</strong> 
-                        Funneling profile views into email subscribers.
+                        <strong className="list-head">Visible Proof:</strong> 
+                        Showcased deep toolroom and quality control setups to global OEMs.
                       </li>
                     </ul>
                     {/* Torn Edge on Right */}
@@ -376,14 +653,14 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_authority.jpg" alt="Executive presenting ideas" className="playbook-img" />
+                    <img src="/assets/playbook_authority.jpg" alt="Factory stamping floor" className="playbook-img" />
                   </div>
                 </div>
 
-                {/* Playbook Card 4 */}
+                {/* Testimonial 2 */}
                 <div className="playbook-card card-light flex-reverse">
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_advocacy.jpg" alt="Corporate training workshop" className="playbook-img" />
+                    <img src="/assets/playbook_advocacy.jpg" alt="Rajesh K., Director" className="playbook-img" />
                   </div>
                   <div className="playbook-content">
                     {/* Torn Edge on Left */}
@@ -392,50 +669,36 @@ export default function Home() {
                         <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
                       </svg>
                     </div>
-                    <h3 className="playbook-card-title">Corporate Advocacy &amp; Training</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">Employee Advocacy Programs:</strong> 
-                        Turning your team into brand ambassadors on LinkedIn.
-                      </li>
-                      <li>
-                        <strong className="list-head">Executive Cohorts:</strong> 
-                        Training your leadership team to write and share insights.
-                      </li>
-                      <li>
-                        <strong className="list-head">LinkedIn Workshops:</strong> 
-                        Interactive virtual masterclasses for your staff.
-                      </li>
-                      <li>
-                        <strong className="list-head">Brand Governance:</strong> 
-                        Setting corporate templates, guidelines, and compliance.
-                      </li>
-                    </ul>
+                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Chennai Stamping Pvt Ltd</span>
+                    <h3 className="playbook-card-title">Rajesh K. (Director)</h3>
+                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
+                      "We tried generic digital agencies that wanted us to do reels. Communic8 installed a process. Our LinkedIn is now as consistent as our production line."
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="playbook-group">
-                {/* Playbook Card 1 (Duplicate) */}
+                {/* Case Study 1 (Duplicate) */}
                 <div className="playbook-card card-dark">
                   <div className="playbook-content">
-                    <h3 className="playbook-card-title">Personal Branding &amp; Copywriting</h3>
+                    <h3 className="playbook-card-title">Case Study: Pune MSME</h3>
                     <ul className="playbook-list">
                       <li>
-                        <strong className="list-head">Content Strategy &amp; Tone:</strong> 
-                        Tailored voice matching your industry authority.
+                        <strong className="list-head">The Action:</strong> 
+                        Standardised GTM assets and installed the Reputation Engine for a precision-machining manufacturer.
                       </li>
                       <li>
-                        <strong className="list-head">Daily Ghostwriting:</strong> 
-                        5 high-impact text and carousel posts per week.
+                        <strong className="list-head">OEM Reach:</strong> 
+                        4,500+ high-intent procurement decision-makers reached.
                       </li>
                       <li>
-                        <strong className="list-head">Profile Optimization:</strong> 
-                        Professional banner, headline, and about section.
+                        <strong className="list-head">Positive Interest:</strong> 
+                        250+ active business interests and meeting requests.
                       </li>
                       <li>
-                        <strong className="list-head">Strategic Engagement:</strong> 
-                        High-value commenting on target accounts.
+                        <strong className="list-head">Assets Delivered:</strong> 
+                        Meeting-ready capabilities decks and repeatable GTM assets.
                       </li>
                     </ul>
                     {/* Torn Edge on Right */}
@@ -446,14 +709,14 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_copywriting.jpg" alt="Copywriting work on laptop" className="playbook-img" />
+                    <img src="/assets/playbook_copywriting.jpg" alt="Factory CNC machine operating" className="playbook-img" />
                   </div>
                 </div>
 
-                {/* Playbook Card 2 (Duplicate) */}
+                {/* Testimonial 1 (Duplicate) */}
                 <div className="playbook-card card-light flex-reverse">
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_outreach.jpg" alt="Business professionals shaking hands" className="playbook-img" />
+                    <img src="/assets/playbook_outreach.jpg" alt="Sanjay D., Managing Director" className="playbook-img" />
                   </div>
                   <div className="playbook-content">
                     {/* Torn Edge on Left */}
@@ -462,48 +725,34 @@ export default function Home() {
                         <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
                       </svg>
                     </div>
-                    <h3 className="playbook-card-title">Lead Generation &amp; Outreach</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">Targeted Outreach:</strong> 
-                        Direct messaging campaigns with 20%+ response rates.
-                      </li>
-                      <li>
-                        <strong className="list-head">ICP Connection Building:</strong> 
-                        Growing your network with 500+ prospects monthly.
-                      </li>
-                      <li>
-                        <strong className="list-head">Inbound Funnel Setup:</strong> 
-                        Capturing profile views and converting them to leads.
-                      </li>
-                      <li>
-                        <strong className="list-head">Analytics Dashboard:</strong> 
-                        Weekly reporting on pipeline and performance.
-                      </li>
-                    </ul>
+                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Precision Auto Components, Pune</span>
+                    <h3 className="playbook-card-title">Sanjay D. (MD)</h3>
+                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
+                      "Before Communic8, we were invisible to foreign buyers. Ajinkya understood our shop floor. The GTM deck and walkthrough video they built did more than 5 years of cold sales chasing."
+                    </p>
                   </div>
                 </div>
 
-                {/* Playbook Card 3 (Duplicate) */}
+                {/* Case Study 2 (Duplicate) */}
                 <div className="playbook-card card-dark">
                   <div className="playbook-content">
-                    <h3 className="playbook-card-title">Executive Ghostwriting &amp; Authority</h3>
+                    <h3 className="playbook-card-title">Case Study: Chennai Stamping</h3>
                     <ul className="playbook-list">
                       <li>
-                        <strong className="list-head">Thought Leadership Strategy:</strong> 
-                        Positioning you as the go-to authority in your niche.
+                        <strong className="list-head">The Action:</strong> 
+                        Produced a high-definition factory walkthrough video and implemented a LinkedIn visibility program.
                       </li>
                       <li>
-                        <strong className="list-head">Deep-Dive Carousels:</strong> 
-                        Beautiful, high-yield PDF slides with 10k+ average views.
+                        <strong className="list-head">Buyer Inquiries:</strong> 
+                        Secured direct RFQs from Tier 1 procurement managers within 90 days.
                       </li>
                       <li>
-                        <strong className="list-head">PR &amp; Newsjacking:</strong> 
-                        Turning breaking industry trends into viral commentary.
+                        <strong className="list-head">Market Positioning:</strong> 
+                        Established brand authority for sheet-metal stamping capabilities.
                       </li>
                       <li>
-                        <strong className="list-head">Newsletter Integration:</strong> 
-                        Funneling profile views into email subscribers.
+                        <strong className="list-head">Visible Proof:</strong> 
+                        Showcased deep toolroom and quality control setups to global OEMs.
                       </li>
                     </ul>
                     {/* Torn Edge on Right */}
@@ -514,14 +763,14 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_authority.jpg" alt="Executive presenting ideas" className="playbook-img" />
+                    <img src="/assets/playbook_authority.jpg" alt="Factory stamping floor" className="playbook-img" />
                   </div>
                 </div>
 
-                {/* Playbook Card 4 (Duplicate) */}
+                {/* Testimonial 2 (Duplicate) */}
                 <div className="playbook-card card-light flex-reverse">
                   <div className="playbook-img-container">
-                    <img src="/assets/playbook_advocacy.jpg" alt="Corporate training workshop" className="playbook-img" />
+                    <img src="/assets/playbook_advocacy.jpg" alt="Rajesh K., Director" className="playbook-img" />
                   </div>
                   <div className="playbook-content">
                     {/* Torn Edge on Left */}
@@ -530,25 +779,11 @@ export default function Home() {
                         <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
                       </svg>
                     </div>
-                    <h3 className="playbook-card-title">Corporate Advocacy &amp; Training</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">Employee Advocacy Programs:</strong> 
-                        Turning your team into brand ambassadors on LinkedIn.
-                      </li>
-                      <li>
-                        <strong className="list-head">Executive Cohorts:</strong> 
-                        Training your leadership team to write and share insights.
-                      </li>
-                      <li>
-                        <strong className="list-head">LinkedIn Workshops:</strong> 
-                        Interactive virtual masterclasses for your staff.
-                      </li>
-                      <li>
-                        <strong className="list-head">Brand Governance:</strong> 
-                        Setting corporate templates, guidelines, and compliance.
-                      </li>
-                    </ul>
+                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Chennai Stamping Pvt Ltd</span>
+                    <h3 className="playbook-card-title">Rajesh K. (Director)</h3>
+                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
+                      "We tried generic digital agencies that wanted us to do reels. Communic8 installed a process. Our LinkedIn is now as consistent as our production line."
+                    </p>
                   </div>
                 </div>
               </div>
@@ -591,15 +826,15 @@ export default function Home() {
         <section id="consultation" className="bio-section">
           <div className="bio-card">
             <div className="bio-img-container">
-              <img src="/assets/team_portrait.jpg" alt="Marcus Vance portrait" className="bio-img" />
+              <img src="/assets/team_portrait.jpg" alt="Ajinkya — Founder of Communic8" className="bio-img" />
             </div>
             <div className="bio-content">
-              <h2 className="bio-name">Marcus Vance (@marcus_vance)</h2>
-              <h3 className="bio-title">LinkedIn Growth Strategist</h3>
+              <h2 className="bio-name">Ajinkya</h2>
+              <h3 className="bio-title">Built by an operations head who ran 4 plants — not a digital marketer.</h3>
               <p className="bio-description">
-                We help high-growth founders, CEOs, and corporate executives build dominant personal brands on LinkedIn. By combining expert content ghostwriting with targeted outbound prospecting and high-conversion profile funnel architecture, we turn your online presence into a robust, organic lead pipeline.
+                Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories—climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants—I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
               </p>
-              <a href="#booking" className="btn-consultation">Book a Discovery Call</a>
+              <a href="#consultation" className="btn-consultation">Book a GTM Readiness Conversation</a>
             </div>
           </div>
         </section>
@@ -609,8 +844,10 @@ export default function Home() {
         <div className="footer-content">
           <p>&copy; 2026 COMMUNIC8. All rights reserved.</p>
           <div className="footer-links">
-            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")}>Playbook</a>
-            <a href="#founders" onClick={(e) => handleSmoothScroll(e, "#founders")}>Founders</a>
+            <a href="#problems" onClick={(e) => handleSmoothScroll(e, "#problems")}>The Problems</a>
+            <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")}>Our System</a>
+            <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")}>Services</a>
+            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")}>Case Studies</a>
             <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")}>Metrics</a>
           </div>
         </div>
