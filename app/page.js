@@ -388,7 +388,7 @@ export default function Home() {
             
             <div className="nav-actions">
               <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="btn-cta">
-                Book a GTM Readiness Conversation
+                Book a Call
               </a>
               
               <button 
@@ -423,7 +423,7 @@ export default function Home() {
               Metrics
             </a>
             <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="mobile-btn-cta">
-              Book a GTM Readiness Conversation
+              Book a Call
             </a>
           </div>
         </nav>
