@@ -96,10 +96,60 @@ const PROBLEMS = [
   }
 ];
 
+const DIAGNOSTIC_QUESTIONS = [
+  {
+    category: "Capabilities Deck Status",
+    text: "How do you present your manufacturing capabilities to prospects?",
+    options: [
+      { text: "We explain our toolroom from scratch on every call.", score: 0 },
+      { text: "We have an old PPT, but it needs constant explanation.", score: 1 },
+      { text: "We have a standardized deck built for Tier 1 / OEM buyer audits.", score: 2 }
+    ]
+  },
+  {
+    category: "Factory Walkthrough Video",
+    text: "What visual proof do you have of your shop floor capacity?",
+    options: [
+      { text: "No video, or raw smartphone clips of machines.", score: 0 },
+      { text: "We have a generic video, but it lacks capacity or quality control details.", score: 1 },
+      { text: "We have a professional HD walkthrough showcasing machines and capacity.", score: 2 }
+    ]
+  },
+  {
+    category: "LinkedIn & Visibility",
+    text: "How active is your market visibility among procurement decision-makers?",
+    options: [
+      { text: "We do not post, or only share festival wishes and generic news.", score: 0 },
+      { text: "We post occasionally, but it is inconsistent and has no structure.", score: 1 },
+      { text: "We showcase shop-floor metrics, capabilities, and B2B cases weekly.", score: 2 }
+    ]
+  },
+  {
+    category: "CRM & Contact Data",
+    text: "How do you track Tier 1 OEMs and active procurement managers?",
+    options: [
+      { text: "Procurement contacts are stored in email threads and notebooks.", score: 0 },
+      { text: "Excel spreadsheets that are updated occasionally.", score: 1 },
+      { text: "Structured CRM mapping target OEMs and active procurement managers.", score: 2 }
+    ]
+  },
+  {
+    category: "Growth Review Cadence",
+    text: "How is your marketing and GTM process monitored?",
+    options: [
+      { text: "We review production and quality, but never review marketing.", score: 0 },
+      { text: "Monthly or quarterly reviews, but without structured metrics.", score: 1 },
+      { text: "Weekly growth and GTM reviews matching shop-floor governance.", score: 2 }
+    ]
+  }
+];
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const lenisRef = useRef(null);
   const playbookSliderRef = useRef(null);
+  const [assessmentStep, setAssessmentStep] = useState(0);
+  const [assessmentAnswers, setAssessmentAnswers] = useState([]);
 
   useEffect(() => {
     // Initialize Lenis smooth scroll for weighted momentum scroll
@@ -262,6 +312,47 @@ export default function Home() {
     }
   };
 
+  const handleAnswerSelect = (score) => {
+    const updatedAnswers = [...assessmentAnswers];
+    updatedAnswers[assessmentStep] = score;
+    setAssessmentAnswers(updatedAnswers);
+    
+    // Auto transition with small visual confirmation delay
+    setTimeout(() => {
+      setAssessmentStep((prev) => prev + 1);
+    }, 200);
+  };
+  
+  const resetAssessment = () => {
+    setAssessmentAnswers([]);
+    setAssessmentStep(0);
+  };
+  
+  // Calculate result if step is 5
+  const totalScore = assessmentAnswers.reduce((sum, current) => sum + current, 0);
+  
+  let verdictTitle = "";
+  let verdictDesc = "";
+  let verdictNext = "";
+  let verdictClass = "";
+  
+  if (totalScore <= 3) {
+    verdictTitle = "Ad-Hoc Tier (High Risk)";
+    verdictDesc = "Relying entirely on raw referrals. Invisible to foreign procurement heads.";
+    verdictNext = "Build core GTM assets in the next 30 days.";
+    verdictClass = "verdict-risk";
+  } else if (totalScore <= 7) {
+    verdictTitle = "Standardized Tier (Growth Bottleneck)";
+    verdictDesc = "Basic assets exist, but lack a systematic month-on-month pipeline.";
+    verdictNext = "Install the Reputation Engine for monthly B2B visibility.";
+    verdictClass = "verdict-bottleneck";
+  } else {
+    verdictTitle = "Scalable Tier (GTM Ready)";
+    verdictDesc = "High operational readiness. Ready to capture and pre-qualify inbound inquiries.";
+    verdictNext = "Scale B2B campaigns and filter inquiries.";
+    verdictClass = "verdict-ready";
+  }
+
   return (
     <>
       {/* Navigation */}
@@ -282,6 +373,9 @@ export default function Home() {
             </a>
             <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="nav-link">
               Case Studies
+            </a>
+            <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")} className="nav-link">
+              Diagnostic
             </a>
             <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")} className="nav-link">
               Metrics
@@ -816,6 +910,87 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Interactive GTM Assessment Section */}
+        <section id="assessment" className="assessment-section">
+          <div className="assessment-container">
+            <h2 className="assessment-title">GTM Readiness Assessment</h2>
+            <p className="assessment-subtitle">
+              Is your B2B manufacturing firm ready to scale its GTM? Take the 60-second diagnostic check.
+            </p>
+            
+            <div className="assessment-card-wrapper">
+              {assessmentStep < 5 ? (
+                <div className="diagnostic-wizard-card">
+                  <div className="wizard-progress">
+                    <span className="progress-step">Question {assessmentStep + 1} of 5</span>
+                    <div className="progress-track">
+                      <div className="progress-bar" style={{ width: `${(assessmentStep + 1) * 20}%` }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="wizard-content">
+                    <span className="question-category">{DIAGNOSTIC_QUESTIONS[assessmentStep].category}</span>
+                    <h3 className="question-text">{DIAGNOSTIC_QUESTIONS[assessmentStep].text}</h3>
+                    
+                    <div className="options-list">
+                      {DIAGNOSTIC_QUESTIONS[assessmentStep].options.map((opt, index) => {
+                        const optionLabels = ["A", "B", "C"];
+                        const isSelected = assessmentAnswers[assessmentStep] === opt.score;
+                        return (
+                          <button
+                            key={index}
+                            className={`option-btn ${isSelected ? "selected" : ""}`}
+                            onClick={() => handleAnswerSelect(opt.score)}
+                          >
+                            <span className="option-letter">{optionLabels[index]}</span>
+                            <span className="option-text">{opt.text}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  
+                  {assessmentStep > 0 && (
+                    <button className="btn-back" onClick={() => setAssessmentStep((prev) => prev - 1)}>
+                      ← Back to previous question
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div className="diagnostic-result-card">
+                  <div className="result-header">
+                    <span className="result-label">Your Diagnostic Report</span>
+                    <h3 className="result-score">GTM Score: {totalScore} <span className="score-total">/ 10</span></h3>
+                  </div>
+                  
+                  <div className={`result-verdict-box ${verdictClass}`}>
+                    <h4 className="verdict-tier-title">{verdictTitle}</h4>
+                    <p className="verdict-description">{verdictDesc}</p>
+                    
+                    <div className="verdict-recommendation">
+                      <span className="recommendation-label">Recommended Next Step:</span>
+                      <p className="recommendation-text">{verdictNext}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="result-actions">
+                    <a
+                      href="#consultation"
+                      onClick={(e) => handleSmoothScroll(e, "#consultation")}
+                      className="btn-result-cta"
+                    >
+                      Book a GTM Readiness Conversation
+                    </a>
+                    <button className="btn-retake" onClick={resetAssessment}>
+                      Retake Assessment
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
         {/* Founder Bio / Consultation Section */}
         <section id="consultation" className="bio-section">
           <div className="bio-card">
@@ -842,6 +1017,7 @@ export default function Home() {
             <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")}>Our System</a>
             <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")}>Services</a>
             <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")}>Case Studies</a>
+            <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")}>Diagnostic</a>
             <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")}>Metrics</a>
           </div>
         </div>
