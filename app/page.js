@@ -150,6 +150,8 @@ export default function Home() {
     const animateTargets = [
       ...document.querySelectorAll(".metric-item"),
       ...document.querySelectorAll(".problem-card"),
+      ...document.querySelectorAll(".service-card"),
+      ...document.querySelectorAll(".roadmap-card"),
       document.querySelector(".bio-card"),
       document.querySelector(".section-title"),
       document.querySelector(".metrics-heading"),
@@ -169,7 +171,6 @@ export default function Home() {
     let scrollLeft;
     let marqueeFrameId;
     let speed = 0.8; // scroll speed (pixels per frame)
-    let isHovered = false;
 
     const handleMouseDown = (e) => {
       isDown = true;
@@ -181,7 +182,6 @@ export default function Home() {
     const handleMouseLeave = () => {
       isDown = false;
       slider.classList.remove("active");
-      isHovered = false;
     };
 
     const handleMouseUp = () => {
@@ -197,21 +197,16 @@ export default function Home() {
       slider.scrollLeft = scrollLeft - walk;
     };
 
-    const handleMouseEnter = () => {
-      isHovered = true;
-    };
-
     if (slider) {
       slider.addEventListener("mousedown", handleMouseDown);
       slider.addEventListener("mouseleave", handleMouseLeave);
       slider.addEventListener("mouseup", handleMouseUp);
       slider.addEventListener("mousemove", handleMouseMove);
-      slider.addEventListener("mouseenter", handleMouseEnter);
 
       // Auto scroll animation frame loop
       const updateMarquee = () => {
         if (slider) {
-          if (!isDown && !isHovered) {
+          if (!isDown) {
             slider.scrollLeft += speed;
           }
 
@@ -237,7 +232,6 @@ export default function Home() {
         slider.removeEventListener("mouseleave", handleMouseLeave);
         slider.removeEventListener("mouseup", handleMouseUp);
         slider.removeEventListener("mousemove", handleMouseMove);
-        slider.removeEventListener("mouseenter", handleMouseEnter);
       }
       cancelAnimationFrame(marqueeFrameId);
     };
@@ -435,7 +429,7 @@ export default function Home() {
               {/* Step 1 */}
               <div className="roadmap-item">
                 <div className="roadmap-node">01</div>
-                <div className="roadmap-card problem-card" style={{ transitionDelay: "0ms" }}>
+                <div className="roadmap-card" style={{ transitionDelay: "0ms" }}>
                   <span className="roadmap-pillar">Pillar 1</span>
                   <h3 className="roadmap-card-title">GTM Standardization</h3>
                   <p className="roadmap-card-focus">Phase 1: Meeting-Ready in 30 Days</p>
@@ -450,7 +444,7 @@ export default function Home() {
               {/* Step 2 */}
               <div className="roadmap-item">
                 <div className="roadmap-node">02</div>
-                <div className="roadmap-card problem-card" style={{ transitionDelay: "150ms" }}>
+                <div className="roadmap-card" style={{ transitionDelay: "150ms" }}>
                   <span className="roadmap-pillar">Pillar 2</span>
                   <h3 className="roadmap-card-title">The Reputation Engine</h3>
                   <p className="roadmap-card-focus">Phase 2: Monthly Visibility Retainer</p>
@@ -465,7 +459,7 @@ export default function Home() {
               {/* Step 3 */}
               <div className="roadmap-item">
                 <div className="roadmap-node">03</div>
-                <div className="roadmap-card problem-card" style={{ transitionDelay: "300ms" }}>
+                <div className="roadmap-card" style={{ transitionDelay: "300ms" }}>
                   <span className="roadmap-pillar">Pillar 3</span>
                   <h3 className="roadmap-card-title">The Review & Cadence</h3>
                   <p className="roadmap-card-focus">Phase 3: Governance & Structure</p>
@@ -488,7 +482,7 @@ export default function Home() {
             
             <div className="services-grid">
               {/* Card 1: GTM Standardization */}
-              <div className="service-card problem-card" style={{ transitionDelay: "0ms" }}>
+              <div className="service-card" style={{ transitionDelay: "0ms" }}>
                 <div>
                   <span className="service-badge-project">One-Time Project</span>
                   <h3 className="service-title-text">Go-To-Market (GTM) Standardization</h3>
@@ -510,7 +504,7 @@ export default function Home() {
               </div>
 
               {/* Card 2: Reputation Management */}
-              <div className="service-card recommended problem-card" style={{ transitionDelay: "150ms" }}>
+              <div className="service-card recommended" style={{ transitionDelay: "150ms" }}>
                 <div className="recommended-badge">Recommended default</div>
                 <div>
                   <span className="service-badge-retainer">Ongoing Retainer</span>
@@ -533,7 +527,7 @@ export default function Home() {
               </div>
 
               {/* Card 3: Lead Nurturing */}
-              <div className="service-card screened problem-card" style={{ transitionDelay: "300ms" }}>
+              <div className="service-card screened" style={{ transitionDelay: "300ms" }}>
                 <div className="screened-lock-badge">Invitation & Review Only</div>
                 <div>
                   <span className="service-badge-premium">Premium Retainer</span>
@@ -566,7 +560,7 @@ export default function Home() {
           
           <h2 className="section-title">Case Studies &amp; Testimonials</h2>
           
-          <div ref={playbookSliderRef} className="playbook-slider-container" data-lenis-prevent>
+          <div ref={playbookSliderRef} className="playbook-slider-container">
             <div className="playbook-slide-track">
               <div className="playbook-group">
                 {/* Case Study 1 */}
