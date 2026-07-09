@@ -1603,7 +1603,7 @@ export default function Home() {
             <>
               <div className="bio-card tab-content-animate">
                 <div className="bio-img-container">
-                  <img src="/assets/founder_portrait.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" />
+                  <img src="/assets/team_portrait.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" />
                 </div>
                 <div className="bio-content">
                   <h2 className="bio-name">Ajinkya</h2>
