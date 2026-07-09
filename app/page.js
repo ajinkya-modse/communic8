@@ -1259,9 +1259,9 @@ export default function Home() {
         {/* Interactive GTM Assessment Section */}
         <section id="assessment" className="assessment-section">
           <div className="assessment-container">
-            <h2 className="assessment-title">Where does your marketing really stand?</h2>
+            <h2 className="assessment-title">Map your current state in 2 minutes</h2>
             <p className="assessment-subtitle">
-              Score your marketing in 2 minutes. Be brutally honest — this is for you.
+              Score your marketing. Be brutally honest — this is for you.
             </p>
             
             <div className="assessment-card-wrapper">
