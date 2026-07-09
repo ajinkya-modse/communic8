@@ -801,14 +801,19 @@ a {
 }
 
 .section-title {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 800;
-  color: #1d1d1f;
+  background: linear-gradient(180deg, #1d1d1f 0%, #6e6e73 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   text-align: center;
   margin-bottom: 25px;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   position: relative;
   z-index: 5;
+  line-height: 1.15;
 }
 
 .playbook-slider-container {
@@ -1962,7 +1967,7 @@ html.lenis body {
 }
 
 .service-card {
-  background: #f9f9fb;
+  background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 24px;
   padding: 40px;
@@ -1972,37 +1977,49 @@ html.lenis body {
   justify-content: space-between;
   height: 100%;
   box-sizing: border-box;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 8px 30px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  transform: translateY(-8px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 30px 60px rgba(0, 0, 0, 0.08);
 }
 
 /* Service Card Types / Badges */
 .service-badge-project,
 .service-badge-retainer,
 .service-badge-premium {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: #888888;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
+  letter-spacing: 0.8px;
+  margin-bottom: 20px;
   display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  line-height: 1;
+}
+
+.service-badge-project {
+  background: rgba(0, 0, 0, 0.05);
+  color: #515154;
 }
 
 .service-badge-retainer {
-  color: var(--color-accent);
+  background: rgba(235, 51, 96, 0.08);
+  color: #eb3360;
 }
 
 .service-badge-premium {
-  color: #4b5563;
+  background: rgba(121, 82, 233, 0.08);
+  color: #7952e9;
 }
 
 .service-title-text {
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #1d1d1f;
   margin-bottom: 6px;
@@ -2012,10 +2029,11 @@ html.lenis body {
 
 .service-focus-text {
   font-family: var(--font-family-base);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: #6e6e73;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #86868b;
   margin-bottom: 24px;
+  letter-spacing: -0.1px;
 }
 
 .service-body {
@@ -2024,7 +2042,7 @@ html.lenis body {
 
 .service-desc {
   font-size: 0.95rem;
-  color: #6e6e73;
+  color: #515154;
   font-weight: 500;
   line-height: 1.55;
   margin-bottom: 24px;
@@ -2040,19 +2058,20 @@ html.lenis body {
 
 .service-list li {
   font-size: 0.9rem;
-  color: #6e6e73;
+  color: #515154;
   line-height: 1.5;
   position: relative;
   padding-left: 20px;
 }
 
 .service-list li::before {
-  content: "→";
+  content: "✓";
   color: var(--color-accent);
   font-weight: 700;
   position: absolute;
   left: 0;
-  top: -1px;
+  top: 0;
+  font-size: 0.85rem;
 }
 
 /* Service Footer CTAs */
@@ -2063,57 +2082,61 @@ html.lenis body {
 .btn-service {
   display: block;
   text-align: center;
-  background: transparent;
-  border: 1.5px solid var(--color-accent);
-  color: var(--color-accent);
+  background: #f5f5f7;
+  color: #1d1d1f;
+  border: none;
   border-radius: 30px;
   padding: 12px 20px;
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-service:hover {
-  background: var(--color-accent);
-  color: #ffffff;
-  border-color: var(--color-accent);
-  box-shadow: 0 4px 15px rgba(var(--color-accent-rgb), 0.2);
+  background: #e8e8ed;
+  color: #1d1d1f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
 }
 
 /* Recommended Highlight Styling */
 .service-card.recommended {
-  border: 2px solid var(--color-accent);
-  background: #ffffff;
-  box-shadow: 0 15px 40px rgba(var(--color-accent-rgb), 0.08);
+  border: 1px solid rgba(235, 51, 96, 0.25);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 20px 50px rgba(235, 51, 96, 0.06);
+}
+
+.service-card.recommended:hover {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 30px 60px rgba(235, 51, 96, 0.12);
 }
 
 .recommended-badge {
   position: absolute;
   top: -12px;
   left: 30px;
-  background: var(--color-accent);
+  background: #eb3360;
   color: #ffffff;
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 4px 12px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(var(--color-accent-rgb), 0.25);
+  padding: 4px 14px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(235, 51, 96, 0.25);
 }
 
 .btn-service.btn-recommended {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+  background: #eb3360;
   color: #ffffff;
-  box-shadow: 0 5px 15px rgba(var(--color-accent-rgb), 0.2);
+  box-shadow: 0 4px 12px rgba(235, 51, 96, 0.2);
 }
 
 .btn-service.btn-recommended:hover {
-  background: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
-  box-shadow: 0 8px 20px rgba(var(--color-accent-rgb), 0.3);
+  background: #cf224c;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(235, 51, 96, 0.35);
+  transform: translateY(-1px);
 }
 
 /* Screened / Invitation Lock Styling */
