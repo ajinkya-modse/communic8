@@ -3,6 +3,14 @@
 import { useEffect, useState, useRef } from "react";
 import Lenis from "lenis";
 
+const INDUSTRY_LEADERS = [
+  { first: "Shantanu", last: "Deshpande", img: "/assets/founder_1.jpg" },
+  { first: "Nikhil", last: "Kamath", img: "/assets/founder_2.jpg" },
+  { first: "Abhi &", last: "Niyu", img: "/assets/founder_3.jpg" },
+  { first: "Sakshi", last: "Malik", img: "/assets/founder_4.jpg" },
+  { first: "Ayesha", last: "Khan", img: "/assets/founder_5.jpg" }
+];
+
 const LINKEDIN_PROBLEMS = [
   {
     number: 1,
@@ -606,8 +614,8 @@ export default function Home() {
             <div className="hero-bg-overlay"></div>
             <img src="/assets/hero_background.jpg" alt="Collaborative creative team" className="hero-bg-img" />
             <div className="hero-content">
-              <h1 className="hero-title">Content for manufacturing leaders.</h1>
-              <p className="hero-subtitle">We generate demand. You build products.</p>
+              <h1 className="hero-title">Narratives for manufacturing leaders.</h1>
+              <p className="hero-subtitle">We generate demand. You sign contracts.</p>
             </div>
           </div>
         </section>
@@ -680,6 +688,26 @@ export default function Home() {
                     <path d="M0 0h12v4.8H4.8v6h6.8v4.8H4.8v6.4h7.2v5.2H0V0zm16.8 11.2h11.2v16h-4.8v-16h-6.4V0h5.6v11.2zm11.2 0h11.2v16h-4.8v-16h-6.4V0h5.6v11.2zm11.2-11.2h11.2c4.8 0 7.2 2.4 7.2 7.2 0 3.6-2.4 6-6 7.2l6 9.6h-4.8l-6-9.6H44v9.6h-4.8V0zm4.8 4.8v5.6h5.6c2.4 0 3.6-1.2 3.6-2.8 0-1.6-1.2-2.8-3.6-2.8H44zm19.6-4.8H72v4.8h-7.6v6h6.8v4.8h-6.8v6.4h7.6v5.2H63.6V0zm16.8 0h11.2v27.2H80.4V0zm4.8 4.8v17.6h0.2l5.4-17.6h-5.6zm11.2 0h11.2V4.8h-5.6V0h5.6v27.2h-5.6V4.8zm11.2 0h11.2v27.2h-4.8V4.8h-6.4V0h5.6v4.8zm11.2-4.8h12v4.8h-7.2v6h6.8v4.8h-6.8v6.4h7.2v5.2h-12V0zm16.8 0h11.2v27.2h-4.8V4.8h-6.4V0h5.6v4.8z"/>
                   </svg>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Industry Leaders Slider Section */}
+        <section className="leaders-section">
+          <div className="leaders-container">
+            <h3 className="leaders-title">Industry leaders we worked with</h3>
+            <div className="leaders-slider-container">
+              <div className="leaders-slide-track">
+                {[...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS].map((leader, index) => (
+                  <div key={index} className="leader-item">
+                    <img src={leader.img} alt={`${leader.first} ${leader.last}`} className="leader-avatar" />
+                    <div className="leader-name-container">
+                      <span className="leader-first-name">{leader.first}</span>
+                      <span className="leader-last-name">{leader.last}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
