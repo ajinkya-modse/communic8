@@ -1603,13 +1603,13 @@ export default function Home() {
             <>
               <div className="bio-card tab-content-animate">
                 <div className="bio-img-container">
-                  <img src="/assets/team_portrait.jpg" alt="Ajinkya — Founder of Communic8" className="bio-img" />
+                  <img src="/assets/founder_portrait.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" />
                 </div>
                 <div className="bio-content">
                   <h2 className="bio-name">Ajinkya</h2>
-                  <h3 className="bio-title">Built by an operations head who ran 4 plants — not a digital marketer.</h3>
+                  <h3 className="bio-title">Built by an operations head who ran 4 plants, not a digital marketer.</h3>
                   <p className="bio-description">
-                    Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories—climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants—I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
+                    Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories, climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants, I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
                   </p>
                 </div>
               </div>

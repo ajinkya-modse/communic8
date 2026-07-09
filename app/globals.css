@@ -1180,7 +1180,7 @@ a {
   transition: all 0.6s ease;
 }
 
-.bio-card:hover .bio-img {
+.bio-img:hover {
   filter: grayscale(0%) contrast(1.05);
   transform: scale(1.02);
 }
