@@ -746,8 +746,10 @@ a {
 
 /* Playbook Section Styles */
 .playbook-section {
-  background: #f5f5f7;
-  padding: 70px 0;
+  background: linear-gradient(-45deg, #f5f5f7, #ffd2dc, #e8f0fe, #eae4ff, #f5f5f7);
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+  padding: 85px 0;
   position: relative;
   overflow: hidden;
 }
@@ -780,7 +782,7 @@ a {
   font-weight: 800;
   color: #1d1d1f;
   text-align: center;
-  margin-bottom: 75px;
+  margin-bottom: 25px;
   letter-spacing: -1px;
   position: relative;
   z-index: 5;
@@ -795,7 +797,7 @@ a {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 20px 0 50px;
+  padding: 0 0 50px;
   mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   z-index: 2;
@@ -1048,9 +1050,25 @@ a {
 }
 
 /* Bio & Call to Action Section */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .bio-section {
-  background: #f5f5f7;
-  padding: 65px 24px;
+  background: linear-gradient(-45deg, #f5f5f7, #ffd2dc, #e8f0fe, #eae4ff, #f5f5f7);
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+  padding: 85px 24px;
+  position: relative;
+  overflow: hidden;
 }
 
 .bio-card {
