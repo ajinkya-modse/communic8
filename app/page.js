@@ -11,6 +11,126 @@ const INDUSTRY_LEADERS = [
   { first: "Ayesha", last: "Khan", img: "/assets/founder_5.jpg" }
 ];
 
+const SUPPORTERS = [
+  { name: "Shantanu Deshpande", title: "Founder, Bombay Shaving Co.", img: "/assets/founder_1.jpg" },
+  { name: "Nikhil Kamath", title: "Co-founder, Zerodha", img: "/assets/founder_2.jpg" },
+  { name: "Abhi & Niyu", title: "Content Creators & Educators", img: "/assets/founder_3.jpg" },
+  { name: "Sakshi Malik", title: "Olympic Medalist & Entrepreneur", img: "/assets/founder_4.jpg" },
+  { name: "Ayesha Khan", title: "B2B Tech Investor", img: "/assets/founder_5.jpg" },
+  { name: "Kunal Shah", title: "Founder, CRED", img: "/assets/supporter_6.jpg" },
+  { name: "Nandan Nilekani", title: "Co-founder, Infosys", img: "/assets/supporter_7.jpg" },
+  { name: "Kiran Mazumdar-Shaw", title: "Executive Chairperson, Biocon", img: "/assets/supporter_8.jpg" },
+  { name: "Ritesh Agarwal", title: "Founder, OYO Rooms", img: "/assets/supporter_9.jpg" }
+];
+
+const LEADERSHIP = [
+  { name: "Rajesh Kumar", title: "Operations Director", img: "/assets/employee_1.jpg" },
+  { name: "Sneha Sharma", title: "Head of Marketing", img: "/assets/employee_2.jpg" },
+  { name: "Amit Patel", title: "Lead Copywriter", img: "/assets/employee_3.jpg" }
+];
+
+const COMPANIES_LIST = [
+  {
+    name: "Siemens",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1px">SIEMENS</text>
+      </svg>
+    )
+  },
+  {
+    name: "Bosch",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">BOSCH</text>
+      </svg>
+    )
+  },
+  {
+    name: "Caterpillar",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="900" fontFamily="Impact, sans-serif" letterSpacing="0.5px">CAT</text>
+      </svg>
+    )
+  },
+  {
+    name: "General Electric",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="19" fontWeight="800" fontFamily="Georgia, serif" fontStyle="italic">GE</text>
+      </svg>
+    )
+  },
+  {
+    name: "Larsen & Toubro",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1px">L&amp;T</text>
+      </svg>
+    )
+  },
+  {
+    name: "Cummins",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" fontStyle="italic" letterSpacing="0.5px">CUMMINS</text>
+      </svg>
+    )
+  }
+];
+
+const COMPANIES_LIST_2 = [
+  {
+    name: "Tata Motors",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="16" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1px">TATA MOTORS</text>
+      </svg>
+    )
+  },
+  {
+    name: "Cisco",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">CISCO</text>
+      </svg>
+    )
+  },
+  {
+    name: "Honeywell",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="16" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">HONEYWELL</text>
+      </svg>
+    )
+  },
+  {
+    name: "John Deere",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="17" fontWeight="900" fontFamily="Georgia, serif" fontStyle="italic">DEERE</text>
+      </svg>
+    )
+  },
+  {
+    name: "ABB",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1.5px">ABB</text>
+      </svg>
+    )
+  },
+  {
+    name: "Mitsubishi",
+    logo: (
+      <svg viewBox="0 0 120 28" fill="currentColor">
+        <text x="50%" y="20" textAnchor="middle" fontSize="16" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">MITSUBISHI</text>
+      </svg>
+    )
+  }
+];
+
 const LINKEDIN_PROBLEMS = [
   {
     number: 1,
@@ -156,6 +276,7 @@ export default function Home() {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [bookedReportData, setBookedReportData] = useState(null);
   const [downloadProgress, setDownloadProgress] = useState("");
+  const [activeBioTab, setActiveBioTab] = useState("founder");
 
   const loadHtml2Pdf = async () => {
     if (typeof window === "undefined") return null;
@@ -556,11 +677,8 @@ export default function Home() {
               <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="nav-link">
                 Case Studies
               </a>
-              <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")} className="nav-link">
-                Diagnostic
-              </a>
-              <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")} className="nav-link">
-                Metrics
+              <a href="#founder" onClick={(e) => handleSmoothScroll(e, "#founder")} className="nav-link">
+                Our Team
               </a>
             </div>
             
@@ -594,11 +712,8 @@ export default function Home() {
             <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="mobile-nav-link">
               Case Studies
             </a>
-            <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")} className="mobile-nav-link">
-              Diagnostic
-            </a>
-            <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")} className="mobile-nav-link">
-              Metrics
+            <a href="#founder" onClick={(e) => handleSmoothScroll(e, "#founder")} className="mobile-nav-link">
+              Our Team
             </a>
             <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="mobile-btn-cta">
               Book a Call
@@ -1452,21 +1567,113 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Founder Bio / Consultation Section */}
-        <section id="consultation" className="bio-section">
-          <div className="bio-card">
-            <div className="bio-img-container">
-              <img src="/assets/team_portrait.jpg" alt="Ajinkya — Founder of Communic8" className="bio-img" />
+        {/* Companies We Worked With Section */}
+        <section className="companies-section">
+          <div className="companies-container">
+            <h3 className="companies-title">Companies we worked with</h3>
+            
+            {/* Slider 1: Right-to-Left */}
+            <div className="companies-slider-container">
+              <div className="companies-slide-track">
+                {[...COMPANIES_LIST, ...COMPANIES_LIST, ...COMPANIES_LIST, ...COMPANIES_LIST].map((company, index) => (
+                  <div key={index} className="company-logo" aria-label={company.name}>
+                    {company.logo}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="bio-content">
-              <h2 className="bio-name">Ajinkya</h2>
-              <h3 className="bio-title">Built by an operations head who ran 4 plants — not a digital marketer.</h3>
-              <p className="bio-description">
-                Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories—climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants—I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
-              </p>
-              <a href="#consultation" className="btn-consultation">Book a GTM Readiness Conversation</a>
+
+            {/* Slider 2: Left-to-Right (Reverse) */}
+            <div className="companies-slider-container reverse-slider" style={{ marginTop: "20px" }}>
+              <div className="companies-slide-track-reverse">
+                {[...COMPANIES_LIST_2, ...COMPANIES_LIST_2, ...COMPANIES_LIST_2, ...COMPANIES_LIST_2].map((company, index) => (
+                  <div key={index} className="company-logo" aria-label={company.name}>
+                    {company.logo}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+        </section>
+
+        {/* Founder Bio / Consultation Section */}
+        <section id="founder" className="bio-section">
+          <div id="consultation" />
+          
+          <div className="bio-tabs-container">
+            <button 
+              className={`bio-tab-btn ${activeBioTab === "founder" ? "active" : ""}`}
+              onClick={() => setActiveBioTab("founder")}
+            >
+              Founder
+            </button>
+            <button 
+              className={`bio-tab-btn ${activeBioTab === "supporters" ? "active" : ""}`}
+              onClick={() => setActiveBioTab("supporters")}
+            >
+              Our Supporters
+            </button>
+            <button 
+              className={`bio-tab-btn ${activeBioTab === "leadership" ? "active" : ""}`}
+              onClick={() => setActiveBioTab("leadership")}
+            >
+              Leadership
+            </button>
+          </div>
+
+          {activeBioTab === "founder" && (
+            <div className="bio-card tab-content-animate">
+              <div className="bio-img-container">
+                <img src="/assets/team_portrait.jpg" alt="Ajinkya — Founder of Communic8" className="bio-img" />
+              </div>
+              <div className="bio-content">
+                <h2 className="bio-name">Ajinkya</h2>
+                <h3 className="bio-title">Built by an operations head who ran 4 plants — not a digital marketer.</h3>
+                <p className="bio-description">
+                  Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories—climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants—I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
+                </p>
+                <a href="#consultation" className="btn-consultation">Book a GTM Readiness Conversation</a>
+              </div>
+            </div>
+          )}
+
+          {activeBioTab === "supporters" && (
+            <div className="supporters-grid-container tab-content-animate">
+              <h2 className="section-tab-title">Our Supporters</h2>
+              <div className="supporters-grid">
+                {SUPPORTERS.map((supporter, idx) => (
+                  <div key={idx} className="supporter-card">
+                    <div className="supporter-img-container">
+                      <img src={supporter.img} alt={supporter.name} className="supporter-img" />
+                    </div>
+                    <div className="supporter-info">
+                      <h4 className="supporter-name">{supporter.name}</h4>
+                      <p className="supporter-title">{supporter.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeBioTab === "leadership" && (
+            <div className="supporters-grid-container tab-content-animate">
+              <h2 className="section-tab-title">Our Leadership</h2>
+              <div className="supporters-grid leadership-grid">
+                {LEADERSHIP.map((employee, idx) => (
+                  <div key={idx} className="supporter-card">
+                    <div className="supporter-img-container">
+                      <img src={employee.img} alt={employee.name} className="supporter-img" />
+                    </div>
+                    <div className="supporter-info">
+                      <h4 className="supporter-name">{employee.name}</h4>
+                      <p className="supporter-title">{employee.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </section>
         {/* Booking Confirmation modal */}
         {bookingConfirmed && bookedReportData && (
@@ -1598,8 +1805,7 @@ export default function Home() {
             <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")}>Our System</a>
             <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")}>Services</a>
             <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")}>Case Studies</a>
-            <a href="#assessment" onClick={(e) => handleSmoothScroll(e, "#assessment")}>Diagnostic</a>
-            <a href="#metrics" onClick={(e) => handleSmoothScroll(e, "#metrics")}>Metrics</a>
+            <a href="#founder" onClick={(e) => handleSmoothScroll(e, "#founder")}>Our Team</a>
           </div>
         </div>
       </footer>
