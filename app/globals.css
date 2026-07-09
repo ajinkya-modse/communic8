@@ -81,22 +81,21 @@ a {
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: 0.5px;
-  color: #ffffff;
   cursor: pointer;
   user-select: none;
-  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-.header.scrolled .logo {
-  color: #111111;
+.logo-img {
+  height: 38px;
+  width: auto;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.logo .dot {
-  color: #ff6f3c;
-  font-family: var(--font-playfair-display), serif;
+.logo:hover .logo-img {
+  transform: scale(1.03);
 }
 
 .nav-links {
@@ -172,12 +171,12 @@ a {
 }
 
 .header.scrolled .btn-cta {
-  background: #111111;
+  background: #ff6f3c;
   color: #ffffff;
 }
 
 .header.scrolled .btn-cta:hover {
-  background: #ff6f3c;
+  background: #e55a2b;
   box-shadow: 0 4px 15px rgba(255, 111, 60, 0.3);
 }
 
@@ -456,19 +455,12 @@ a {
   padding-right: 50px; /* Don't overlap with absolute number */
 }
 
-.problem-reality {
-  font-size: 0.95rem;
-  color: #555555;
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
-
 .problem-cost-container {
   background: #f9f9fb;
   border: 1px solid rgba(0, 0, 0, 0.02);
   border-radius: 16px;
   padding: 20px;
-  margin-bottom: 28px;
+  margin-bottom: 0;
   transition: all 0.4s ease;
 }
 
@@ -488,14 +480,7 @@ a {
   align-items: center;
 }
 
-.problem-cost-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.problem-cost-list li {
+.problem-cost-text {
   font-size: 0.9rem;
   color: #4a4a4a;
   line-height: 1.45;
@@ -503,30 +488,13 @@ a {
   padding-left: 18px;
 }
 
-.problem-cost-list li::before {
+.problem-cost-text::before {
   content: "•";
   color: #ff6f3c;
   font-size: 1.2rem;
   position: absolute;
   left: 0;
   top: -2px;
-}
-
-.problem-way-forward {
-  border-left: 2px solid #ff6f3c; /* safety orange left bar */
-  padding-left: 15px;
-  margin-top: auto;
-  font-family: var(--font-playfair-display), serif;
-  font-style: italic;
-  color: #555555;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  transition: all 0.4s ease;
-}
-
-.problem-card:hover .problem-way-forward {
-  color: #1a1a1a;
-  border-color: #ff6f3c;
 }
 
 .problems-outro {
@@ -549,20 +517,21 @@ a {
 
 .btn-problems-cta {
   display: inline-block;
-  background: #1a1a1a;
+  background: #ff6f3c;
   color: #ffffff;
   border-radius: 30px;
   padding: 14px 34px;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(255, 111, 60, 0.2);
 }
 
 .btn-problems-cta:hover {
-  background: #ff6f3c;
+  background: #e55a2b;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 111, 60, 0.35);
+  box-shadow: 0 8px 24px rgba(255, 111, 60, 0.4);
 }
 
 /* Playbook Section Styles */
@@ -926,20 +895,21 @@ a {
 .btn-consultation {
   display: inline-block;
   align-self: flex-start;
-  background: #1a1a1a;
+  background: #ff6f3c;
   color: #ffffff;
   border-radius: 30px;
   padding: 14px 34px;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(255, 111, 60, 0.2);
 }
 
 .btn-consultation:hover {
-  background: #ff6f3c;
+  background: #e55a2b;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 111, 60, 0.35);
+  box-shadow: 0 8px 24px rgba(255, 111, 60, 0.4);
 }
 
 /* Footer Section Styles */
@@ -1069,10 +1039,10 @@ a {
     background: #e55a2b;
   }
   .header.scrolled .mobile-btn-cta {
-    background: #111111;
+    background: #ff6f3c;
   }
   .header.scrolled .mobile-btn-cta:hover {
-    background: #ff6f3c;
+    background: #e55a2b;
   }
   .hero-title {
     font-size: 2.8rem;
@@ -1145,8 +1115,8 @@ a {
   .navbar {
     padding: 8px 16px;
   }
-  .logo {
-    font-size: 1.15rem;
+  .logo-img {
+    height: 30px;
   }
   .hero-title {
     font-size: 1.9rem;
@@ -1597,9 +1567,9 @@ html.lenis body {
 .btn-service {
   display: block;
   text-align: center;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #1a1a1a;
+  background: transparent;
+  border: 1.5px solid #ff6f3c;
+  color: #ff6f3c;
   border-radius: 30px;
   padding: 12px 20px;
   font-size: 0.9rem;
@@ -1609,9 +1579,10 @@ html.lenis body {
 }
 
 .btn-service:hover {
-  background: #1a1a1a;
+  background: #ff6f3c;
   color: #ffffff;
-  border-color: #1a1a1a;
+  border-color: #ff6f3c;
+  box-shadow: 0 4px 15px rgba(255, 111, 60, 0.2);
 }
 
 /* Recommended Highlight Styling */
@@ -1644,9 +1615,9 @@ html.lenis body {
 }
 
 .btn-service.btn-recommended:hover {
-  background: #1a1a1a;
-  border-color: #1a1a1a;
-  box-shadow: none;
+  background: #e55a2b;
+  border-color: #e55a2b;
+  box-shadow: 0 8px 20px rgba(255, 111, 60, 0.3);
 }
 
 /* Screened / Invitation Lock Styling */

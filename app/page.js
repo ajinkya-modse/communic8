@@ -7,92 +7,47 @@ const PROBLEMS = [
   {
     number: 1,
     title: "Marketing is not treated as a real business function",
-    reality: "Production, quality, and maintenance have daily reviews and owners. Marketing happens \"whenever there is time.\" Without ownership, growth is left to chance.",
-    costs: [
-      "Growth is accidental, driven only by old references.",
-      "Invisibility costs an estimated 20–30% of annual enquiries."
-    ],
-    wayForward: "Run marketing like a production line—with an owner and a target."
+    hiddenCost: "Invisibility costs an estimated 20–30% of annual enquiries."
   },
   {
     number: 2,
     title: "You have a process for everything, except marketing",
-    reality: "You have SOPs for machine setups and dispatch. Yet, the single function responsible for bringing in customers runs with no system.",
-    costs: [
-      "Capabilities built over decades remain invisible to buyers.",
-      "Stop-and-start efforts waste past spend without compounding."
-    ],
-    wayForward: "Standardize marketing just like a machining process."
+    hiddenCost: "Capabilities built over decades remain invisible to buyers."
   },
   {
     number: 3,
     title: "You have never been shown what GTM really is",
-    reality: "Marketing isn't random posting. A proper Go-to-Market (GTM) system is a structured engine that delivers your value to target buyers consistently.",
-    costs: [
-      "You compete on price because you aren't positioned on value.",
-      "Winning clients takes 2–3x more effort than a structured GTM model."
-    ],
-    wayForward: "Stop chasing customers. Build a system that brings them to you."
+    hiddenCost: "You compete on price because you aren't positioned on value."
   },
   {
     number: 4,
     title: "Generic agencies have misguided you",
-    reality: "B2C agencies apply retail social media strategies to industrial setups. When they fail, manufacturers conclude that marketing doesn't work.",
-    costs: [
-      "Wasted budget on consumer likes that don't translate to B2B orders.",
-      "Lost years while competitors quietly build industry authority."
-    ],
-    wayForward: "Selling precision components requires shop-floor understanding."
+    hiddenCost: "Wasted budget on consumer likes that don't translate to B2B orders."
   },
   {
     number: 5,
     title: "Chasing the cheapest option is costing you the most",
-    reality: "Negotiating on the shop floor is healthy; buying cheap marketing is self-sabotage. Substandard work damages your brand and forces you to pay twice.",
-    costs: [
-      "Low-quality output that repels premium buyers.",
-      "Huge opportunity cost: one lost contract can equal 10 years of retainers."
-    ],
-    wayForward: "The real question is the cost of remaining invisible."
+    hiddenCost: "Huge opportunity cost: one lost contract can equal 10 years of retainers."
   },
   {
     number: 6,
     title: "Your market presence is in part-time, untrained hands",
-    reality: "With no dedicated owner, marketing lands on whoever is free—like an admin or HR. Your primary growth driver is treated as a sideline task.",
-    costs: [
-      "Inconsistent, cheap messaging tells buyers you aren't premium.",
-      "Untrained staff are set up to fail, leading to wasted time."
-    ],
-    wayForward: "You wouldn't let an untrained operator run your CNC. Treat your brand similarly."
+    hiddenCost: "Inconsistent, cheap messaging tells buyers you aren't premium."
   },
   {
     number: 7,
     title: "You know LinkedIn and GTM matter, but something holds you back",
-    reality: "Knowing you need a digital presence is easy; starting is hard. Firefighting on the plant floor keeps you from taking the first step.",
-    costs: [
-      "The gap between you and active competitors widens every week.",
-      "Competitors build relationships with your potential buyers in the silence."
-    ],
-    wayForward: "We remove the friction. We set it up and run it for you."
+    hiddenCost: "Competitors build relationships with your potential buyers in the silence."
   },
   {
     number: 8,
     title: "Full of ideas, but firefighting kills execution",
-    reality: "Promoters have great ideas, but operational breakdowns, labor issues, and payment follow-ups kill execution. Firefighting always wins.",
-    costs: [
-      "Owner is trapped working in the factory instead of on it.",
-      "Competitors execute the ideas you left on the backburner."
-    ],
-    wayForward: "You bring the vision; we provide the execution engine."
+    hiddenCost: "Owner is trapped working in the factory instead of on it."
   },
   {
     number: 9,
     title: "No structure, no consistency, no link to your goals",
-    reality: "Marketing in short bursts followed by months of silence resets progress. Without alignment with your business plan, it remains a pure expense.",
-    costs: [
-      "Wasted energy—like heating metal and letting it cool repeatedly.",
-      "Missing out on compounding: steady effort yields 10x the pipeline."
-    ],
-    wayForward: "We build the structure that makes consistency automatic."
+    hiddenCost: "Wasted energy—like heating metal and letting it cool repeatedly."
   }
 ];
 
@@ -579,7 +534,7 @@ export default function Home() {
         <nav className={`navbar ${scrolled ? "scrolled" : ""} ${mobileMenuOpen ? "menu-open" : ""}`}>
           <div className="navbar-main">
             <div className="logo" onClick={(e) => handleSmoothScroll(e, "#top")}>
-              COMMUNIC8<span className="dot">.</span>
+              <img src="/assets/communic8-logo.png" alt="Communic8 Logo" className="logo-img" />
             </div>
             
             <div className="nav-links">
@@ -748,17 +703,11 @@ export default function Home() {
                   <span className="problem-num">{String(problem.number).padStart(2, "0")}</span>
                   <div>
                     <h3 className="problem-title">{problem.title}</h3>
-                    <p className="problem-reality">{problem.reality}</p>
                     <div className="problem-cost-container">
-                      <h4 className="problem-cost-header">Silent cost:</h4>
-                      <ul className="problem-cost-list">
-                        {problem.costs.map((cost, idx) => (
-                          <li key={idx}>{cost}</li>
-                        ))}
-                      </ul>
+                      <h4 className="problem-cost-header">Hidden cost:</h4>
+                      <p className="problem-cost-text">{problem.hiddenCost}</p>
                     </div>
                   </div>
-                  <p className="problem-way-forward">{problem.wayForward}</p>
                 </div>
               ))}
             </div>
