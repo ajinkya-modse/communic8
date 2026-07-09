@@ -1239,6 +1239,7 @@ export default function Home() {
         {/* Metrics Section */}
         <section id="metrics" className="metrics-section">
           <h3 className="metrics-heading">Numbers that make sense</h3>
+          <p className="metrics-subheading">On an average, our clients grow qualified pipeline of 150-200 potential buyers in under 9 months.</p>
           <div className="metrics-grid">
             <div className="metric-item">
               <span className="metric-number">74%</span>

@@ -1,41 +1,41 @@
 /* Design System Styles for Communic8 Landing Page */
 
 :root {
-  /* Communic8 Logo Color Palette */
-  --color-brand-blue: #136fa5;
-  --color-brand-purple: #5f4b9d;
-  --color-brand-magenta: #c72a54;
+  /* Communic8 Logo Color Palette (Brighter, high-contrast, premium) */
+  --color-brand-blue: #007ebb;
+  --color-brand-purple: #7952e9;
+  --color-brand-magenta: #eb3360;
 
-  --color-brand-blue-rgb: 19, 111, 165;
-  --color-brand-purple-rgb: 95, 75, 157;
-  --color-brand-magenta-rgb: 199, 42, 84;
+  --color-brand-blue-rgb: 0, 126, 187;
+  --color-brand-purple-rgb: 121, 82, 233;
+  --color-brand-magenta-rgb: 235, 51, 96;
 
-  /* Accent Color roles (replacing orange) */
+  /* Accent Color roles */
   --color-accent: var(--color-brand-magenta);
   --color-accent-rgb: var(--color-brand-magenta-rgb);
 
-  --color-accent-hover: #b02447; /* Slightly darker/deeper magenta */
-  --color-accent-light: #f7d2db; /* Light pink/magenta tint */
+  --color-accent-hover: #cf224c; /* Slightly deeper version for hover */
+  --color-accent-light: #ffd2dc; /* Cleaner pink tint */
 
   /* Brand Gradients */
   --gradient-brand: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-purple), var(--color-brand-magenta));
   --gradient-brand-horizontal: linear-gradient(90deg, var(--color-brand-blue), var(--color-brand-purple), var(--color-brand-magenta));
 
-  /* Single Color Brand Gradients (Apple-style) */
+  /* Single Color Brand Gradients (Apple-style, optimized brightness) */
   /* 1. Brand Blue Gradients */
-  --gradient-blue-text: linear-gradient(135deg, #136fa5 0%, #5baed9 100%);
-  --gradient-blue-btn: linear-gradient(180deg, #1d82ba 0%, #136fa5 100%);
-  --gradient-blue-btn-hover: linear-gradient(180deg, #2491cc 0%, #177cb8 100%);
+  --gradient-blue-text: linear-gradient(135deg, #007ebb 0%, #59c2ff 100%);
+  --gradient-blue-btn: linear-gradient(180deg, #008be5 0%, #007ebb 100%);
+  --gradient-blue-btn-hover: linear-gradient(180deg, #009eff 0%, #008be5 100%);
   
   /* 2. Brand Purple Gradients */
-  --gradient-purple-text: linear-gradient(135deg, #5f4b9d 0%, #9a84e6 100%);
-  --gradient-purple-btn: linear-gradient(180deg, #745ec4 0%, #5f4b9d 100%);
-  --gradient-purple-btn-hover: linear-gradient(180deg, #846ed4 0%, #6953ab 100%);
+  --gradient-purple-text: linear-gradient(135deg, #7952e9 0%, #ab8cff 100%);
+  --gradient-purple-btn: linear-gradient(180deg, #8c67ff 0%, #7952e9 100%);
+  --gradient-purple-btn-hover: linear-gradient(180deg, #9d7cff 0%, #8c67ff 100%);
 
   /* 3. Brand Magenta Gradients */
-  --gradient-magenta-text: linear-gradient(135deg, #c72a54 0%, #f55f84 100%);
-  --gradient-magenta-btn: linear-gradient(180deg, #dc3d66 0%, #c72a54 100%);
-  --gradient-magenta-btn-hover: linear-gradient(180deg, #e74e76 0%, #d4315c 100%);
+  --gradient-magenta-text: linear-gradient(135deg, #eb3360 0%, #ff668a 100%);
+  --gradient-magenta-btn: linear-gradient(180deg, #f54d76 0%, #eb3360 100%);
+  --gradient-magenta-btn-hover: linear-gradient(180deg, #ff6b8e 0%, #f03b66 100%);
 
   /* Typography */
   --font-family-base: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -344,8 +344,8 @@ a {
 
 .features-title {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 0.75rem;
-  letter-spacing: 0.6em;
+  font-size: 1rem;
+  letter-spacing: 0.7em;
   margin-bottom: 45px;
   text-transform: uppercase;
   font-weight: 600;
@@ -392,7 +392,7 @@ a {
 }
 
 .brand-logo svg {
-  height: 22px;
+  height: 32px;
   fill: currentColor;
 }
 
@@ -426,7 +426,7 @@ a {
   font-family: Georgia, serif, var(--font-family-base);
   font-style: italic;
   font-weight: 500;
-  font-size: 1.85rem;
+  font-size: 2.25rem;
   text-align: center;
   color: var(--color-brand-magenta);
   margin-bottom: 30px;
@@ -466,8 +466,8 @@ a {
 }
 
 .leader-avatar {
-  width: 54px;
-  height: 54px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -483,7 +483,7 @@ a {
 
 .leader-first-name,
 .leader-last-name {
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #1d1d1f;
   line-height: 1.25;
@@ -515,7 +515,7 @@ a {
   font-family: Georgia, serif, var(--font-family-base);
   font-style: italic;
   font-weight: 500;
-  font-size: 1.85rem;
+  font-size: 2.75rem;
   text-align: center;
   color: var(--color-brand-purple);
   margin-bottom: 30px;
@@ -565,12 +565,12 @@ a {
   justify-content: center;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  width: 120px;
+  width: 160px;
 }
 
 .company-logo svg {
-  height: 24px;
-  width: 120px;
+  height: 32px;
+  width: 160px;
   fill: currentColor;
 }
 
@@ -993,12 +993,24 @@ a {
 }
 
 .metrics-heading {
-  font-family: var(--font-family-base);
-  font-size: 2.2rem;
+  font-family: Georgia, serif, var(--font-family-base);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.75rem;
   color: #1d1d1f;
-  margin-bottom: 75px;
-  font-weight: 700;
+  margin-bottom: 16px;
   letter-spacing: -0.5px;
+}
+
+.metrics-subheading {
+  font-size: 1.15rem;
+  color: #86868b;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 .metrics-grid {
@@ -1016,7 +1028,7 @@ a {
 }
 
 .metric-number {
-  font-size: 3.8rem;
+  font-size: 4.8rem;
   font-weight: 800;
   line-height: 1;
   margin-bottom: 12px;
@@ -1028,10 +1040,11 @@ a {
 }
 
 .metric-label {
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #888888;
   letter-spacing: 0.2px;
+  line-height: 1.4;
 }
 
 /* Bio & Call to Action Section */
@@ -1486,15 +1499,26 @@ a {
     font-size: 1.5rem;
   }
   .metrics-heading {
-    font-size: 1.8rem;
-    margin-bottom: 50px;
+    font-size: 2.15rem;
+    margin-bottom: 12px;
+  }
+  .metrics-subheading {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    padding: 0 16px;
+  }
+  .companies-title {
+    font-size: 2.15rem;
   }
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px 30px;
   }
   .metric-number {
-    font-size: 3rem;
+    font-size: 3.8rem;
+  }
+  .metric-label {
+    font-size: 1.05rem;
   }
 }
 
@@ -1524,7 +1548,10 @@ a {
     gap: 30px;
   }
   .metric-number {
-    font-size: 2.6rem;
+    font-size: 3.2rem;
+  }
+  .metric-label {
+    font-size: 0.95rem;
   }
   .bio-content {
     padding: 24px;
