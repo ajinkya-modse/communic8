@@ -1266,28 +1266,22 @@ export default function Home() {
             <div className="assessment-card-wrapper">
               {assessmentStep === 0 && (
                 <div className="assessment-sliders-card">
-                  {/* Step Tracker Header */}
-                  <div className="wizard-progress-tracker">
-                    {[
-                      { name: "Strategic Clarity", label: "Clarity" },
-                      { name: "Execution", label: "Action" },
-                      { name: "Results", label: "Return" }
-                    ].map((step, idx) => {
-                      const isActive = idx === activeWizardStep;
-                      const isCompleted = idx < activeWizardStep;
-                      return (
-                        <div key={idx} className={`tracker-step-item ${isActive ? "active" : ""} ${isCompleted ? "completed" : ""}`}>
-                          <div className="tracker-circle">
-                            {isCompleted ? "✓" : idx + 1}
-                          </div>
-                          <div className="tracker-label-container">
-                            <span className="tracker-title">{step.name}</span>
-                            <span className="tracker-subtitle">{step.label}</span>
-                          </div>
-                          {idx < 2 && <div className="tracker-connector"></div>}
-                        </div>
-                      );
-                    })}
+                  {/* Modern Apple Segmented Progress Bar */}
+                  <div className="apple-progress-tracker">
+                    {[0, 1, 2].map((idx) => (
+                      <div 
+                        key={idx} 
+                        className={`apple-progress-bar ${idx === activeWizardStep ? "active" : ""} ${idx < activeWizardStep ? "completed" : ""}`}
+                      />
+                    ))}
+                  </div>
+                  <div className="apple-progress-header">
+                    <span className="apple-step-tag">Step {activeWizardStep + 1} of 3</span>
+                    <h3 className="apple-step-title">
+                      {activeWizardStep === 0 && "Strategic Clarity"}
+                      {activeWizardStep === 1 && "Execution"}
+                      {activeWizardStep === 2 && "Results"}
+                    </h3>
                   </div>
 
                   {/* Block Content */}
@@ -1298,34 +1292,27 @@ export default function Home() {
                     
                     return (
                       <div key={blockName} className="assessment-block">
-                        <div className="block-meta-header">
-                          <span className="block-badge">Block {blockIdx + 1} of 3</span>
-                          <h3 className="block-meta-title">{blockName}</h3>
-                          <p className="block-meta-desc">{blockDesc}</p>
-                        </div>
+                        <p className="apple-step-desc">{blockDesc}</p>
                         
                         <div className="block-questions-list">
                           {blockQuestions.map((q) => {
                             const index = q.id - 1;
                             const score = assessmentAnswers[index];
-                            const rating = getSliderRatingLabel(score);
                             
                             return (
                               <div key={q.id} className="assessment-question-item">
                                 <div className="question-text-row">
-                                  <span className="question-index">0{q.id}</span>
-                                  <p className="question-statement">{q.statement}</p>
+                                  <div className="question-left-side">
+                                    <span className="question-index">0{q.id}</span>
+                                    <p className="question-statement">{q.statement}</p>
+                                  </div>
+                                  <div className="slider-score-display">
+                                    <span key={score} className="slider-score-val score-pulse-animate">{score}</span>
+                                    <span className="slider-score-max">/10</span>
+                                  </div>
                                 </div>
                                 
                                 <div className="slider-tactile-control">
-                                  <div className="slider-meta-info">
-                                    <span className="slider-side-note">Drag to rate capability</span>
-                                    <div className="slider-score-tag">
-                                      <span className={`slider-standing-badge ${rating.class}`}>{rating.text}</span>
-                                      <span className="slider-digits"><strong>{score}</strong>/10</span>
-                                    </div>
-                                  </div>
-                                  
                                   <input 
                                     type="range" 
                                     min="0" 
@@ -1334,23 +1321,13 @@ export default function Home() {
                                     value={score}
                                     onChange={(e) => handleSliderChange(index, e.target.value)}
                                     className="slider-range-input"
+                                    style={{ '--value': `${score * 10}%` }}
                                   />
                                   
-                                  <div className="slider-ticks-row">
-                                    <span>Not at all true</span>
+                                  <div className="slider-ticks-row-apple">
+                                    <span>Not true</span>
                                     <span>Neutral</span>
-                                    <span>Completely true</span>
-                                  </div>
-                                </div>
-                                
-                                {/* Brutal Fact Callout Drawer */}
-                                <div className={`brutal-fact-drawer ${score <= 5 ? "expanded" : ""}`}>
-                                  <div className="drawer-inner">
-                                    <div className="drawer-header-row">
-                                      <span className="drawer-indicator-dot"></span>
-                                      <span className="drawer-tag">Real-World Cost</span>
-                                    </div>
-                                    <p className="drawer-fact-message">{q.brutalFact}</p>
+                                    <span>Very true</span>
                                   </div>
                                 </div>
                               </div>
