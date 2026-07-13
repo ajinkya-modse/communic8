@@ -30,105 +30,28 @@ const LEADERSHIP = [
 ];
 
 const COMPANIES_LIST = [
-  {
-    name: "Siemens",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1px">SIEMENS</text>
-      </svg>
-    )
-  },
-  {
-    name: "Bosch",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">BOSCH</text>
-      </svg>
-    )
-  },
-  {
-    name: "Caterpillar",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="900" fontFamily="Impact, sans-serif" letterSpacing="0.5px">CAT</text>
-      </svg>
-    )
-  },
-  {
-    name: "General Electric",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="19" fontWeight="800" fontFamily="Georgia, serif" fontStyle="italic">GE</text>
-      </svg>
-    )
-  },
-  {
-    name: "Larsen & Toubro",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1px">L&amp;T</text>
-      </svg>
-    )
-  },
-  {
-    name: "Cummins",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" fontStyle="italic" letterSpacing="0.5px">CUMMINS</text>
-      </svg>
-    )
-  }
+  { name: "Technoshell", logo: "/assets/logos/technoshell.png" },
+  { name: "Kinetic", logo: "/assets/logos/kinetic.png" },
+  { name: "Normex", logo: "/assets/logos/normex.png" },
+  { name: "AROM", logo: "/assets/logos/arom.png" },
+  { name: "Sahhyadri", logo: "/assets/logos/sahhyadri.png" },
+  { name: "R&D", logo: "/assets/logos/rd.png" },
+  { name: "Ferrites India", logo: "/assets/logos/ferrites-india.png" },
+  { name: "Deadalus", logo: "/assets/logos/deadalus.png" },
+  { name: "Naicon", logo: "/assets/logos/naicon.png" },
+  { name: "NMD", logo: "/assets/logos/nmd.png" }
 ];
 
 const COMPANIES_LIST_2 = [
-  {
-    name: "Tata Motors",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="16" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1px">TATA MOTORS</text>
-      </svg>
-    )
-  },
-  {
-    name: "Cisco",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">CISCO</text>
-      </svg>
-    )
-  },
-  {
-    name: "Honeywell",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="16" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">HONEYWELL</text>
-      </svg>
-    )
-  },
-  {
-    name: "John Deere",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="17" fontWeight="900" fontFamily="Georgia, serif" fontStyle="italic">DEERE</text>
-      </svg>
-    )
-  },
-  {
-    name: "ABB",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="18" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="1.5px">ABB</text>
-      </svg>
-    )
-  },
-  {
-    name: "Mitsubishi",
-    logo: (
-      <svg viewBox="0 0 120 28" fill="currentColor">
-        <text x="50%" y="20" textAnchor="middle" fontSize="16" fontWeight="800" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="0.5px">MITSUBISHI</text>
-      </svg>
-    )
-  }
+  { name: "Sonalika", logo: "/assets/logos/sonalika.png" },
+  { name: "Airseal", logo: "/assets/logos/airseal.png" },
+  { name: "SPAN", logo: "/assets/logos/span.png" },
+  { name: "Kalpajit", logo: "/assets/logos/kalpajit.png" },
+  { name: "Abhijeet", logo: "/assets/logos/abhijeet.png" },
+  { name: "Parth Valves", logo: "/assets/logos/parth-valves.png" },
+  { name: "Dehu", logo: "/assets/logos/dehu.png" },
+  { name: "Icon", logo: "/assets/logos/icon.png" },
+  { name: "SPRUCE", logo: "/assets/logos/spruce.png" }
 ];
 
 const LINKEDIN_PROBLEMS = [
@@ -1555,7 +1478,7 @@ export default function Home() {
               <div className="companies-slide-track">
                 {[...COMPANIES_LIST, ...COMPANIES_LIST, ...COMPANIES_LIST, ...COMPANIES_LIST].map((company, index) => (
                   <div key={index} className="company-logo" aria-label={company.name}>
-                    {company.logo}
+                    <img src={company.logo} alt={company.name} className="company-logo-img" />
                   </div>
                 ))}
               </div>
@@ -1566,7 +1489,7 @@ export default function Home() {
               <div className="companies-slide-track-reverse">
                 {[...COMPANIES_LIST_2, ...COMPANIES_LIST_2, ...COMPANIES_LIST_2, ...COMPANIES_LIST_2].map((company, index) => (
                   <div key={index} className="company-logo" aria-label={company.name}>
-                    {company.logo}
+                    <img src={company.logo} alt={company.name} className="company-logo-img" />
                   </div>
                 ))}
               </div>
@@ -1600,25 +1523,18 @@ export default function Home() {
           </div>
 
           {activeBioTab === "founder" && (
-            <>
-              <div className="bio-card tab-content-animate">
-                <div className="bio-img-container">
-                  <img src="/assets/founder_image.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" />
-                </div>
-                <div className="bio-content">
-                  <h2 className="bio-name">Ajinkya</h2>
-                  <h3 className="bio-title">Built by an operations head who ran 4 plants, not a digital marketer.</h3>
-                  <p className="bio-description">
-                    Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories, climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants, I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
-                  </p>
-                </div>
+            <div className="bio-card tab-content-animate">
+              <div className="bio-img-container">
+                <img src="/assets/founder_image.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" />
               </div>
-              <div className="bio-outro tab-content-animate">
-                <p className="bio-outro-sub">You have a well defined system for everything on you shop floors..</p>
-                <h4 className="bio-outro-headline">Why should marketing be left out?</h4>
-                <a href="#consultation" className="btn-consultation">Book a GTM Readiness Conversation</a>
+              <div className="bio-content">
+                <h2 className="bio-name">Ajinkya</h2>
+                <h3 className="bio-title">Built by an operations head who ran 4 plants, not a digital marketer.</h3>
+                <p className="bio-description">
+                  Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories, climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants, I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
+                </p>
               </div>
-            </>
+            </div>
           )}
 
           {activeBioTab === "supporters" && (
@@ -1658,6 +1574,12 @@ export default function Home() {
               </div>
             </div>
           )}
+
+          <div className="bio-outro tab-content-animate">
+            <p className="bio-outro-sub">You have a well defined system for everything on you shop floors..</p>
+            <h4 className="bio-outro-headline">Why should marketing be left out?</h4>
+            <a href="#consultation" className="btn-consultation">Book a GTM Readiness Conversation</a>
+          </div>
         </section>
         {/* Booking Confirmation modal */}
         {bookingConfirmed && bookedReportData && (

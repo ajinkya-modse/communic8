@@ -595,9 +595,21 @@ a {
   fill: currentColor;
 }
 
+.company-logo-img {
+  height: 38px;
+  width: auto;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  display: block;
+}
+
 .company-logo:hover {
   color: #1d1d1f;
   transform: scale(1.06);
+}
+
+.company-logo:hover .company-logo-img {
+  opacity: 0.95;
 }
 
 @keyframes scrollCompaniesMarquee {
