@@ -141,7 +141,7 @@ const ASSESSMENT_QUESTIONS = [
     blockDesc: "How consistently do you act on it?",
     category: "Execution",
     statement: "We market consistently every week, without long silences.",
-    brutalFact: "Stop-start effort resets every time — like heating metal and never forging it."
+    brutalFact: "Stop-start effort resets every time, like heating metal and never forging it."
   },
   {
     id: 6,
@@ -282,13 +282,13 @@ export default function Home() {
         let archClassVal = "";
 
         if (totalScoreVal <= 40) {
-          archDescVal = "A genuinely good factory the market cannot see. Right now, growth depends on old references and luck. The gap is real — but it is also the fastest one to fix, because you are starting with a clean slate and a strong product.";
+          archDescVal = "A genuinely good factory the market cannot see. Right now, growth depends on old references and luck. The gap is real, but it is also the fastest one to fix, because you are starting with a clean slate and a strong product.";
           archClassVal = "verdict-risk";
         } else if (totalScoreVal <= 70) {
-          archDescVal = "You have started — there is some clarity or some activity. But it is not consistent, and it is not compounding, so results stay unpredictable. You are leaving your best growth on the table not from lack of trying, but from lack of structure.";
+          archDescVal = "You have started. There is some clarity or some activity. But it is not consistent, and it is not compounding, so results stay unpredictable. You are leaving your best growth on the table not from lack of trying, but from lack of structure.";
           archClassVal = "verdict-bottleneck";
         } else {
-          archDescVal = "You are ahead of most manufacturers — real clarity, real consistency, real results. Honestly, you may not need us yet. But even strong operators usually have one weak link (often credibility before the meeting, or linking spend to growth).";
+          archDescVal = "You are ahead of most manufacturers, with real clarity, real consistency, and real results. Honestly, you may not need us yet. But even strong operators usually have one weak link (often credibility before the meeting, or linking spend to growth).";
           archClassVal = "verdict-ready";
         }
 
@@ -297,11 +297,11 @@ export default function Home() {
         const rPct = resVal / 30;
         let diagnosisVal = "Your growth process shows potential; let's dial in the missing components.";
         if (cPct >= 0.7 && ePct < 0.5) {
-          diagnosisVal = "You know what to do — you're just not doing it consistently. Your gap is an execution engine, not more thinking.";
+          diagnosisVal = "You know what to do, but you're just not doing it consistently. Your gap is an execution engine, not more thinking.";
         } else if (ePct >= 0.7 && rPct < 0.5) {
-          diagnosisVal = "You're working hard on marketing but it's not paying back — a classic sign of effort pointed at the wrong strategy.";
+          diagnosisVal = "You're working hard on marketing but it's not paying back, which is a classic sign of effort pointed at the wrong strategy.";
         } else if (cPct < 0.5 && rPct >= 0.6) {
-          diagnosisVal = "Your results are coming from luck or old relationships, not a system. That is fragile — the day references slow down, so does growth.";
+          diagnosisVal = "Your results are coming from luck or old relationships, not a system. That is fragile: the day references slow down, so does growth.";
         }
 
         const reportData = {
@@ -534,17 +534,17 @@ export default function Home() {
 
   if (totalScore <= 40) {
     archetypeTitle = "The Invisible Factory";
-    archetypeDesc = "A genuinely good factory the market cannot see. Right now, growth depends on old references and luck. The gap is real — but it is also the fastest one to fix, because you are starting with a clean slate and a strong product. This is exactly the stage where structure changes everything.";
+    archetypeDesc = "A genuinely good factory the market cannot see. Right now, growth depends on old references and luck. The gap is real, but it is also the fastest one to fix, because you are starting with a clean slate and a strong product. This is exactly the stage where structure changes everything.";
     archetypeNext = "this is worth a serious conversation. Book a Call.";
     archetypeClass = "verdict-risk";
   } else if (totalScore <= 70) {
     archetypeTitle = "The Inconsistent Effort";
-    archetypeDesc = "You have started — there is some clarity or some activity. But it is not consistent, and it is not compounding, so results stay unpredictable. You are leaving your best growth on the table not from lack of trying, but from lack of structure. Small fixes here often unlock large jumps.";
+    archetypeDesc = "You have started. There is some clarity or some activity. But it is not consistent, and it is not compounding, so results stay unpredictable. You are leaving your best growth on the table not from lack of trying, but from lack of structure. Small fixes here often unlock large jumps.";
     archetypeNext = "let's find where the leak is. Book a Call.";
     archetypeClass = "verdict-bottleneck";
   } else {
     archetypeTitle = "The Structured Grower";
-    archetypeDesc = "You are ahead of most manufacturers — real clarity, real consistency, real results. Honestly, you may not need us yet. But even strong operators usually have one weak link (often credibility before the meeting, or linking spend to growth). If you want a sharp outside eye on that one gap, we're happy to talk. If not, take this result as a well-earned green flag.";
+    archetypeDesc = "You are ahead of most manufacturers, with real clarity, real consistency, and real results. Honestly, you may not need us yet. But even strong operators usually have one weak link (often credibility before the meeting, or linking spend to growth). If you want a sharp outside eye on that one gap, we're happy to talk. If not, take this result as a well-earned green flag.";
     archetypeClass = "verdict-ready";
   }
 
@@ -554,19 +554,19 @@ export default function Home() {
     const rPct = resultsScore / 30;
 
     if (cPct >= 0.7 && ePct < 0.5) {
-      return "You know what to do — you're just not doing it consistently. Your gap is an execution engine, not more thinking.";
+      return "You know what to do, but you're just not doing it consistently. Your gap is an execution engine, not more thinking.";
     }
     if (ePct >= 0.7 && rPct < 0.5) {
-      return "You're working hard on marketing but it's not paying back — a classic sign of effort pointed at the wrong strategy.";
+      return "You're working hard on marketing but it's not paying back, which is a classic sign of effort pointed at the wrong strategy.";
     }
     if (cPct < 0.5 && rPct >= 0.6) {
-      return "Your results are coming from luck or old relationships, not a system. That is fragile — the day references slow down, so does growth.";
+      return "Your results are coming from luck or old relationships, not a system. That is fragile: the day references slow down, so does growth.";
     }
     if (cPct < 0.5 && ePct < 0.5 && rPct < 0.5) {
-      return "You're starting near-zero — which is actually good news. With a clean slate and a strong factory, structured marketing can move you fast.";
+      return "You're starting near-zero, which is actually good news. With a clean slate and a strong factory, structured marketing can move you fast.";
     }
     if (cPct >= 0.7 && ePct >= 0.7 && rPct >= 0.7) {
-      return "You're a rare, well-run growth operation. Protect the consistency — and watch the one category that scored lowest.";
+      return "You're a rare, well-run growth operation. Protect the consistency, and watch the one category that scored lowest.";
     }
 
     const minPct = Math.min(cPct, ePct, rPct);
@@ -652,7 +652,14 @@ export default function Home() {
         <section id="hero" className="hero-section">
           <div className="hero-card">
             <div className="hero-bg-overlay"></div>
-            <img src="/assets/hero_background.jpg" alt="Collaborative creative team" className="hero-bg-img" />
+            <video 
+              src="/assets/hero_video.mp4" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="hero-bg-video" 
+            />
             <div className="hero-content">
               <h1 className="hero-title">Narratives for manufacturing leaders.</h1>
               <p className="hero-subtitle">We generate demand. You sign contracts.</p>
@@ -789,6 +796,10 @@ export default function Home() {
 
         {/* Our Approach Section */}
         <section id="system" className="system-section">
+          <div className="system-bg-wrapper">
+            <img src="/assets/factory_interior.jpg" alt="Factory interior background" className="system-bg-img" />
+            <div className="system-bg-overlay"></div>
+          </div>
           <div className="system-container">
             <div className="system-header">
               <h2 className="system-title">Meet Buyers Where they are</h2>
@@ -1186,7 +1197,7 @@ export default function Home() {
           <div className="assessment-container">
             <h2 className="assessment-title">Map your current state in 2 minutes</h2>
             <p className="assessment-subtitle">
-              Score your marketing. Be brutally honest — this is for you.
+              Score your marketing. Be brutally honest; this is for you.
             </p>
             
             <div className="assessment-card-wrapper">
