@@ -859,7 +859,7 @@ export default function Home() {
             
             <div className="services-grid">
               {/* Card 1: GTM Standardization */}
-              <div className="service-card" style={{ transitionDelay: "0ms" }}>
+              <div className="service-card recommended" style={{ transitionDelay: "0ms" }}>
                 <div>
                   <span className="service-badge-project">One-Time Project</span>
                   <h3 className="service-title-text">Go-To-Market (GTM) Standardization</h3>
@@ -876,13 +876,12 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="service-footer">
-                  <a href="#consultation" className="btn-service">Book a GTM Readiness Conversation</a>
+                  <a href="#consultation" className="btn-service btn-recommended">Book a GTM Readiness Conversation</a>
                 </div>
               </div>
 
               {/* Card 2: Reputation Management */}
               <div className="service-card recommended" style={{ transitionDelay: "150ms" }}>
-                <div className="recommended-badge">Recommended default</div>
                 <div>
                   <span className="service-badge-retainer">Ongoing Retainer</span>
                   <h3 className="service-title-text">Reputation Management</h3>

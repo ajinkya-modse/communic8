@@ -1201,7 +1201,7 @@ a {
 
 .metric-number {
   font-size: 4.8rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   margin-bottom: 16px;
   letter-spacing: -2px;
@@ -2220,8 +2220,8 @@ html.lenis body {
 }
 
 .service-badge-project {
-  background: rgba(0, 0, 0, 0.05);
-  color: #515154;
+  background: rgba(121, 82, 233, 0.08);
+  color: #7952e9;
 }
 
 .service-badge-retainer {
