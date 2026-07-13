@@ -4,11 +4,13 @@ import { useEffect, useState, useRef } from "react";
 import Lenis from "lenis";
 
 const INDUSTRY_LEADERS = [
-  { first: "Shantanu", last: "Deshpande", img: "/assets/founder_1.jpg" },
-  { first: "Nikhil", last: "Kamath", img: "/assets/founder_2.jpg" },
-  { first: "Abhi &", last: "Niyu", img: "/assets/founder_3.jpg" },
-  { first: "Sakshi", last: "Malik", img: "/assets/founder_4.jpg" },
-  { first: "Ayesha", last: "Khan", img: "/assets/founder_5.jpg" }
+  { first: "Alok", last: "Kanani", img: "/assets/customers/alok_kanani.jpg" },
+  { first: "Amruta", last: "Kelkar", img: "/assets/customers/amruta_kelkar.jpg" },
+  { first: "Dadasaheb", last: "Urhe", img: "/assets/customers/dadasaheb_urhe.jpg" },
+  { first: "Jaidev", last: "Akkalkote", img: "/assets/customers/jaidev_akkalkote.jpg" },
+  { first: "Kasiraj", last: "Ganapathy", img: "/assets/customers/kasiraj_ganapathy.png" },
+  { first: "Mayur", last: "Mundra", img: "/assets/customers/mayur_mundra.jpg" },
+  { first: "Ruchita", last: "Tanpure", img: "/assets/customers/ruchita_tanpure.jpg" }
 ];
 
 const SUPPORTERS = [
