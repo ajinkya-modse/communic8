@@ -585,7 +585,7 @@ export default function Home() {
       <header className={`header ${scrolled ? "scrolled" : ""}`}>
         <nav className={`navbar ${scrolled ? "scrolled" : ""} ${mobileMenuOpen ? "menu-open" : ""}`}>
           <div className="navbar-main">
-            <div className="logo" onClick={(e) => handleSmoothScroll(e, "#top")}>
+            <div className="logo" role="button" aria-label="Home" onClick={(e) => handleSmoothScroll(e, "#hero")}>
               <img src="/assets/communic8-logo.png" alt="Communic8 Logo" className="logo-img" />
             </div>
             
@@ -649,7 +649,7 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="hero-section">
+        <section id="hero" className="hero-section">
           <div className="hero-card">
             <div className="hero-bg-overlay"></div>
             <img src="/assets/hero_background.jpg" alt="Collaborative creative team" className="hero-bg-img" />
