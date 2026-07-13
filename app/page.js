@@ -660,37 +660,33 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features / Publications Section */}
+        {/* Features / Publications Section - Hidden for now */}
+        {/*
         <section className="features-section">
           <h3 className="features-title">F E A T U R E S</h3>
           <div className="logo-slider-container">
             <div className="logo-slide-track">
               <div className="logo-group">
-                {/* TechCrunch Logo SVG */}
                 <div className="brand-logo" aria-label="TechCrunch">
                   <svg viewBox="0 0 120 28" fill="currentColor">
                     <path d="M0 0h10.4v6.8H6.6v20.4H0V0zm15.4 6.8V0h21.4v6.8h-7.1v20.4h-6.8V6.8h-7.5zm19.8 0h6.8v20.4h-6.8V6.8zM42.2 0h10.4v6.8h-3.8v6.8h3.8v6.8h-3.8v6.8H42.2V0zm17 6.8V0h20.6v6.8h-6.7v20.4h-6.8V6.8h-7.1zM79.8 0h10.4v6.8H86.4v6.8h3.8v6.8H86.4v6.8H79.8V0zm17 0h10.4v6.8h-3.8v6.8h3.8v6.8h-3.8v6.8H96.8V0zm16.4 6.8V0h6.8v27.2h-6.8V6.8z"/>
                   </svg>
                 </div>
-                {/* Forbes Logo SVG */}
                 <div className="brand-logo" aria-label="Forbes">
                   <svg viewBox="0 0 120 28" fill="currentColor">
                     <path d="M0 0h13.2v4.8H5.6v6h6.8v4.8H5.6v12h-5.6V0zm16.8 0h11.2v27.2H16.8V0zm5.6 4.8v17.6h0.2l5.4-17.6h-5.6zm11.2 0h11.2v27.2H33.6V0zm5.6 4.8v17.6h0.2l5.4-17.6h-5.6zm11.2 0h11.2V4.8H50.4V0h5.6v27.2h-5.6V4.8zM67.2 0h13.2v4.8h-7.6v6h6.8v4.8h-6.8v6.4h7.6v5.2H67.2V0zm16.8 0h11.2v27.2H84V0zm5.6 4.8v17.6h0.2l5.4-17.6H89.6z"/>
                   </svg>
                 </div>
-                {/* Wired Logo SVG */}
                 <div className="brand-logo" aria-label="Wired">
                   <svg viewBox="0 0 120 28" fill="currentColor">
                     <path d="M0 0h5.6l4.2 16.8L14 0h5.6l4.2 16.8L28 0h5.6l-5.6 27.2h-5.6l-4.2-16.8-4.2 16.8H8.4L2.8 0h-2.8zM36.4 0h5.6v27.2h-5.6V0zm11.2 0h11.2c5.6 0 8.4 2.8 8.4 8.4 0 4.2-2.8 7-7 8.4l7 10.4h-5.6l-7-10.4h-3.8v10.4h-5.6V0zm5.6 4.8v6.8h5.6c2.8 0 4.2-1.4 4.2-3.4 0-2-1.4-3.4-4.2-3.4h-5.6zm19.6-4.8h13.2v4.8H78.4v6.4h9.8v4.8h-9.8v6.4h11.2v4.8H72.8V0zm19.6 0h9.8c8.4 0 12.6 4.2 12.6 13.6s-4.2 13.6-12.6 13.6h-9.8V0zm5.6 4.8v17.6h4.2c5.6 0 7-2.8 7-8.8s-1.4-8.8-7-8.8h-4.2z"/>
                   </svg>
                 </div>
-                {/* Fast Company Logo SVG */}
                 <div className="brand-logo" aria-label="Fast Company">
                   <svg viewBox="0 0 150 28" fill="currentColor">
                     <path d="M0 0h15.4v5.6H5.6v5.6h9.8v5.6H5.6v10.4H0V0zm21 0h15.4v5.6h-9.8v5.6h9.8v5.6h-9.8v10.4H21V0zm42 5.6h-5.6v21.6H30.8V5.6h-5.6V0H63v5.6zm5.6 21.6V0h5.6v27.2h-5.6v-27.2zm14 0h11.2c5.6 0 8.4 2.8 8.4 8.4 0 4.2-2.8 7-7 8.4l7 10.4h-5.6l-7-10.4H88.2v10.4h-5.6V0zm5.6 5.6v6.8h5.6c2.8 0 4.2-1.4 4.2-3.4 0-2-1.4-3.4-4.2-3.4h-5.6zm19.6-5.6h15.4v5.6h-9.8v5.6h9.8v5.6h-9.8v10.4h-5.6V0zm21 0h5.6v27.2h-5.6V0zm14 0h5.6l4.2 16.8 4.2-16.8h5.6l-5.6 27.2h-5.6l-4.2-16.8-4.2 16.8h-5.6L142.8 0z"/>
                   </svg>
                 </div>
-                {/* Entrepreneur Logo SVG */}
                 <div className="brand-logo" aria-label="Entrepreneur">
                   <svg viewBox="0 0 140 28" fill="currentColor">
                     <path d="M0 0h12v4.8H4.8v6h6.8v4.8H4.8v6.4h7.2v5.2H0V0zm16.8 11.2h11.2v16h-4.8v-16h-6.4V0h5.6v11.2zm11.2 0h11.2v16h-4.8v-16h-6.4V0h5.6v11.2zm11.2-11.2h11.2c4.8 0 7.2 2.4 7.2 7.2 0 3.6-2.4 6-6 7.2l6 9.6h-4.8l-6-9.6H44v9.6h-4.8V0zm4.8 4.8v5.6h5.6c2.4 0 3.6-1.2 3.6-2.8 0-1.6-1.2-2.8-3.6-2.8H44zm19.6-4.8H72v4.8h-7.6v6h6.8v4.8h-6.8v6.4h7.6v5.2H63.6V0zm16.8 0h11.2v27.2H80.4V0zm4.8 4.8v17.6h0.2l5.4-17.6h-5.6zm11.2 0h11.2V4.8h-5.6V0h5.6v27.2h-5.6V4.8zm11.2 0h11.2v27.2h-4.8V4.8h-6.4V0h5.6v4.8zm11.2-4.8h12v4.8h-7.2v6h6.8v4.8h-6.8v6.4h7.2v5.2h-12V0zm16.8 0h11.2v27.2h-4.8V4.8h-6.4V0h5.6v4.8z"/>
@@ -698,31 +694,26 @@ export default function Home() {
                 </div>
               </div>
               <div className="logo-group">
-                {/* TechCrunch Logo SVG */}
                 <div className="brand-logo" aria-label="TechCrunch">
                   <svg viewBox="0 0 120 28" fill="currentColor">
                     <path d="M0 0h10.4v6.8H6.6v20.4H0V0zm15.4 6.8V0h21.4v6.8h-7.1v20.4h-6.8V6.8h-7.5zm19.8 0h6.8v20.4h-6.8V6.8zM42.2 0h10.4v6.8h-3.8v6.8h3.8v6.8h-3.8v6.8H42.2V0zm17 6.8V0h20.6v6.8h-6.7v20.4h-6.8V6.8h-7.1zM79.8 0h10.4v6.8H86.4v6.8h3.8v6.8H86.4v6.8H79.8V0zm17 0h10.4v6.8h-3.8v6.8h3.8v6.8h-3.8v6.8H96.8V0zm16.4 6.8V0h6.8v27.2h-6.8V6.8z"/>
                   </svg>
                 </div>
-                {/* Forbes Logo SVG */}
                 <div className="brand-logo" aria-label="Forbes">
                   <svg viewBox="0 0 120 28" fill="currentColor">
                     <path d="M0 0h13.2v4.8H5.6v6h6.8v4.8H5.6v12h-5.6V0zm16.8 0h11.2v27.2H16.8V0zm5.6 4.8v17.6h0.2l5.4-17.6h-5.6zm11.2 0h11.2v27.2H33.6V0zm5.6 4.8v17.6h0.2l5.4-17.6h-5.6zm11.2 0h11.2V4.8H50.4V0h5.6v27.2h-5.6V4.8zM67.2 0h13.2v4.8h-7.6v6h6.8v4.8h-6.8v6.4h7.6v5.2H67.2V0zm16.8 0h11.2v27.2H84V0zm5.6 4.8v17.6h0.2l5.4-17.6H89.6z"/>
                   </svg>
                 </div>
-                {/* Wired Logo SVG */}
                 <div className="brand-logo" aria-label="Wired">
                   <svg viewBox="0 0 120 28" fill="currentColor">
                     <path d="M0 0h5.6l4.2 16.8L14 0h5.6l4.2 16.8L28 0h5.6l-5.6 27.2h-5.6l-4.2-16.8-4.2 16.8H8.4L2.8 0h-2.8zM36.4 0h5.6v27.2h-5.6V0zm11.2 0h11.2c5.6 0 8.4 2.8 8.4 8.4 0 4.2-2.8 7-7 8.4l7 10.4h-5.6l-7-10.4h-3.8v10.4h-5.6V0zm5.6 4.8v6.8h5.6c2.8 0 4.2-1.4 4.2-3.4 0-2-1.4-3.4-4.2-3.4h-5.6zm19.6-4.8h13.2v4.8H78.4v6.4h9.8v4.8h-9.8v6.4h11.2v4.8H72.8V0zm19.6 0h9.8c8.4 0 12.6 4.2 12.6 13.6s-4.2 13.6-12.6 13.6h-9.8V0zm5.6 4.8v17.6h4.2c5.6 0 7-2.8 7-8.8s-1.4-8.8-7-8.8h-4.2z"/>
                   </svg>
                 </div>
-                {/* Fast Company Logo SVG */}
                 <div className="brand-logo" aria-label="Fast Company">
                   <svg viewBox="0 0 150 28" fill="currentColor">
                     <path d="M0 0h15.4v5.6H5.6v5.6h9.8v5.6H5.6v10.4H0V0zm21 0h15.4v5.6h-9.8v5.6h9.8v5.6h-9.8v10.4H21V0zm42 5.6h-5.6v21.6H30.8V5.6h-5.6V0H63v5.6zm5.6 21.6V0h5.6v27.2h-5.6v-27.2zm14 0h11.2c5.6 0 8.4 2.8 8.4 8.4 0 4.2-2.8 7-7 8.4l7 10.4h-5.6l-7-10.4H88.2v10.4h-5.6V0zm5.6 5.6v6.8h5.6c2.8 0 4.2-1.4 4.2-3.4 0-2-1.4-3.4-4.2-3.4h-5.6zm19.6-5.6h15.4v5.6h-9.8v5.6h9.8v5.6h-9.8v10.4h-5.6V0zm21 0h5.6v27.2h-5.6V0zm14 0h5.6l4.2 16.8 4.2-16.8h5.6l-5.6 27.2h-5.6l-4.2-16.8-4.2 16.8h-5.6L142.8 0z"/>
                   </svg>
                 </div>
-                {/* Entrepreneur Logo SVG */}
                 <div className="brand-logo" aria-label="Entrepreneur">
                   <svg viewBox="0 0 140 28" fill="currentColor">
                     <path d="M0 0h12v4.8H4.8v6h6.8v4.8H4.8v6.4h7.2v5.2H0V0zm16.8 11.2h11.2v16h-4.8v-16h-6.4V0h5.6v11.2zm11.2 0h11.2v16h-4.8v-16h-6.4V0h5.6v11.2zm11.2-11.2h11.2c4.8 0 7.2 2.4 7.2 7.2 0 3.6-2.4 6-6 7.2l6 9.6h-4.8l-6-9.6H44v9.6h-4.8V0zm4.8 4.8v5.6h5.6c2.4 0 3.6-1.2 3.6-2.8 0-1.6-1.2-2.8-3.6-2.8H44zm19.6-4.8H72v4.8h-7.6v6h6.8v4.8h-6.8v6.4h7.6v5.2H63.6V0zm16.8 0h11.2v27.2H80.4V0zm4.8 4.8v17.6h0.2l5.4-17.6h-5.6zm11.2 0h11.2V4.8h-5.6V0h5.6v27.2h-5.6V4.8zm11.2 0h11.2v27.2h-4.8V4.8h-6.4V0h5.6v4.8zm11.2-4.8h12v4.8h-7.2v6h6.8v4.8h-6.8v6.4h7.2v5.2h-12V0zm16.8 0h11.2v27.2h-4.8V4.8h-6.4V0h5.6v4.8z"/>
@@ -732,16 +723,23 @@ export default function Home() {
             </div>
           </div>
         </section>
+        */}
 
         {/* Industry Leaders Slider Section */}
         <section className="leaders-section">
           <div className="leaders-container">
-            <h3 className="leaders-title">Industry leaders we worked with</h3>
+            <h3 className="leaders-title">Serious Manufacturers we worked with</h3>
             <div className="leaders-slider-container">
               <div className="leaders-slide-track">
                 {[...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS].map((leader, index) => (
                   <div key={index} className="leader-item">
-                    <img src={leader.img} alt={`${leader.first} ${leader.last}`} className="leader-avatar" />
+                    <div className="leader-avatar-wrapper">
+                      <img 
+                        src={leader.img} 
+                        alt={`${leader.first} ${leader.last}`} 
+                        className={`leader-avatar-img avatar-${leader.first.toLowerCase()}`} 
+                      />
+                    </div>
                     <div className="leader-name-container">
                       <span className="leader-first-name">{leader.first}</span>
                       <span className="leader-last-name">{leader.last}</span>
@@ -757,9 +755,12 @@ export default function Home() {
         <section id="problems" className="problems-section">
           <div className="problems-container">
             <div className="problems-intro">
-              <h2 className="problems-subtitle">You run a busy factory. So why is growth still so hard?</h2>
+              <h2 className="problems-subtitle">
+                You run a busy factory.<br />
+                <span>So why is <span className="problems-highlight">growth still so hard?</span></span>
+              </h2>
               <p className="problems-intro-desc">
-                After meeting hundreds of manufacturers (from a 500 sq. ft. tool room to plants spread across acres), we found the same key problems, again and again. Read them honestly. If even one sounds like your company, it is worth a conversation.
+                After working with hundreds of manufacturers (from a 500 sq. ft. tool room to plants spread across acres), we found the same key problems, again and again. Read them honestly. If even one sounds like your company, it is worth a conversation.
               </p>
             </div>
 
@@ -777,7 +778,7 @@ export default function Home() {
 
             <div className="problems-outro">
               <p className="problems-outro-text">
-                If even one of these sounds like your company, you do not have a marketing problem. You have a structure problem. And structure is exactly what we build.
+                If even one of these sounds like your company, you have a structure problem. And structure is exactly what we build.
               </p>
               <a href="#consultation" className="btn-problems-cta">
                 Book a GTM Readiness Conversation
@@ -792,7 +793,7 @@ export default function Home() {
             <div className="system-header">
               <h2 className="system-title">Meet Buyers Where they are</h2>
               <p className="system-desc-text">
-                To succeed today, Manufacturing leaders need to tailor their communication strategies to buyer Behaviour and focus on driving Profitable and capital efficient growth.
+                To succeed today, Manufacturing leaders need to tailor their communication strategies to buyer Behaviour and focus on driving Profitable and Capital Efficient Growth.
               </p>
             </div>
             <div className="system-roadmap">

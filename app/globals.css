@@ -267,7 +267,7 @@ a {
 .hero-section {
   padding: 0;
   width: 100%;
-  background: #000000;
+  background: #ffffff;
 }
 
 .hero-card {
@@ -282,7 +282,6 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .hero-bg-img {
@@ -440,7 +439,7 @@ a {
 }
 
 .leaders-title {
-  font-family: Georgia, serif, var(--font-family-base);
+  font-family: var(--font-serif), Georgia, serif, var(--font-family-base);
   font-style: italic;
   font-weight: 500;
   font-size: 2.25rem;
@@ -482,20 +481,94 @@ a {
   flex-shrink: 0;
 }
 
-.leader-avatar {
+.leader-avatar-wrapper {
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.leader-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transform: scale(1.35);
   filter: grayscale(100%);
   transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-.leader-item:hover .leader-avatar {
+/* Specific alignments for tightly cropped / square photos to prevent cutting off faces */
+.leader-avatar-img.avatar-jaidev {
+  transform: scale(1.35);
+  object-position: center 25%;
+}
+
+.leader-avatar-img.avatar-alok {
+  transform: scale(1.25);
+  object-position: center 28%;
+}
+
+.leader-avatar-img.avatar-amruta {
+  transform: scale(1.35);
+  object-position: center 25%;
+}
+
+.leader-avatar-img.avatar-dadasaheb {
+  transform: scale(1.12);
+  object-position: center 42%;
+}
+
+.leader-avatar-img.avatar-kasiraj {
+  transform: scale(1.4);
+  object-position: center 28%;
+}
+
+.leader-avatar-img.avatar-mayur {
+  transform: scale(1.25);
+  object-position: center 32%;
+}
+
+.leader-avatar-img.avatar-ruchita {
+  transform: scale(1.12);
+  object-position: center 42%;
+}
+
+.leader-item:hover .leader-avatar-img {
   filter: grayscale(0%);
-  transform: scale(1.05);
+  transform: scale(1.42);
+}
+
+.leader-item:hover .leader-avatar-img.avatar-jaidev {
+  transform: scale(1.42);
+}
+
+.leader-item:hover .leader-avatar-img.avatar-alok {
+  transform: scale(1.31);
+}
+
+.leader-item:hover .leader-avatar-img.avatar-amruta {
+  transform: scale(1.42);
+}
+
+.leader-item:hover .leader-avatar-img.avatar-dadasaheb {
+  transform: scale(1.18);
+}
+
+.leader-item:hover .leader-avatar-img.avatar-kasiraj {
+  transform: scale(1.47);
+}
+
+.leader-item:hover .leader-avatar-img.avatar-mayur {
+  transform: scale(1.31);
+}
+
+.leader-item:hover .leader-avatar-img.avatar-ruchita {
+  transform: scale(1.18);
 }
 
 .leader-name-container {
@@ -536,7 +609,7 @@ a {
 }
 
 .companies-title {
-  font-family: Georgia, serif, var(--font-family-base);
+  font-family: var(--font-serif), Georgia, serif, var(--font-family-base);
   font-style: italic;
   font-weight: 500;
   font-size: 2.75rem;
@@ -663,6 +736,14 @@ a {
   letter-spacing: -1.5px;
   margin-bottom: 20px;
   line-height: 1.15;
+}
+
+.problems-highlight {
+  background: linear-gradient(135deg, #7952e9 0%, #0091ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 .problems-intro-desc {
@@ -1069,7 +1150,7 @@ a {
 }
 
 .metrics-heading {
-  font-family: Georgia, serif, var(--font-family-base);
+  font-family: var(--font-serif), Georgia, serif, var(--font-family-base);
   font-style: italic;
   font-weight: 500;
   font-size: 3rem;
