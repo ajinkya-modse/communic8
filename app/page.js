@@ -56,6 +56,22 @@ const COMPANIES_LIST_2 = [
   { name: "SPRUCE", logo: "/assets/logos/spruce.png" }
 ];
 
+const HERO_WORDS = ["Narratives", "Content", "Business"];
+
+const HERO_COMPANIES = [
+  { name: "Sonalika", logo: "/assets/logos/sonalika.png" },
+  { name: "Technoshell", logo: "/assets/logos/technoshell.png" },
+  { name: "NMD", logo: "/assets/logos/nmd.png" },
+  { name: "Abhijeet", logo: "/assets/logos/abhijeet.png" },
+  { name: "Dehu", logo: "/assets/logos/dehu.png" },
+  { name: "Kinetic", logo: "/assets/logos/kinetic.png" },
+  { name: "Kalpajit", logo: "/assets/logos/kalpajit.png" },
+  { name: "Aeropower", logo: "/assets/logos/aeropower.svg" },
+  { name: "AROM", logo: "/assets/logos/arom.png" },
+  { name: "Peritus", logo: "/assets/logos/peritus.svg" }
+];
+
+
 const LINKEDIN_PROBLEMS = [
   {
     number: 1,
@@ -202,6 +218,20 @@ export default function Home() {
   const [bookedReportData, setBookedReportData] = useState(null);
   const [downloadProgress, setDownloadProgress] = useState("");
   const [activeBioTab, setActiveBioTab] = useState("founder");
+
+  const [heroWordIndex, setHeroWordIndex] = useState(0);
+  const [heroWordFading, setHeroWordFading] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroWordFading(true);
+      setTimeout(() => {
+        setHeroWordIndex((prev) => (prev + 1) % HERO_WORDS.length);
+        setHeroWordFading(false);
+      }, 300);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const loadHtml2Pdf = async () => {
     if (typeof window === "undefined") return null;
@@ -661,8 +691,34 @@ export default function Home() {
               className="hero-bg-video" 
             />
             <div className="hero-content">
-              <h1 className="hero-title">Narratives for manufacturing leaders.</h1>
+              <h1 className="hero-title">
+                <span className={`dynamic-word ${heroWordFading ? "fade-out" : "fade-in"}`}>
+                  {HERO_WORDS[heroWordIndex]}
+                </span> for manufacturers.
+              </h1>
               <p className="hero-subtitle">We generate demand. You sign contracts.</p>
+              
+              <div className="hero-credibility">
+                <span>135+ Clients</span>
+                <span className="divider">|</span>
+                <span>819+ Projects</span>
+                <span className="divider">|</span>
+                <span>16+ years expertise</span>
+              </div>
+            </div>
+
+            {/* Customer Logo Slider (Dench style) */}
+            <div className="hero-logos-slider">
+              <p className="hero-logos-title">Trusted by some of the reputed companies..</p>
+              <div className="hero-logos-track-container">
+                <div className="hero-logos-track">
+                  {[...HERO_COMPANIES, ...HERO_COMPANIES, ...HERO_COMPANIES, ...HERO_COMPANIES].map((company, index) => (
+                    <div key={index} className="hero-logo-item" aria-label={company.name}>
+                      <img src={company.logo} alt={company.name} className="hero-logo-img" />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1481,34 +1537,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Companies We Worked With Section */}
-        <section className="companies-section">
-          <div className="companies-container">
-            <h3 className="companies-title">Companies we worked with</h3>
-            
-            {/* Slider 1: Right-to-Left */}
-            <div className="companies-slider-container">
-              <div className="companies-slide-track">
-                {[...COMPANIES_LIST, ...COMPANIES_LIST, ...COMPANIES_LIST, ...COMPANIES_LIST].map((company, index) => (
-                  <div key={index} className="company-logo" aria-label={company.name}>
-                    <img src={company.logo} alt={company.name} className="company-logo-img" />
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Slider 2: Left-to-Right (Reverse) */}
-            <div className="companies-slider-container reverse-slider" style={{ marginTop: "20px" }}>
-              <div className="companies-slide-track-reverse">
-                {[...COMPANIES_LIST_2, ...COMPANIES_LIST_2, ...COMPANIES_LIST_2, ...COMPANIES_LIST_2].map((company, index) => (
-                  <div key={index} className="company-logo" aria-label={company.name}>
-                    <img src={company.logo} alt={company.name} className="company-logo-img" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Founder Bio / Consultation Section */}
         <section id="founder" className="bio-section">
