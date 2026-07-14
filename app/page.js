@@ -576,11 +576,34 @@ export default function Home() {
       slider.scrollLeft = scrollLeft - walk;
     };
 
+    const handleTouchStart = (e) => {
+      isDown = true;
+      slider.classList.add("active");
+      startX = e.touches[0].pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    };
+
+    const handleTouchEnd = () => {
+      isDown = false;
+      slider.classList.remove("active");
+    };
+
+    const handleTouchMove = (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
     if (slider) {
       slider.addEventListener("mousedown", handleMouseDown);
       slider.addEventListener("mouseleave", handleMouseLeave);
       slider.addEventListener("mouseup", handleMouseUp);
       slider.addEventListener("mousemove", handleMouseMove);
+      slider.addEventListener("touchstart", handleTouchStart, { passive: true });
+      slider.addEventListener("touchend", handleTouchEnd, { passive: true });
+      slider.addEventListener("touchcancel", handleTouchEnd, { passive: true });
+      slider.addEventListener("touchmove", handleTouchMove, { passive: true });
 
       // Auto scroll animation frame loop
       const updateMarquee = () => {
@@ -611,6 +634,10 @@ export default function Home() {
         slider.removeEventListener("mouseleave", handleMouseLeave);
         slider.removeEventListener("mouseup", handleMouseUp);
         slider.removeEventListener("mousemove", handleMouseMove);
+        slider.removeEventListener("touchstart", handleTouchStart);
+        slider.removeEventListener("touchend", handleTouchEnd);
+        slider.removeEventListener("touchcancel", handleTouchEnd);
+        slider.removeEventListener("touchmove", handleTouchMove);
       }
       cancelAnimationFrame(marqueeFrameId);
     };
@@ -1597,7 +1624,7 @@ export default function Home() {
               className={`bio-tab-btn ${activeBioTab === "supporters" ? "active" : ""}`}
               onClick={() => setActiveBioTab("supporters")}
             >
-              Our Supporters
+              Supporters
             </button>
             <button 
               className={`bio-tab-btn ${activeBioTab === "leadership" ? "active" : ""}`}

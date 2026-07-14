@@ -4259,3 +4259,131 @@ html.lenis body {
   }
 }
 
+/* ==========================================================================
+   Mobile Phone Optimizations & Overrides
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Typography Scale Overrides */
+  .problems-subtitle {
+    font-size: 2.2rem !important;
+    letter-spacing: -0.6px !important;
+  }
+  .system-title {
+    font-size: 2.1rem !important;
+    letter-spacing: -0.6px !important;
+  }
+  .services-title {
+    font-size: 2.2rem !important;
+    letter-spacing: -0.6px !important;
+  }
+  .section-title {
+    font-size: 2.2rem !important;
+    letter-spacing: -0.6px !important;
+  }
+  .testimonials-title {
+    font-size: 1.75rem !important;
+    letter-spacing: -0.8px !important;
+  }
+  .leaders-title {
+    font-size: 1.65rem !important;
+    letter-spacing: -0.4px !important;
+  }
+  .companies-title {
+    font-size: 1.85rem !important;
+    letter-spacing: -0.4px !important;
+  }
+
+  /* Padding & Spacing Reductions */
+  .problem-card {
+    padding: 24px !important;
+  }
+  .problems-outro {
+    padding: 30px 20px !important;
+    margin-top: 40px !important;
+  }
+  .roadmap-card {
+    padding: 24px !important;
+  }
+  .service-card {
+    padding: 28px 20px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Bio Tab Buttons Optimization */
+  .bio-tab-btn {
+    padding: 8px 10px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Deep Mobile Scale Overrides */
+  .problems-subtitle {
+    font-size: 1.7rem !important;
+  }
+  .system-title {
+    font-size: 1.6rem !important;
+  }
+  .services-title {
+    font-size: 1.7rem !important;
+  }
+  .section-title {
+    font-size: 1.7rem !important;
+  }
+  .testimonials-title {
+    font-size: 1.5rem !important;
+  }
+  .leaders-title {
+    font-size: 1.4rem !important;
+  }
+  .companies-title {
+    font-size: 1.5rem !important;
+  }
+
+  .problem-card {
+    padding: 20px !important;
+  }
+  .roadmap-card {
+    padding: 20px !important;
+  }
+  .service-card {
+    padding: 20px !important;
+  }
+
+  /* Timeline node scale down on small screens */
+  .roadmap-item {
+    gap: 16px !important;
+  }
+  .roadmap-node {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1rem !important;
+  }
+  .system-roadmap::before,
+  .system-roadmap::after {
+    left: 25px !important; /* Centers the 50px node */
+  }
+}
+
+@media (max-width: 400px) {
+  .bio-tab-btn {
+    padding: 6px 8px !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* Modal heights cutoff prevention */
+.booking-modal-overlay {
+  overflow-y: auto !important;
+}
+
+@media (max-height: 700px) {
+  .booking-modal-overlay {
+    align-items: flex-start !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
