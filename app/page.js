@@ -31,6 +31,13 @@ const LEADERSHIP = [
   { name: "Amit Patel", title: "Lead Copywriter", img: "/assets/employee_3.jpg" }
 ];
 
+const TEAM = [
+  { name: "Prasad K.", title: "Industrial Copywriter", img: "" },
+  { name: "Sayali G.", title: "GTM Project Lead", img: "" },
+  { name: "Aniket M.", title: "Design Director", img: "" },
+  { name: "Suresh P.", title: "GTM Analyst", img: "" }
+];
+
 const CASE_STUDIES = [
   {
     title: "OEM Machine Manufacturer",
@@ -1598,6 +1605,12 @@ export default function Home() {
             >
               Leadership
             </button>
+            <button 
+              className={`bio-tab-btn ${activeBioTab === "team" ? "active" : ""}`}
+              onClick={() => setActiveBioTab("team")}
+            >
+              Team
+            </button>
           </div>
 
           {activeBioTab === "founder" && (
@@ -1652,6 +1665,34 @@ export default function Home() {
                     <div className="supporter-info">
                       <h4 className="supporter-name">{employee.name}</h4>
                       <p className="supporter-title">{employee.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeBioTab === "team" && (
+            <div className="supporters-grid-container tab-content-animate">
+              <h2 className="section-tab-title">Our Team</h2>
+              <div className="supporters-grid leadership-grid">
+                {TEAM.map((member, idx) => (
+                  <div key={idx} className="supporter-card">
+                    <div className="supporter-img-container">
+                      {member.img ? (
+                        <img src={member.img} alt={member.name} className="supporter-img" />
+                      ) : (
+                        <div className="supporter-img-placeholder">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                    <div className="supporter-info">
+                      <h4 className="supporter-name">{member.name}</h4>
+                      <p className="supporter-title">{member.title}</p>
                     </div>
                   </div>
                 ))}
