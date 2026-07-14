@@ -1218,6 +1218,10 @@ export default function Home() {
 
         {/* Testimonials Section */}
         <section id="testimonials" className="testimonials-section">
+          <div className="testimonials-bg-wrapper">
+            <img src="/assets/testimonials_bg_factory.jpg" alt="Factory background" className="testimonials-bg-img" />
+            <div className="testimonials-bg-overlay"></div>
+          </div>
           <div className="testimonials-container">
             <h2 className="testimonials-title">What Founders Say</h2>
             <div className="testimonials-grid">
