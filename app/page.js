@@ -323,7 +323,7 @@ const ASSESSMENT_QUESTIONS = [
   }
 ];
 
-const CALENDLY_URL = "https://calendly.com/ajinkya-communic8/gtm-readiness";
+const CALENDLY_URL = "https://calendly.com/connect_communic/30min";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -787,7 +787,12 @@ export default function Home() {
             </div>
             
             <div className="nav-actions">
-              <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="btn-cta">
+              <a 
+                href={CALENDLY_URL} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-cta"
+              >
                 Book a Call
               </a>
               
@@ -819,7 +824,12 @@ export default function Home() {
             <a href="#founder" onClick={(e) => handleSmoothScroll(e, "#founder")} className="mobile-nav-link">
               Our Team
             </a>
-            <a href="#consultation" onClick={(e) => handleSmoothScroll(e, "#consultation")} className="mobile-btn-cta">
+            <a 
+              href={CALENDLY_URL} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mobile-btn-cta"
+            >
               Book a Call
             </a>
           </div>
@@ -994,7 +1004,12 @@ export default function Home() {
                 you need a standard process for marketing and communication. <br />
                 And this process is exactly what we build.
               </p>
-              <a href="#consultation" className="btn-problems-cta">
+              <a 
+                href={CALENDLY_URL} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-problems-cta"
+              >
                 Let’s Fix this! Book a Call
               </a>
             </div>
@@ -1092,7 +1107,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="service-footer">
-                  <a href="#consultation" className="btn-service btn-recommended">Book a GTM Readiness Conversation</a>
+                  <a 
+                    href={CALENDLY_URL} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn-service btn-recommended"
+                  >
+                    Book a GTM Readiness Conversation
+                  </a>
                 </div>
               </div>
 
@@ -1117,7 +1139,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="service-footer">
-                  <a href="#consultation" className="btn-service btn-recommended">Install the Reputation Engine</a>
+                  <a 
+                    href={CALENDLY_URL} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn-service btn-recommended"
+                  >
+                    Install the Reputation Engine
+                  </a>
                 </div>
               </div>
 
@@ -1741,7 +1770,14 @@ export default function Home() {
           <div className="bio-outro tab-content-animate">
             <p className="bio-outro-sub">You have a well defined system for everything on you shop floors..</p>
             <h4 className="bio-outro-headline">Why should marketing be left out?</h4>
-            <a href="#consultation" className="btn-consultation">Book a GTM Readiness Conversation</a>
+            <a 
+              href={CALENDLY_URL} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-consultation"
+            >
+              Book a GTM Readiness Conversation
+            </a>
           </div>
         </section>
         {/* Booking Confirmation modal */}
