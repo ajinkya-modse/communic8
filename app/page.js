@@ -4,13 +4,13 @@ import { useEffect, useState, useRef } from "react";
 import Lenis from "lenis";
 
 const INDUSTRY_LEADERS = [
-  { first: "Alok", last: "Kanani", img: "/assets/customers/alok_kanani.jpg" },
-  { first: "Amruta", last: "Kelkar", img: "/assets/customers/amruta_kelkar.jpg" },
-  { first: "Dadasaheb", last: "Urhe", img: "/assets/customers/dadasaheb_urhe.jpg" },
-  { first: "Jaidev", last: "Akkalkote", img: "/assets/customers/jaidev_akkalkote.jpg" },
-  { first: "Kasiraj", last: "Ganapathy", img: "/assets/customers/kasiraj_ganapathy.png" },
-  { first: "Mayur", last: "Mundra", img: "/assets/customers/mayur_mundra.jpg" },
-  { first: "Ruchita", last: "Tanpure", img: "/assets/customers/ruchita_tanpure.jpg" }
+  { name: "Mrs. Ruchita T", specialty: "Specialty Engineering Tools", img: "/assets/customers/ruchita_tanpure.jpg", avatarClass: "ruchita" },
+  { name: "Mr. Alok K", specialty: "Powder Metallurgy", img: "/assets/customers/alok_kanani.jpg", avatarClass: "alok" },
+  { name: "Amruta K.", specialty: "Test Equipment Manufacturing", img: "/assets/customers/amruta_kelkar.jpg", avatarClass: "amruta" },
+  { name: "Dadasaheb U.", specialty: "Heavy Engineering", img: "/assets/customers/dadasaheb_urhe.jpg", avatarClass: "dadasaheb" },
+  { name: "Jaidev A.", specialty: "Sheet Metal Fabrication", img: "/assets/customers/jaidev_akkalkote.jpg", avatarClass: "jaidev" },
+  { name: "Kasiraj G.", specialty: "Pressure Vessels Manufacturing", img: "/assets/customers/kasiraj_ganapathy.png", avatarClass: "kasiraj" },
+  { name: "Mayur M.", specialty: "Green Channel Supplier", img: "/assets/customers/mayur_mundra.jpg", avatarClass: "mayur" }
 ];
 
 const SUPPORTERS = [
@@ -76,43 +76,52 @@ const LINKEDIN_PROBLEMS = [
   {
     number: 1,
     title: "Perception Gap",
-    desc: "Consistent visibility signals progress, stability, and forward movement before competitors define your narrative for you.",
+    desc: "When you stay silent, the market assumes you've stopped growing. The competitor who stays visible wins the order before you even get a chance.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="problem-icon-svg">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+        <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+        <path d="M6.61 6.61A13.52 13.52 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+        <line x1="2" y1="2" x2="22" y2="22"></line>
       </svg>
     )
   },
   {
     number: 2,
     title: "Lost Credibility",
-    desc: "Sharing insights, upgrades, and certifications reinforces competence before technical discussions even begin.",
+    desc: "Decision-makers check you online before they call. If they find no visibility or proof, they doubt your capability before the first meeting.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="problem-icon-svg">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        <path d="M9 11l2 2 4-4"></path>
+        <path d="M12 9a1.5 1.5 0 1 1 1.5 1.5c-.75 0-1.5.5-1.5 1.5"></path>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
       </svg>
     )
   },
   {
     number: 3,
-    title: "Reduced Shortlisting",
-    desc: "Regular presence improves recall, increasing the likelihood of being considered during vendor evaluation cycles.",
+    title: "Missed Enquiries",
+    desc: "Buyers shortlist the vendors they remember. If you're not visible, you're not remembered, and you never receive the RFQ.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="problem-icon-svg">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
+        <polyline points="3 6 4.5 7.5 7 5"></polyline>
+        <line x1="11" y1="6" x2="21" y2="6"></line>
+        <polyline points="3 12 4.5 13.5 7 11"></polyline>
+        <line x1="11" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="17" x2="6" y2="20"></line>
+        <line x1="6" y1="17" x2="3" y2="20"></line>
+        <line x1="11" y1="18.5" x2="21" y2="18.5" strokeDasharray="3 3"></line>
       </svg>
     )
   },
   {
     number: 4,
-    title: "Capability Blindspot",
-    desc: "Active thought leadership positions your company as progressive, attractive, and growth-oriented in value-buying environments.",
+    title: "Unseen Capability",
+    desc: "If you don't show your strengths, buyers assume you're outdated. In a value-driven market, they choose the company that looks progressive, even when yours is actually better.",
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" className="problem-icon-svg fill-svg">
-        <path fill="currentColor" fillRule="nonzero" d="M244.633 367.493c5.17329,4.74809 7.99616,11.1025 8.43317,17.6459 0.437013,6.62607 -1.61813,13.4411 -6.20086,18.9333 4.41738,-3.51973 9.77965,-5.33865 15.2128,-5.49219 6.50795,-0.188979 13.134,2.01971 18.3191,6.53158 0.070867,0.0590558 0.30709,0.283468 0.685048,0.637803l-4.35832 4.67722 4.38194 -4.68903c0.188979,0.177168 0.354335,0.366146 0.519691,0.555125 4.93707,4.87801 7.46466,11.197 7.67726,17.6459 0.20079,5.84653 -1.51183,11.7757 -5.06699,16.7955 3.09453,-1.60632 6.49614,-2.50397 9.93319,-2.66932 6.03551,-0.30709 12.2482,1.61813 17.1734,5.72842 0.248035,0.20079 0.472447,0.40158 0.673237,0.578747 5.03156,4.50006 7.68907,10.5474 8.03159,16.76 0.342524,6.2363 -1.65356,12.6498 -5.96464,17.8112l-11.5868 13.9017c2.24412,1.35828 4.51187,2.752 6.79142,4.15753 23.6105,14.5514 50.0439,30.839 69.8158,7.21662l-47.6226 -35.8823 11.5749 -15.3427 51.2014 38.5871 4.59454 -1.07482 0.90946 -0.153545c6.48433,-0.874027 11.445,-3.33075 15.0238,-7.22844 2.91736,-3.18902 5.11424,-7.47647 6.63788,-12.7797l-64.737 -43.6423 10.76 -15.9451 67.6544 45.6147c7.97254,-2.05514 14.2206,-5.00794 18.7443,-8.85838 3.37799,-2.87011 5.84653,-6.3426 7.41741,-10.4293l-81.3435 -58.1936 11.1261 -15.638 84.8396 60.6976c5.31503,-0.0944894 9.87414,-1.67719 13.5238,-4.2284 3.25988,-2.27956 5.90558,-5.37408 7.81899,-8.92924 1.94884,-3.61422 3.11815,-7.66545 3.40162,-11.7875 0.389769,-5.69298 -0.897649,-11.445 -4.15753,-16.264 -1.16931,-0.425202 -2.26774,-1.08663 -3.21264,-1.96065 -27.461,-22.7483 -54.3432,-43.1934 -82.3947,-60.8984 -27.6145,-17.4097 -56.5164,-32.2917 -88.4775,-44.2683 -4.98431,0.165356 -9.29539,0.129923 -13.0277,0.0944894 -12.319,-0.118112 -15.1892,-0.141734 -24.3546,17.8231 -6.82686,13.3584 -15.7679,23.3625 -27.1893,28.8547 -10.8308,5.20873 -23.4334,6.18905 -38.0202,1.94884 -21.5908,-6.27173 -26.646,-11.4332 -22.8428,-24.5082 1.03938,-3.5906 3.00004,-7.09851 5.57487,-11.7049 0.673237,-1.20474 1.39372,-2.51578 3.1772,-5.85834 11.1852,-21.0593 20.953,-38.0202 30.5082,-51.603 -9.96863,-1.14568 -17.9884,-2.76381 -25.8546,-5.16148 -8.70483,-2.6457 -16.76,-6.09456 -26.7169,-10.8308l-68.5166 123.344 27.0594 27.9925 10.2993 -11.882c4.70085,-5.40952 11.1261,-8.55129 17.764,-9.17728 6.62607,-0.625992 13.4529,1.22836 18.9687,5.79928 0.106301,0.0826782 0.0472447,0.0472447 0.448824,0.40158 5.25597,4.55911 8.31506,10.8545 8.95287,17.3506 0.448824,4.52368 -0.271657,9.15366 -2.23231,13.3584l10.4647 -12.26 -0.0118112 -0.0118112c0.0590558,-0.070867 0.129923,-0.141734 0.188979,-0.212601l0 -0.0118112c0.141734,-0.165356 0.295279,-0.318902 0.460636,-0.472447 4.70085,-5.11424 11.0316,-7.90167 17.516,-8.31506 6.64969,-0.425202 13.4884,1.64175 18.9097,6.27173l0.0118112 -0.0118112c0.0826782,0.070867 0.153545,0.141734 0.224412,0.20079l0 0c0.177168,0.141734 0.330713,0.295279 0.484258,0.460636zm45.4376 140.258l-11.9765 14.3624c-0.188979,0.224412 -0.366146,0.437013 -0.543314,0.625992 -4.37013,4.88982 -10.3702,7.47647 -16.512,7.78356 -6.0237,0.295279 -12.2364,-1.61813 -17.1734,-5.74023 -0.236223,-0.20079 -0.460636,-0.389769 -0.661425,-0.566936 -5.03156,-4.51187 -7.70088,-10.5474 -8.04341,-16.7719 -0.259846,-4.72447 0.826782,-9.55524 3.25988,-13.8663l-1.27561 1.45277c-0.153545,0.188979 -0.0354335,0.0236223 -0.614181,0.649614 -4.80715,5.12605 -11.2797,7.75994 -17.8585,7.93711 -6.50795,0.188979 -13.1458,-2.01971 -18.3309,-6.53158l0.0118112 -0.0118112 0 0 -0.0118112 0.0118112c-0.129923,-0.118112 -0.259846,-0.236223 -0.389769,-0.366146 -0.118112,-0.106301 -0.212601,-0.20079 -0.30709,-0.283468l-0.0118112 0.0118112c-0.177168,-0.165356 -0.354335,-0.354335 -0.50788,-0.543314 -4.93707,-4.87801 -7.47647,-11.197 -7.68907,-17.6459 -0.141734,-4.45281 0.814971,-8.96468 2.8583,-13.075 -4.39375,3.76776 -9.80327,5.84653 -15.3309,6.20086 -6.63788,0.425202 -13.4765,-1.65356 -18.9097,-6.28354l-0.0118112 0.0118112c-0.070867,-0.0590558 -0.153545,-0.129923 -0.224412,-0.20079l0 0c-0.165356,-0.141734 -0.330713,-0.295279 -0.484258,-0.448824 -5.16148,-4.74809 -7.99616,-11.1143 -8.42136,-17.6459 -0.448824,-6.72056 1.65356,-13.6301 6.37803,-19.1577l3.64965 -4.28745c-4.08666,3.1772 -8.92924,5.04337 -13.8781,5.51582 -6.62607,0.625992 -13.4529,-1.24017 -18.9687,-5.79928l-0.0118112 0c-0.141734,-0.118112 -0.283468,-0.248035 -0.425202,-0.377957l-0.0236223 -0.0236223c-5.24416,-4.55911 -8.30325,-10.8545 -8.94105,-17.3506 -0.649614,-6.5552 1.15749,-13.323 5.63393,-18.7443l0 0c0.118112,-0.153545 0.248035,-0.295279 0.377957,-0.425202l0.0118112 -0.0118112 4.84258 -5.58668 -29.0319 -30.0476 -11.8112 20.2916 -0.0354335 0.070867 -0.165356 0.271657 -0.070867 0.0826782c-3.9095,6.42528 -10.0749,10.6419 -16.8782,12.2836 -6.74418,1.62994 -14.138,0.755915 -20.516,-2.9646l-0.070867 -0.070867 -0.283468 -0.165356 -0.0826782 -0.0472447 -37.3587 -22.6538c-6.51977,-3.95674 -10.7718,-10.1576 -12.449,-17.0081 -1.67719,-6.82686 -0.779537,-14.3151 3.01185,-20.8231l118.395 -203.341 0.0354335 -0.0826782 0.165356 -0.271657 0.070867 -0.070867c3.89769,-6.43709 10.0749,-10.6419 16.8782,-12.2836 6.74418,-1.62994 14.1262,-0.755915 20.516,2.9646l0.070867 0.0354335 0.283468 0.165356 0.070867 0.070867 37.3705 22.6656c6.50795,3.94493 10.7718,10.1458 12.449,16.9963 1.66537,6.83867 0.767726,14.3151 -3.02366,20.8349l-16.89 29.02c10.1458,4.8662 17.953,8.30325 25.7129,10.6655 9.33082,2.84649 19.3585,4.42919 34.3469,5.49219l-0.0354335 0.377957c35.7997,-38.8587 76.7017,-35.8233 184.526,-27.8153l5.16148 0.389769 -7.01583 -12.0592c-3.79139,-6.50795 -4.68903,-13.9962 -3.02366,-20.8231 1.67719,-6.85048 5.94102,-13.0513 12.449,-17.0081l37.3705 -22.6538 0.070867 -0.0826782 0.283468 -0.165356 0.070867 -0.0354335c6.38984,-3.72052 13.7718,-4.59454 20.516,-2.9646 6.80323,1.64175 12.9805,5.85834 16.8782,12.2836l0.070867 0.0826782 0.165356 0.271657 0.0354335 0.070867 118.395 203.341c3.79139,6.51977 4.68903,13.9962 3.01185,20.8231 -1.67719,6.86229 -5.92921,13.0513 -12.449,17.0081l-37.3587 22.6656 -0.0826782 0.0354335 -0.283468 0.165356 -0.070867 0.070867c-6.37803,3.72052 -13.7718,4.59454 -20.516,2.9646 -6.80323,-1.64175 -12.9687,-5.84653 -16.8782,-12.2836l-0.070867 -0.070867 -0.165356 -0.271657 -0.0354335 -0.0826782 -12.1655 -20.894 -24.9806 18.8979c4.48824,7.88986 6.25992,16.76 5.65755,25.4058 -0.460636,6.83867 -2.40948,13.5828 -5.65755,19.5947 -3.2835,6.08275 -7.92529,11.4686 -13.7482,15.5435 -5.90558,4.1221 -12.9214,6.85048 -20.8585,7.55915 -2.66932,7.47647 -7.09851,13.8427 -13.2758,19.1105 -6.75599,5.75204 -15.4844,10.0277 -26.1972,12.8151 -2.33861,8.4568 -6.0237,15.5435 -11.1497,21.142 -6.54339,7.14576 -15.1301,11.634 -25.9373,13.2285l-4.50006 1.05119c-29.8468,45.7447 -66.615,23.0908 -99.2611,2.97641 -3.10634,-1.91341 -6.17724,-3.8032 -9.14184,-5.56306zm-217.928 -146.636l118.336 -203.27c1.22836,-2.1142 1.52364,-4.51187 0.992138,-6.69693 -0.50788,-2.06695 -1.78349,-3.94493 -3.72052,-5.11424l-37.2879 -22.6184 -0.0118112 0.0236223 -0.283468 -0.165356 0.0118112 0c-1.98428,-1.12206 -4.25202,-1.39372 -6.31898,-0.885838 -2.0079,0.484258 -3.81501,1.67719 -4.93707,3.47248l0.0236223 0.0118112 -0.165356 0.271657 0 0 -118.348 203.258c-1.22836,2.1142 -1.52364,4.52368 -0.992138,6.69693 0.50788,2.07877 1.78349,3.94493 3.73233,5.12605l37.3705 22.6656 -0.0118112 0 0.129923 0.070867 0.0118112 -0.0236223c1.98428,1.16931 4.28745,1.44096 6.37803,0.933082 2.0079,-0.484258 3.81501,-1.67719 4.93707,-3.47248l-0.0118112 -0.0118112 0.153545 -0.271657 0.0118112 0zm392.485 -171.238c0.732292,0.755915 1.32285,1.62994 1.77168,2.58665l9.42531 16.6301 92.0326 158.092 0.0118112 0 0.153545 0.271657 -0.0118112 0.0118112c1.12206,1.7953 2.92917,2.98823 4.93707,3.47248 2.09058,0.50788 4.39375,0.236223 6.37803,-0.921271l0.0118112 0.0236223 0.129923 -0.0826782 -0.0118112 0 37.3705 -22.6656c1.94884,-1.16931 3.22445,-3.04728 3.73233,-5.11424 0.531503,-2.18507 0.236223,-4.59454 -0.992138,-6.69693l-118.348 -203.27 0 0 -0.165356 -0.271657 0.0236223 -0.0118112c-1.12206,-1.7953 -2.92917,-2.98823 -4.93707,-3.47248 -2.06695,-0.496069 -4.3347,-0.236223 -6.31898,0.885838l0.0118112 0 -0.283468 0.177168 -0.0118112 -0.0236223 -37.2879 22.6066c-1.93703,1.18112 -3.21264,3.04728 -3.72052,5.12605 -0.531503,2.17326 -0.236223,4.58273 0.992138,6.69693l15.1065 25.9491zm-335.366 200.802l0 0 0 0zm58.7724 -7.52371l0.0118112 0 -0.0118112 0z" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="problem-icon-svg">
+        <polygon points="12 3 3 20 21 20" strokeWidth="1.5"></polygon>
+        <line x1="1" y1="12" x2="23" y2="12" strokeWidth="2" strokeDasharray="1 2"></line>
       </svg>
     )
   }
@@ -791,7 +800,7 @@ export default function Home() {
         {/* Industry Leaders Slider Section */}
         <section className="leaders-section">
           <div className="leaders-container">
-            <h3 className="leaders-title">Serious Manufacturers we worked with</h3>
+            <h3 className="leaders-title">Manufacturing leaders we worked with.</h3>
             <div className="leaders-slider-container">
               <div className="leaders-slide-track">
                 {[...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS, ...INDUSTRY_LEADERS].map((leader, index) => (
@@ -799,13 +808,13 @@ export default function Home() {
                     <div className="leader-avatar-wrapper">
                       <img 
                         src={leader.img} 
-                        alt={`${leader.first} ${leader.last}`} 
-                        className={`leader-avatar-img avatar-${leader.first.toLowerCase()}`} 
+                        alt={leader.name} 
+                        className={`leader-avatar-img avatar-${leader.avatarClass}`} 
                       />
                     </div>
                     <div className="leader-name-container">
-                      <span className="leader-first-name">{leader.first}</span>
-                      <span className="leader-last-name">{leader.last}</span>
+                      <span className="leader-full-name">{leader.name}</span>
+                      <span className="leader-specialty">{leader.specialty}</span>
                     </div>
                   </div>
                 ))}
@@ -823,7 +832,7 @@ export default function Home() {
                 <span>So why is <span className="problems-highlight">growth still so hard?</span></span>
               </h2>
               <p className="problems-intro-desc">
-                After working with hundreds of manufacturers (from a 500 sq. ft. tool room to plants spread across acres), we found the same key problems, again and again. Read them honestly. If even one sounds like your company, it is worth a conversation.
+                After working with hundreds of manufacturers (from a 500 sq. ft. tool room to plants spread across acres), we found the same key problems, again and again. If even one sounds like your company, it is worth a conversation.
               </p>
             </div>
 
@@ -841,10 +850,12 @@ export default function Home() {
 
             <div className="problems-outro">
               <p className="problems-outro-text">
-                If even one of these sounds like your company, you have a structure problem. And structure is exactly what we build.
+                If even one of these sounds familiar, <br />
+                you need a standard process for marketing and communication. <br />
+                And this process is exactly what we build.
               </p>
               <a href="#consultation" className="btn-problems-cta">
-                Book a GTM Readiness Conversation
+                Let’s Fix this! Book a Call
               </a>
             </div>
           </div>
@@ -860,7 +871,7 @@ export default function Home() {
             <div className="system-header">
               <h2 className="system-title">Meet Buyers Where they are</h2>
               <p className="system-desc-text">
-                To succeed today, Manufacturing leaders need to tailor their communication strategies to buyer Behaviour and focus on driving Profitable and Capital Efficient Growth.
+                To succeed, manufacturers must tailor their <span className="system-text-highlight">communication strategies to Buyer Behaviour</span> and focus on driving <span className="system-text-highlight">Profitable and Capital Efficient Growth</span>.
               </p>
             </div>
             <div className="system-roadmap">
@@ -868,15 +879,14 @@ export default function Home() {
               <div className="roadmap-item">
                 <div className="roadmap-node">01</div>
                 <div className="roadmap-card" style={{ transitionDelay: "0ms" }}>
-                  <span className="roadmap-pillar">PILLAR 1</span>
-                  <h3 className="roadmap-card-title">WE BRAINSTORM</h3>
-                  <p className="roadmap-card-focus">Understanding your business before marketing it.</p>
+                  <h3 className="roadmap-card-title">We Listen</h3>
+                  <p className="roadmap-card-focus">We sit with you to understand your business</p>
                   <p className="roadmap-card-subtitle">What happens here</p>
                   <ul className="roadmap-card-list">
-                    <li>Deep-dive sessions with founders and leadership.</li>
-                    <li>Identify your strongest capabilities, differentiators, and success stories.</li>
+                    <li>Deep-dive sessions with founders, 2nd generation, leadership & shopfloor team.</li>
+                    <li>Understand your strongest capabilities, differentiators, and success stories.</li>
                     <li>Map your ideal customers, industries, and growth opportunities.</li>
-                    <li>Extract years of expertise that currently live only inside your team.</li>
+                    <li>Extract years of expertise that currently live only inside your factory.</li>
                   </ul>
                 </div>
               </div>
@@ -885,15 +895,14 @@ export default function Home() {
               <div className="roadmap-item">
                 <div className="roadmap-node">02</div>
                 <div className="roadmap-card" style={{ transitionDelay: "150ms" }}>
-                  <span className="roadmap-pillar">PILLAR 2</span>
-                  <h3 className="roadmap-card-title">WE ALIGN</h3>
-                  <p className="roadmap-card-focus">Creating a clear growth and communication strategy.</p>
+                  <h3 className="roadmap-card-title">We Plan</h3>
+                  <p className="roadmap-card-focus">Finally, we build a custom marketing process made only for you</p>
                   <p className="roadmap-card-subtitle">What happens here</p>
                   <ul className="roadmap-card-list">
-                    <li>Define your positioning in the market.</li>
+                    <li>Define positioning in your niche target market.</li>
+                    <li>Find your core capabilities, Uniqueness , engineering-technology edge</li>
                     <li>Align content with business goals and sales objectives.</li>
-                    <li>Build a LinkedIn and GTM roadmap tailored to your company.</li>
-                    <li>Establish a consistent message across all customer touchpoints.</li>
+                    <li>Find the real reason a customer should choose you over anyone else.</li>
                   </ul>
                 </div>
               </div>
@@ -902,9 +911,8 @@ export default function Home() {
               <div className="roadmap-item">
                 <div className="roadmap-node">03</div>
                 <div className="roadmap-card" style={{ transitionDelay: "300ms" }}>
-                  <span className="roadmap-pillar">PILLAR 3</span>
-                  <h3 className="roadmap-card-title">WE CURATE</h3>
-                  <p className="roadmap-card-focus">Turning expertise into visibility and opportunities.</p>
+                  <h3 className="roadmap-card-title">We Execute</h3>
+                  <p className="roadmap-card-focus">Finally, we effectively implement the process for you.</p>
                   <p className="roadmap-card-subtitle">What happens here</p>
                   <ul className="roadmap-card-list">
                     <li>Create industry-focused content that showcases your capabilities.</li>
@@ -922,23 +930,24 @@ export default function Home() {
         <section id="services" className="services-section">
           <div className="services-container">
             <h2 className="services-title">Services & Retainers</h2>
-            <p className="services-subtitle">Durable-First B2B Manufacturing Growth Offerings</p>
             
             <div className="services-grid">
-              {/* Card 1: GTM Standardization */}
+              {/* Card 1: GTM Execution */}
               <div className="service-card recommended" style={{ transitionDelay: "0ms" }}>
                 <div>
                   <span className="service-badge-project">One-Time Project</span>
-                  <h3 className="service-title-text">Go-To-Market (GTM) Standardization</h3>
-                  <p className="service-focus-text">Making Your Factory Meeting-Ready in 30 Days</p>
+                  <h3 className="service-title-text">Go-To-Market (GTM) Execution</h3>
+                  <p className="service-focus-text">End-to-end Sales Readiness in 45 Days.</p>
                   <div className="service-body">
                     <p className="service-desc">
-                      Standardizes your marketing and sales assets so you can present capabilities instantly to Tier 1 and OEM buyers.
+                      GTM Standardization creates ready-to-use sales assets that present your capability, process, people, and proof in one complete story. Every sales meeting delivers the same impact, whether you're in the room or not.
                     </p>
                     <ul className="service-list">
-                      <li>Custom Capabilities Deck (shop-floor focused)</li>
-                      <li>High-Definition Corporate Video Walkthrough</li>
-                      <li>Case Studies and Pitch Assets templates</li>
+                      <li>Buyers see your full capability, not just part of it.</li>
+                      <li>De-skill your sales and follow-up process.</li>
+                      <li>Prove your factory without saying a word.</li>
+                      <li>Keep every meeting and follow-up consistent.</li>
+                      <li>Look as good as or better than your competitors.</li>
                     </ul>
                   </div>
                 </div>
@@ -952,15 +961,18 @@ export default function Home() {
                 <div>
                   <span className="service-badge-retainer">Ongoing Retainer</span>
                   <h3 className="service-title-text">Reputation Management</h3>
-                  <p className="service-focus-text">Hands-Free Monthly Credibility Engine</p>
+                  <p className="service-focus-text">Stay Visible & Credible Every Month</p>
                   <div className="service-body">
                     <p className="service-desc">
-                      Maintains constant market visibility and builds long-term authority among foreign buyers, procurement heads, and OEMs.
+                      The market forgets what it doesn't see. Reputation Management keeps your business consistently visible and credible, so buyers and global partners see your factory at its best, whether or not you ever make a sales call.
                     </p>
                     <ul className="service-list">
-                      <li>B2B LinkedIn authority positioning</li>
-                      <li>Continuous case studies and shop-floor storytelling</li>
-                      <li>Active reach out and connection building</li>
+                      <li>Stay visible so buyers remember you.</li>
+                      <li>Build trust before the first call.</li>
+                      <li>Grow your reputation without taking your time.</li>
+                      <li>Look world-class to global buyers.</li>
+                      <li>Compound results every month.</li>
+                      <li>Works even if you never chase leads.</li>
                     </ul>
                   </div>
                 </div>
@@ -974,16 +986,19 @@ export default function Home() {
                 <div className="screened-lock-badge">Invitation & Review Only</div>
                 <div>
                   <span className="service-badge-premium">Premium Retainer</span>
-                  <h3 className="service-title-text">Lead Nurturing</h3>
-                  <p className="service-focus-text">Active Pipeline Building & Filtering</p>
+                  <h3 className="service-title-text">Lead Nurturing (Premium - by Readiness)</h3>
+                  <p className="service-focus-text">Turn the Right Buyers into Business Conversations</p>
                   <div className="service-body">
                     <p className="service-desc">
-                      For operationally stable factories ready to handle new buyers. We run active nurturing campaigns and filter inquiries.
+                      Once your credibility is built, we connect and nurture the right decision-makers on LinkedIn so qualified buyers are ready to talk. Available only for businesses ready to handle the demand.
                     </p>
                     <ul className="service-list">
-                      <li>End-to-end GTM campaign execution</li>
-                      <li>Buyer inquiry pre-qualification and vetting</li>
-                      <li>Direct pipeline hand-off to your sales desk</li>
+                      <li>Reach the right decision-makers.</li>
+                      <li>Warm buyers instead of cold prospects.</li>
+                      <li>Generate inbound-style meetings.</li>
+                      <li>Fill your pipeline with qualified conversations.</li>
+                      <li>Offered only when you're ready to service demand.</li>
+                      <li>Performs best with strong reputation.</li>
                     </ul>
                   </div>
                 </div>
