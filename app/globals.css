@@ -1180,7 +1180,7 @@ a {
   padding: 28px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
 }
 
@@ -4045,7 +4045,7 @@ html.lenis body {
   font-style: italic;
   font-size: 0.9rem;
   line-height: 1.4;
-  margin-top: auto;
+  margin-top: 16px;
   padding-top: 10px;
 }
 
@@ -4059,13 +4059,25 @@ html.lenis body {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Empty image placeholder for GTM cards */
+/* Empty image placeholder for GTM cards with subtle drafting grid pattern */
 .card-dark .playbook-img-container {
-  background: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.015);
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center;
 }
 
 .card-light .playbook-img-container {
-  background: rgba(0, 0, 0, 0.02);
+  background-color: rgba(0, 0, 0, 0.01);
+  background-image: 
+    radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center;
 }
 
 

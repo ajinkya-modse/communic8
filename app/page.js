@@ -1132,20 +1132,26 @@ export default function Home() {
                   return (
                     <div key={idx} className={`playbook-card ${isDark ? "card-dark" : "card-light flex-reverse"}`}>
                       <div className="playbook-content">
-                        <span className="playbook-meta">{study.meta}</span>
-                        <h3 className="playbook-card-title">{study.title}</h3>
-                        <p className="playbook-text-desc">{study.desc}</p>
-                        <p className="playbook-text-action">
-                          <strong>The Solution:</strong> {study.action}
-                        </p>
-                        <div className="playbook-results">
-                          <h4 className="results-heading">Key Results</h4>
-                          <ul className="playbook-list">
-                            {study.results.map((res, i) => (
-                              <li key={i}>{res}</li>
-                            ))}
-                          </ul>
+                        <div className="playbook-header-group">
+                          <span className="playbook-meta">{study.meta}</span>
+                          <h3 className="playbook-card-title">{study.title}</h3>
+                          <p className="playbook-text-desc">{study.desc}</p>
+                          <p className="playbook-text-action">
+                            <strong>The Solution:</strong> {study.action}
+                          </p>
                         </div>
+                        
+                        <div className="playbook-results-group">
+                          <div className="playbook-results">
+                            <h4 className="results-heading">Key Results</h4>
+                            <ul className="playbook-list">
+                              {study.results.map((res, i) => (
+                                <li key={i}>{res}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        
                         <p className="playbook-quote">{study.quote}</p>
                         
                         {isDark ? (
@@ -1175,20 +1181,26 @@ export default function Home() {
                   return (
                     <div key={`dup-${idx}`} className={`playbook-card ${isDark ? "card-dark" : "card-light flex-reverse"}`}>
                       <div className="playbook-content">
-                        <span className="playbook-meta">{study.meta}</span>
-                        <h3 className="playbook-card-title">{study.title}</h3>
-                        <p className="playbook-text-desc">{study.desc}</p>
-                        <p className="playbook-text-action">
-                          <strong>The Solution:</strong> {study.action}
-                        </p>
-                        <div className="playbook-results">
-                          <h4 className="results-heading">Key Results</h4>
-                          <ul className="playbook-list">
-                            {study.results.map((res, i) => (
-                              <li key={i}>{res}</li>
-                            ))}
-                          </ul>
+                        <div className="playbook-header-group">
+                          <span className="playbook-meta">{study.meta}</span>
+                          <h3 className="playbook-card-title">{study.title}</h3>
+                          <p className="playbook-text-desc">{study.desc}</p>
+                          <p className="playbook-text-action">
+                            <strong>The Solution:</strong> {study.action}
+                          </p>
                         </div>
+                        
+                        <div className="playbook-results-group">
+                          <div className="playbook-results">
+                            <h4 className="results-heading">Key Results</h4>
+                            <ul className="playbook-list">
+                              {study.results.map((res, i) => (
+                                <li key={i}>{res}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        
                         <p className="playbook-quote">{study.quote}</p>
                         
                         {isDark ? (
@@ -1342,9 +1354,9 @@ export default function Home() {
                                   />
                                   
                                   <div className="slider-ticks-row-apple">
-                                    <span>Not true</span>
-                                    <span>Neutral</span>
-                                    <span>Very true</span>
+                                    <span>0</span>
+                                    <span>5</span>
+                                    <span>10</span>
                                   </div>
                                 </div>
                               </div>
