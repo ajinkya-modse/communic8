@@ -1402,9 +1402,9 @@ a {
 
 .bio-card {
   background: rgba(255, 255, 255, 0.72);
-  border-radius: 28px;
+  border-radius: 16px;
   overflow: hidden;
-  max-width: 1000px;
+  max-width: 820px;
   margin: 0 auto;
   display: flex;
   align-items: stretch;
@@ -1421,9 +1421,8 @@ a {
 }
 
 .bio-img-container {
-  flex: 1;
-  max-width: 440px;
-  min-height: 440px;
+  flex: 0 0 260px;
+  min-height: 340px;
   position: relative;
   overflow: hidden;
 }
@@ -1443,15 +1442,15 @@ a {
 }
 
 .bio-content {
-  flex: 1.2;
-  padding: 55px;
+  flex: 1;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .bio-name {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   background: linear-gradient(180deg, #1d1d1f 0%, #6e6e73 100%);
   -webkit-background-clip: text;
@@ -1464,8 +1463,8 @@ a {
 
 .bio-title {
   font-family: var(--font-family-base);
-  font-size: 1.25rem;
-  margin-bottom: 24px;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
   font-weight: 600;
   background: linear-gradient(135deg, #0091ff 0%, #00d2ff 100%);
   -webkit-background-clip: text;
@@ -1478,11 +1477,19 @@ a {
 }
 
 .bio-description {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #515154;
   font-weight: 500;
-  line-height: 1.65;
-  margin-bottom: 32px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.bio-description p {
+  margin-bottom: 8px;
+}
+
+.bio-description p:last-child {
+  margin-bottom: 0;
 }
 
 .btn-consultation {

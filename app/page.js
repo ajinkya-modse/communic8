@@ -1595,10 +1595,16 @@ export default function Home() {
               </div>
               <div className="bio-content">
                 <h2 className="bio-name">Ajinkya</h2>
-                <h3 className="bio-title">Built by an operations head who ran 4 plants, not a digital marketer.</h3>
-                <p className="bio-description">
-                  Installing a growth process requires shop-floor discipline, not creative theories. After 16 years working hands-on in factories, climbing from helper to tool room, then plant head to operations head, and scaling a workforce from 135 to over 850 people across 4 plants, I built Communic8 to install the missing marketing process in B2B manufacturing. We don't talk vanity metrics; we build durable, structured market visibility that translates directly to industrial growth.
-                </p>
+                <h3 className="bio-title">Hello connections! I'm Ajinkya (AJ)</h3>
+                <div className="bio-description">
+                  <p>For over a decade I've lived the shop floor... running TOC, Lean and TPS on real factory floors, and learning from the best: ABB, Schneider, Forbes Marshall, Godrej and more.</p>
+                  <p>Accidentally, something bothered me;</p>
+                  <p>Manufacturers have a process for everything; except marketing.</p>
+                  <p>It gets handed to whoever's free, done in bursts, never treated as a real function. So real manufacturers with 20-30 years of capability stay invisible, struggle competing on price instead of value.</p>
+                  <p>That's why I built Communic8 - a marketing agency working exclusively for the manufacturing ecosystem. We handle Go-to Market Execution, global customer acquisition and reputation management, and we get into your shoes before we do any marketing. No templates. Just honest work in your customers' language.</p>
+                  <p>If marketing is your weak spot, let's connect !</p>
+                  <p style={{ fontWeight: "600", marginTop: "16px" }}>- AJ</p>
+                </div>
               </div>
             </div>
           )}
