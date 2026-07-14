@@ -1265,7 +1265,14 @@ export default function Home() {
         {/* Testimonials Section */}
         <section id="testimonials" className="testimonials-section">
           <div className="testimonials-bg-wrapper">
-            <img src="/assets/testimonials_bg_factory.jpg" alt="Factory background" className="testimonials-bg-img" />
+            <video 
+              src="/assets/new_video.mp4" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="testimonials-bg-video"
+            />
             <div className="testimonials-bg-overlay"></div>
           </div>
           <div className="testimonials-container">
@@ -1320,6 +1327,10 @@ export default function Home() {
 
         {/* Interactive GTM Assessment Section */}
         <section id="assessment" className="assessment-section">
+          <div className="assessment-bg-wrapper">
+            <img src="/assets/testimonials_bg_factory.jpg" alt="Assessment background" className="assessment-bg-img" />
+            <div className="assessment-bg-overlay"></div>
+          </div>
           <div className="assessment-container">
             <h2 className="assessment-title">Map your current state in 2 minutes</h2>
             <p className="assessment-subtitle">
