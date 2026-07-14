@@ -31,6 +31,112 @@ const LEADERSHIP = [
   { name: "Amit Patel", title: "Lead Copywriter", img: "/assets/employee_3.jpg" }
 ];
 
+const CASE_STUDIES = [
+  {
+    title: "OEM Machine Manufacturer",
+    meta: "OEM Machine Manufacturer · ₹50-100 Cr · 25 years",
+    desc: "A 25-year OEM serving automotive, FMCG and cosmetics. Deep range, but the message tried to say everything to everyone; so no buyer saw they were serious in his segment.",
+    action: "We built a modular narrative: one core identity, segment-specific proof beneath, delivered in the buyer's language.",
+    results: [
+      "Conversions up 37%",
+      "Sales cycle shortened 54%",
+      "31 new enquiries in 2 months",
+      "2 export customers won"
+    ],
+    quote: "A wide range isn't a strength until a buyer sees you're serious in his particular segment."
+  },
+  {
+    title: "Agri-Implements Manufacturer",
+    meta: "Agri-Implements Manufacturer · ₹500+ Cr",
+    desc: "They came to us to \"pump up sales.\" After ₹18 lakh and 4-5 months of market research, competitor analysis, dealer personas and farmer buying-behaviour study, we found the real issue wasn't sales - it was dealer-network scarcity. Competitors simply had more feet on the ground.",
+    action: "So we went hyperlocal, positioning successful dealers as proof of the brand, backed by strong dealer support and a product trusted by farmers.",
+    results: [
+      "6 new dealerships closed (₹2-6 Cr annual potential each)",
+      "Conversion cycle improved 76%",
+      "Lead flow shifted from thousands of unqualified enquiries to hundreds of serious partnership conversations"
+    ],
+    quote: "Sometimes the problem isn't demand. It's distribution."
+  },
+  {
+    title: "Industrial Valve Manufacturer",
+    meta: "Industrial Valve Manufacturer · ₹10-25 Cr · 32+ Years · 10,000 sq. ft.",
+    desc: "In construction, contractors place the order - but architects, firefighting and MEP consultants decide the valve make. If your name isn't in the specification, you're never even considered.",
+    action: "We shifted the GTM from buyers to specifiers, building authority through standardized sales assets, case studies and positioning around the factors that actually win specifications.",
+    results: [
+      "Network of 2,500+ contractors & procurement contacts",
+      "315+ inbound enquiries",
+      "23+ consultant & architect relationships",
+      "Specified in 6 projects",
+      "Revenue up 39%"
+    ],
+    quote: "In spec-driven industries, you don't win the buyer - you win the person writing the specification."
+  },
+  {
+    title: "Shop-Floor Digitization Software",
+    meta: "Shop-Floor Digitization Software (ADMS) · SaaS + Perpetual · 7 Years",
+    desc: "Manufacturers didn't need another ERP - they needed software that spoke their language. Years of failed ERP implementations had created distrust, while every competitor sounded the same.",
+    action: "We created a new category - ADMS (Advanced Digital Manufacturing Software) - and rewrote every message from IT features to shop-floor processes, in language plant teams actually trust.",
+    results: [
+      "Demo-to-conversion: 20% to 63%",
+      "161+ qualified inbound enquiries in 4 months"
+    ],
+    quote: "To sell software to a factory, speak manufacturing process - not IT features."
+  },
+  {
+    title: "Special Testing Machines",
+    meta: "Special Testing Machines · ₹10-25 Cr · 40+ Years",
+    desc: "They didn't have a capability problem - they had a communication problem. Four decades of R&D excellence wasn't translating into business because there was no clear narrative or structured follow-up.",
+    action: "We built a standardized GTM and sales process that communicated value within minutes, supported by a CRM-driven follow-up rhythm.",
+    results: [
+      "315+ inbound conversations",
+      "Reach up 17x",
+      "Engagement up 9x",
+      "₹4-5 Cr of potential business in view"
+    ],
+    quote: "The best engineering still needs a business story to be bought."
+  },
+  {
+    title: "Precision Machined Components",
+    meta: "Precision Machined Components · ₹10-25 Cr · Pump, Compressor, Defence & Power OEMs",
+    desc: "Referred by an existing client, they wanted to expand exports - but you can't borrow another company's story.",
+    action: "We built export-focused positioning around their R&D, quality systems and manufacturing culture, then standardized a GTM built for international buyers while feeding key insights back into the manufacturing process.",
+    results: [
+      "Export revenue: 7.5% to 28%",
+      "Network of 3,000+ prospect buyers",
+      "200+ ongoing business conversations",
+      "45 RFQs (domestic & international)"
+    ],
+    quote: "You can't borrow another company's story. The right narrative is built, not borrowed."
+  }
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "What makes them different is they don't stay at the surface. Ajinkya's decade on the shop floor means his team gets right into our manufacturing process before touching the marketing. They connect it beautifully to our customers' behaviour - and they're genuinely open, taking our suggestions and improving, again and again, whenever we ask.",
+    name: "Shashikant Halde",
+    role: "Director, Abhijeet Engineers",
+    image: null
+  },
+  {
+    quote: "In a company our size, my biggest challenge is my time. I was worried marketing would become one more thing to manage. But Communic8 has a unique way of working. They turn simple, casual meetings into real, insightful stuff, and we actually enjoy the process. The best part? They are not marketers. They are shop-floor people who know how to communic8.",
+    name: "Amruta Kelkar",
+    role: "CEO, Ferrites India",
+    image: "/assets/customers/amruta_kelkar.jpg"
+  },
+  {
+    quote: "Honestly, I always thought marketing was just an expense that would not pay back. Communic8 changed that belief completely. They took the time to get into our shoes, understood how our customers should see us, and worked with a clear, structured approach. You can tell they know exactly what they are doing. Today, we don't even feel like AJ and his team are a separate agency - they feel like part of our own company, just a call away whenever we need them.",
+    name: "Ruchita Tanpure",
+    role: "Samarth Elite Works Pvt. Ltd. (Speciality Tools - Value Engineering & Manufacturing)",
+    image: "/assets/customers/ruchita_tanpure.jpg"
+  },
+  {
+    quote: "What impressed me most was that Communic8 knew nothing about gold and silver refining when we started. But they didn't pretend to. They went deep, asked the right questions, and understood our process from the ground up. Their B2B shop-floor acumen helped them see insights about our own business that we hadn't articulated ourselves.",
+    name: "Mahesh Gadghe",
+    role: "CEO, SLK Refiners",
+    image: null
+  }
+];
+
 const COMPANIES_LIST = [
   { name: "Technoshell", logo: "/assets/logos/technoshell.png" },
   { name: "Kinetic", logo: "/assets/logos/kinetic.png" },
@@ -639,7 +745,7 @@ export default function Home() {
                 Services
               </a>
               <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="nav-link">
-                Case Studies
+                Our Work
               </a>
               <a href="#founder" onClick={(e) => handleSmoothScroll(e, "#founder")} className="nav-link">
                 Our Team
@@ -674,7 +780,7 @@ export default function Home() {
               Services
             </a>
             <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")} className="mobile-nav-link">
-              Case Studies
+              Our Work
             </a>
             <a href="#founder" onClick={(e) => handleSmoothScroll(e, "#founder")} className="mobile-nav-link">
               Our Team
@@ -1016,229 +1122,128 @@ export default function Home() {
           <div className="playbook-blur-orb orb-1"></div>
           <div className="playbook-blur-orb orb-2"></div>
           
-          <h2 className="section-title">Case Studies &amp; Testimonials</h2>
+          <h2 className="section-title">Our Work</h2>
           
           <div ref={playbookSliderRef} className="playbook-slider-container">
             <div className="playbook-slide-track">
               <div className="playbook-group">
-                {/* Case Study 1 */}
-                <div className="playbook-card card-dark">
-                  <div className="playbook-content">
-                    <h3 className="playbook-card-title">Case Study: Pune MSME</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">The Action:</strong> 
-                        Standardised GTM assets and installed the Reputation Engine for a precision-machining manufacturer.
-                      </li>
-                      <li>
-                        <strong className="list-head">OEM Reach:</strong> 
-                        4,500+ high-intent procurement decision-makers reached.
-                      </li>
-                      <li>
-                        <strong className="list-head">Positive Interest:</strong> 
-                        250+ active business interests and meeting requests.
-                      </li>
-                      <li>
-                        <strong className="list-head">Assets Delivered:</strong> 
-                        Meeting-ready capabilities decks and repeatable GTM assets.
-                      </li>
-                    </ul>
-                    {/* Torn Edge on Right */}
-                    <div className="torn-edge-container right-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
-                      </svg>
+                {CASE_STUDIES.map((study, idx) => {
+                  const isDark = idx % 2 === 0;
+                  return (
+                    <div key={idx} className={`playbook-card ${isDark ? "card-dark" : "card-light flex-reverse"}`}>
+                      <div className="playbook-content">
+                        <span className="playbook-meta">{study.meta}</span>
+                        <h3 className="playbook-card-title">{study.title}</h3>
+                        <p className="playbook-text-desc">{study.desc}</p>
+                        <p className="playbook-text-action">
+                          <strong>The Solution:</strong> {study.action}
+                        </p>
+                        <div className="playbook-results">
+                          <h4 className="results-heading">Key Results</h4>
+                          <ul className="playbook-list">
+                            {study.results.map((res, i) => (
+                              <li key={i}>{res}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <p className="playbook-quote">{study.quote}</p>
+                        
+                        {isDark ? (
+                          <div className="torn-edge-container right-edge">
+                            <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                              <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
+                            </svg>
+                          </div>
+                        ) : (
+                          <div className="torn-edge-container left-edge">
+                            <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                              <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <div className="playbook-img-container">
+                        {/* Space for images empty for now */}
+                      </div>
                     </div>
-                  </div>
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_copywriting.jpg" alt="Factory CNC machine operating" className="playbook-img" />
-                  </div>
-                </div>
-
-                {/* Testimonial 1 */}
-                <div className="playbook-card card-light flex-reverse">
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_outreach.jpg" alt="Sanjay D., Managing Director" className="playbook-img" />
-                  </div>
-                  <div className="playbook-content">
-                    {/* Torn Edge on Left */}
-                    <div className="torn-edge-container left-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
-                      </svg>
-                    </div>
-                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Precision Auto Components, Pune</span>
-                    <h3 className="playbook-card-title">Sanjay D. (MD)</h3>
-                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
-                      "Before Communic8, we were invisible to foreign buyers. Ajinkya understood our shop floor. The GTM deck and walkthrough video they built did more than 5 years of cold sales chasing."
-                    </p>
-                  </div>
-                </div>
-
-                {/* Case Study 2 */}
-                <div className="playbook-card card-dark">
-                  <div className="playbook-content">
-                    <h3 className="playbook-card-title">Case Study: Chennai Stamping</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">The Action:</strong> 
-                        Produced a high-definition factory walkthrough video and implemented a LinkedIn visibility program.
-                      </li>
-                      <li>
-                        <strong className="list-head">Buyer Inquiries:</strong> 
-                        Secured direct RFQs from Tier 1 procurement managers within 90 days.
-                      </li>
-                      <li>
-                        <strong className="list-head">Market Positioning:</strong> 
-                        Established brand authority for sheet-metal stamping capabilities.
-                      </li>
-                      <li>
-                        <strong className="list-head">Visible Proof:</strong> 
-                        Showcased deep toolroom and quality control setups to global OEMs.
-                      </li>
-                    </ul>
-                    {/* Torn Edge on Right */}
-                    <div className="torn-edge-container right-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_authority.jpg" alt="Factory stamping floor" className="playbook-img" />
-                  </div>
-                </div>
-
-                {/* Testimonial 2 */}
-                <div className="playbook-card card-light flex-reverse">
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_advocacy.jpg" alt="Rajesh K., Director" className="playbook-img" />
-                  </div>
-                  <div className="playbook-content">
-                    {/* Torn Edge on Left */}
-                    <div className="torn-edge-container left-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
-                      </svg>
-                    </div>
-                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Chennai Stamping Pvt Ltd</span>
-                    <h3 className="playbook-card-title">Rajesh K. (Director)</h3>
-                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
-                      "We tried generic digital agencies that wanted us to do reels. Communic8 installed a process. Our LinkedIn is now as consistent as our production line."
-                    </p>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
-
               <div className="playbook-group">
-                {/* Case Study 1 (Duplicate) */}
-                <div className="playbook-card card-dark">
-                  <div className="playbook-content">
-                    <h3 className="playbook-card-title">Case Study: Pune MSME</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">The Action:</strong> 
-                        Standardised GTM assets and installed the Reputation Engine for a precision-machining manufacturer.
-                      </li>
-                      <li>
-                        <strong className="list-head">OEM Reach:</strong> 
-                        4,500+ high-intent procurement decision-makers reached.
-                      </li>
-                      <li>
-                        <strong className="list-head">Positive Interest:</strong> 
-                        250+ active business interests and meeting requests.
-                      </li>
-                      <li>
-                        <strong className="list-head">Assets Delivered:</strong> 
-                        Meeting-ready capabilities decks and repeatable GTM assets.
-                      </li>
-                    </ul>
-                    {/* Torn Edge on Right */}
-                    <div className="torn-edge-container right-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
-                      </svg>
+                {CASE_STUDIES.map((study, idx) => {
+                  const isDark = idx % 2 === 0;
+                  return (
+                    <div key={`dup-${idx}`} className={`playbook-card ${isDark ? "card-dark" : "card-light flex-reverse"}`}>
+                      <div className="playbook-content">
+                        <span className="playbook-meta">{study.meta}</span>
+                        <h3 className="playbook-card-title">{study.title}</h3>
+                        <p className="playbook-text-desc">{study.desc}</p>
+                        <p className="playbook-text-action">
+                          <strong>The Solution:</strong> {study.action}
+                        </p>
+                        <div className="playbook-results">
+                          <h4 className="results-heading">Key Results</h4>
+                          <ul className="playbook-list">
+                            {study.results.map((res, i) => (
+                              <li key={i}>{res}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <p className="playbook-quote">{study.quote}</p>
+                        
+                        {isDark ? (
+                          <div className="torn-edge-container right-edge">
+                            <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                              <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
+                            </svg>
+                          </div>
+                        ) : (
+                          <div className="torn-edge-container left-edge">
+                            <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+                              <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <div className="playbook-img-container">
+                        {/* Space for images empty for now */}
+                      </div>
                     </div>
-                  </div>
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_copywriting.jpg" alt="Factory CNC machine operating" className="playbook-img" />
-                  </div>
-                </div>
-
-                {/* Testimonial 1 (Duplicate) */}
-                <div className="playbook-card card-light flex-reverse">
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_outreach.jpg" alt="Sanjay D., Managing Director" className="playbook-img" />
-                  </div>
-                  <div className="playbook-content">
-                    {/* Torn Edge on Left */}
-                    <div className="torn-edge-container left-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
-                      </svg>
-                    </div>
-                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Precision Auto Components, Pune</span>
-                    <h3 className="playbook-card-title">Sanjay D. (MD)</h3>
-                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
-                      "Before Communic8, we were invisible to foreign buyers. Ajinkya understood our shop floor. The GTM deck and walkthrough video they built did more than 5 years of cold sales chasing."
-                    </p>
-                  </div>
-                </div>
-
-                {/* Case Study 2 (Duplicate) */}
-                <div className="playbook-card card-dark">
-                  <div className="playbook-content">
-                    <h3 className="playbook-card-title">Case Study: Chennai Stamping</h3>
-                    <ul className="playbook-list">
-                      <li>
-                        <strong className="list-head">The Action:</strong> 
-                        Produced a high-definition factory walkthrough video and implemented a LinkedIn visibility program.
-                      </li>
-                      <li>
-                        <strong className="list-head">Buyer Inquiries:</strong> 
-                        Secured direct RFQs from Tier 1 procurement managers within 90 days.
-                      </li>
-                      <li>
-                        <strong className="list-head">Market Positioning:</strong> 
-                        Established brand authority for sheet-metal stamping capabilities.
-                      </li>
-                      <li>
-                        <strong className="list-head">Visible Proof:</strong> 
-                        Showcased deep toolroom and quality control setups to global OEMs.
-                      </li>
-                    </ul>
-                    {/* Torn Edge on Right */}
-                    <div className="torn-edge-container right-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M0,0 L20,10 L17,25 L20,45 L16,60 L19,80 L15,100 L20,120 L17,140 L20,165 L16,185 L19,210 L15,235 L20,260 L17,285 L20,310 L16,335 L19,360 L15,385 L20,410 L17,435 L20,460 L15,480 L20,500 L0,500 Z" fill="currentColor" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_authority.jpg" alt="Factory stamping floor" className="playbook-img" />
-                  </div>
-                </div>
-
-                {/* Testimonial 2 (Duplicate) */}
-                <div className="playbook-card card-light flex-reverse">
-                  <div className="playbook-img-container">
-                    <img src="/assets/playbook_advocacy.jpg" alt="Rajesh K., Director" className="playbook-img" />
-                  </div>
-                  <div className="playbook-content">
-                    {/* Torn Edge on Left */}
-                    <div className="torn-edge-container left-edge">
-                      <svg className="torn-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
-                        <path d="M20,0 L0,10 L3,25 L0,45 L4,60 L1,80 L5,100 L0,120 L3,140 L0,165 L4,185 L1,210 L5,235 L0,260 L3,285 L0,310 L4,335 L1,360 L5,385 L0,410 L3,435 L0,460 L5,480 L0,500 L20,500 Z" fill="currentColor" />
-                      </svg>
-                    </div>
-                    <span className="roadmap-pillar" style={{ display: 'block', marginBottom: '8px' }}>Chennai Stamping Pvt Ltd</span>
-                    <h3 className="playbook-card-title">Rajesh K. (Director)</h3>
-                    <p className="roadmap-card-focus" style={{ fontSize: '1.05rem', color: '#1a1a1a', lineHeight: '1.6', marginTop: '16px' }}>
-                      "We tried generic digital agencies that wanted us to do reels. Communic8 installed a process. Our LinkedIn is now as consistent as our production line."
-                    </p>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section id="testimonials" className="testimonials-section">
+          <div className="testimonials-container">
+            <h2 className="testimonials-title">What Founders Say</h2>
+            <div className="testimonials-grid">
+              {TESTIMONIALS.map((testimony, idx) => (
+                <div key={idx} className="testimony-card">
+                  {testimony.image ? (
+                    <div className="testimony-img-wrapper">
+                      <img src={testimony.image} alt={testimony.name} className="testimony-img" />
+                    </div>
+                  ) : (
+                    <div className="testimony-img-placeholder">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                      </svg>
+                    </div>
+                  )}
+                  <div className="testimony-content-box">
+                    <p className="testimony-quote">“{testimony.quote}”</p>
+                    <div className="testimony-author">
+                      <span className="testimony-name">{testimony.name}</span>
+                      <span className="testimony-role">{testimony.role}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -1767,7 +1772,7 @@ export default function Home() {
             <a href="#problems" onClick={(e) => handleSmoothScroll(e, "#problems")}>The Problems</a>
             <a href="#system" onClick={(e) => handleSmoothScroll(e, "#system")}>Our System</a>
             <a href="#services" onClick={(e) => handleSmoothScroll(e, "#services")}>Services</a>
-            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")}>Case Studies</a>
+            <a href="#playbook" onClick={(e) => handleSmoothScroll(e, "#playbook")}>Our Work</a>
             <a href="#founder" onClick={(e) => handleSmoothScroll(e, "#founder")}>Our Team</a>
           </div>
         </div>
