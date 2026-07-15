@@ -467,6 +467,8 @@ a {
 @media (max-width: 768px) {
   .hero-card {
     height: 100vh;
+    height: 100dvh;
+    min-height: auto;
   }
   
   .hero-credibility {
@@ -990,7 +992,7 @@ a {
 @media (max-width: 600px) {
   .problems-grid {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 20px !important;
   }
 }
 
@@ -1914,14 +1916,15 @@ a {
   }
   .hero-card {
     height: 100vh;
+    height: 100dvh;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
   .hero-title {
-    font-size: 3.0rem;
+    font-size: 2.6rem;
   }
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
   .founders-heading {
     font-size: 1.7rem;
@@ -1965,10 +1968,12 @@ a {
     height: 30px;
   }
   .hero-title {
-    font-size: 2.4rem;
+    font-size: 1.95rem;
+    letter-spacing: -1px;
+    line-height: 1.2;
   }
   .hero-subtitle {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
   .founders-list {
     gap: 20px;
@@ -4292,6 +4297,11 @@ html.lenis body {
    ========================================================================== */
 
 @media (max-width: 768px) {
+  /* Utility styling */
+  .desktop-only {
+    display: none !important;
+  }
+
   /* Typography Scale Overrides */
   .problems-subtitle {
     font-size: 2.2rem !important;
@@ -4327,14 +4337,52 @@ html.lenis body {
     padding: 24px !important;
   }
   .problems-outro {
-    padding: 30px 20px !important;
+    padding: 24px 16px !important;
     margin-top: 40px !important;
+  }
+  .problems-outro-text {
+    font-size: 1.05rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 20px !important;
   }
   .roadmap-card {
     padding: 24px !important;
   }
   .service-card {
     padding: 28px 20px !important;
+  }
+
+  /* Problem cards overrides for extra compact layout */
+  .problem-icon-container {
+    margin-bottom: 12px !important;
+  }
+  .problem-icon-svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .problem-title {
+    font-size: 1.15rem !important;
+    margin-bottom: 8px !important;
+  }
+  .problem-desc {
+    font-size: 0.92rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Industry Leaders Slider overrides */
+  .leaders-slide-track {
+    gap: 24px !important;
+    padding-right: 24px !important;
+  }
+  .leader-avatar-wrapper {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .leader-full-name {
+    font-size: 0.95rem !important;
+  }
+  .leader-specialty {
+    font-size: 0.78rem !important;
   }
 }
 

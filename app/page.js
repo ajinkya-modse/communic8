@@ -979,7 +979,7 @@ export default function Home() {
           <div className="problems-container">
             <div className="problems-intro">
               <h2 className="problems-subtitle">
-                You run a busy factory.<br />
+                You run a busy factory.<br className="desktop-only" />
                 <span>So why is <span className="problems-highlight">growth still so hard?</span></span>
               </h2>
               <p className="problems-intro-desc">
@@ -1001,8 +1001,8 @@ export default function Home() {
 
             <div className="problems-outro">
               <p className="problems-outro-text">
-                If even one of these sounds familiar, <br />
-                you need a standard process for marketing and communication. <br />
+                If even one of these sounds familiar, <br className="desktop-only" />
+                you need a standard process for marketing and communication. <br className="desktop-only" />
                 And this process is exactly what we build.
               </p>
               <a 
