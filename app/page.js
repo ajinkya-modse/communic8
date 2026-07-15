@@ -50,7 +50,12 @@ const CASE_STUDIES = [
       "31 new enquiries in 2 months",
       "2 export customers won"
     ],
-    quote: "A wide range isn't a strength until a buyer sees you're serious in his particular segment."
+    quote: "A wide range isn't a strength until a buyer sees you're serious in his particular segment.",
+    images: [
+      "/assets/case-studies/case-study-01-1.jpg",
+      "/assets/case-studies/case-study-01-2.jpg",
+      "/assets/case-studies/case-study-01-3.jpg"
+    ]
   },
   {
     title: "Agri-Implements Manufacturer",
@@ -62,7 +67,11 @@ const CASE_STUDIES = [
       "Conversion cycle improved 76%",
       "Lead flow shifted from thousands of unqualified enquiries to hundreds of serious partnership conversations"
     ],
-    quote: "Sometimes the problem isn't demand. It's distribution."
+    quote: "Sometimes the problem isn't demand. It's distribution.",
+    images: [
+      "/assets/case-studies/case-study-02-1.jpg",
+      "/assets/case-studies/case-study-02-2.jpg"
+    ]
   },
   {
     title: "Industrial Valve Manufacturer",
@@ -76,7 +85,11 @@ const CASE_STUDIES = [
       "Specified in 6 projects",
       "Revenue up 39%"
     ],
-    quote: "In spec-driven industries, you don't win the buyer - you win the person writing the specification."
+    quote: "In spec-driven industries, you don't win the buyer - you win the person writing the specification.",
+    images: [
+      "/assets/case-studies/case-study-03-1.jpg",
+      "/assets/case-studies/case-study-03-2.jpg"
+    ]
   },
   {
     title: "Shop-Floor Digitization Software",
@@ -87,7 +100,11 @@ const CASE_STUDIES = [
       "Demo-to-conversion: 20% to 63%",
       "161+ qualified inbound enquiries in 4 months"
     ],
-    quote: "To sell software to a factory, speak manufacturing process - not IT features."
+    quote: "To sell software to a factory, speak manufacturing process - not IT features.",
+    images: [
+      "/assets/case-studies/case-study-04-1.jpg",
+      "/assets/case-studies/case-study-04-2.jpg"
+    ]
   },
   {
     title: "Special Testing Machines",
@@ -100,7 +117,12 @@ const CASE_STUDIES = [
       "Engagement up 9x",
       "₹4-5 Cr of potential business in view"
     ],
-    quote: "The best engineering still needs a business story to be bought."
+    quote: "The best engineering still needs a business story to be bought.",
+    images: [
+      "/assets/case-studies/case-study-05-1.jpg",
+      "/assets/case-studies/case-study-05-2.jpg",
+      "/assets/case-studies/case-study-05-3.jpg"
+    ]
   },
   {
     title: "Precision Machined Components",
@@ -113,7 +135,13 @@ const CASE_STUDIES = [
       "200+ ongoing business conversations",
       "45 RFQs (domestic & international)"
     ],
-    quote: "You can't borrow another company's story. The right narrative is built, not borrowed."
+    quote: "You can't borrow another company's story. The right narrative is built, not borrowed.",
+    images: [
+      "/assets/case-studies/case-study-06-1.jpg",
+      "/assets/case-studies/case-study-06-2.jpg",
+      "/assets/case-studies/case-study-06-3.jpg",
+      "/assets/case-studies/case-study-06-4.jpg"
+    ]
   }
 ];
 
@@ -1276,7 +1304,29 @@ export default function Home() {
                         )}
                       </div>
                       <div className="playbook-img-container">
-                        {/* Space for images empty for now */}
+                        {study.images && study.images.length > 0 ? (
+                          study.images.length === 2 ? (
+                            <div className="playbook-collage collage-2">
+                              <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-half" />
+                              <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-half" />
+                            </div>
+                          ) : study.images.length === 4 ? (
+                            <div className="playbook-collage collage-4">
+                              <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-sub" />
+                              <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
+                              <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
+                              <img src={study.images[3]} alt={`${study.title} 4`} className="playbook-collage-sub" />
+                            </div>
+                          ) : (
+                            <div className="playbook-collage">
+                              <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-main" />
+                              <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
+                              <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
+                            </div>
+                          )
+                        ) : study.image ? (
+                          <img src={study.image} alt={study.title} className="playbook-img" />
+                        ) : null}
                       </div>
                     </div>
                   );
@@ -1325,7 +1375,29 @@ export default function Home() {
                         )}
                       </div>
                       <div className="playbook-img-container">
-                        {/* Space for images empty for now */}
+                        {study.images && study.images.length > 0 ? (
+                          study.images.length === 2 ? (
+                            <div className="playbook-collage collage-2">
+                              <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-half" />
+                              <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-half" />
+                            </div>
+                          ) : study.images.length === 4 ? (
+                            <div className="playbook-collage collage-4">
+                              <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-sub" />
+                              <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
+                              <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
+                              <img src={study.images[3]} alt={`${study.title} 4`} className="playbook-collage-sub" />
+                            </div>
+                          ) : (
+                            <div className="playbook-collage">
+                              <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-main" />
+                              <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
+                              <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
+                            </div>
+                          )
+                        ) : study.image ? (
+                          <img src={study.image} alt={study.title} className="playbook-img" />
+                        ) : null}
                       </div>
                     </div>
                   );
