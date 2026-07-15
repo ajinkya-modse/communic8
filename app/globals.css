@@ -4876,6 +4876,81 @@ html.lenis body {
     line-height: 1.35 !important;
     margin-bottom: 8px !important;
   }
+
+  /* Compact Roadmap Timeline overrides on mobile */
+  .system-roadmap {
+    gap: 24px !important;
+  }
+  .roadmap-card {
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+  }
+  .roadmap-card-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 4px !important;
+  }
+  .roadmap-card-focus {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 8px !important;
+  }
+  .roadmap-card-subtitle {
+    font-size: 0.65rem !important;
+    margin: 10px 0 6px !important;
+  }
+  .roadmap-card-list {
+    gap: 6px !important;
+  }
+  .roadmap-card-list li {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    padding-left: 16px !important;
+  }
+  .roadmap-card-list li::before {
+    font-size: 0.78rem !important;
+  }
+
+  /* Compact Problems Section & Outro CTA Card overrides on mobile */
+  .problems-grid {
+    margin-bottom: 16px !important;
+  }
+  .problem-card {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+    gap: 12px !important;
+  }
+  .problem-icon-container {
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .problem-icon-svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .problem-title {
+    font-size: 1.05rem !important;
+    margin-bottom: 6px !important;
+  }
+  .problem-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.4 !important;
+  }
+  .problems-outro {
+    padding: 16px 14px !important;
+    margin-top: 16px !important;
+    border-radius: 16px !important;
+  }
+  .problems-outro-text {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
+  }
+  .btn-problems-cta {
+    padding: 10px 20px !important;
+    font-size: 0.82rem !important;
+  }
 }
 
 @media (max-width: 600px) {
