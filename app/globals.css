@@ -580,7 +580,7 @@ a {
 /* Industry Leaders Section Styles */
 .leaders-section {
   background: #ffffff;
-  padding: 45px 0 25px;
+  padding: 30px 0 15px;
   overflow: hidden;
   position: relative;
 }
@@ -758,7 +758,7 @@ a {
 /* Companies We Worked With Section Styles */
 .companies-section {
   background: #ffffff;
-  padding: 45px 0 25px;
+  padding: 20px 0 15px;
   overflow: hidden;
   position: relative;
 }
@@ -869,7 +869,7 @@ a {
 /* Problems Section Styles */
 .problems-section {
   background: #ffffff;
-  padding: 60px 24px;
+  padding: 40px 24px;
 }
 
 .problems-container {
@@ -1044,7 +1044,7 @@ a {
   background: linear-gradient(-45deg, #f5f5f7, #e9e3fc, #e8f0fe, #eae4ff, #f5f5f7);
   background-size: 400% 400%;
   animation: gradientShift 18s ease infinite;
-  padding: 45px 0 25px;
+  padding: 30px 0 20px;
   position: relative;
   overflow: hidden;
   --color-accent: var(--color-brand-blue);
@@ -1303,7 +1303,7 @@ a {
 /* Metrics Section Styles */
 .metrics-section {
   background: transparent;
-  padding: 80px 24px;
+  padding: 40px 24px;
   text-align: center;
   position: relative;
 }
@@ -1397,7 +1397,7 @@ a {
   background: linear-gradient(-45deg, #f5f5f7, #e9e3fc, #e8f0fe, #eae4ff, #f5f5f7);
   background-size: 400% 400%;
   animation: gradientShift 18s ease infinite;
-  padding: 85px 24px;
+  padding: 45px 24px;
   position: relative;
   overflow: hidden;
 }
@@ -2036,7 +2036,7 @@ a {
 /* System Section Styles - High-Tech Roadmap */
 .system-section {
   background: #0d0d0f; /* High-tech dark mode */
-  padding: 70px 24px;
+  padding: 40px 24px;
   position: relative;
   overflow: hidden;
   color: #ffffff;
@@ -2378,7 +2378,7 @@ html.lenis body {
 /* Services Section Styles */
 .services-section {
   background: #ffffff;
-  padding: 60px 24px;
+  padding: 40px 24px;
   position: relative;
   overflow: hidden;
 }
@@ -2640,7 +2640,7 @@ html.lenis body {
 /* Diagnostic Assessment Section */
 .assessment-section {
   background: #09090b;
-  padding: 50px 24px;
+  padding: 35px 24px;
   position: relative;
   overflow: hidden;
   --color-accent: var(--color-brand-blue);
@@ -4163,7 +4163,7 @@ html.lenis body {
 /* Testimonials Section Styles */
 .testimonials-section {
   position: relative;
-  padding: 80px 0;
+  padding: 45px 0;
   background: #09090b; /* Pure dark mode to frame testimonies premiumly */
   overflow: hidden;
 }
@@ -4445,8 +4445,104 @@ html.lenis body {
   .roadmap-card {
     padding: 24px !important;
   }
+  /* Services section horizontal scroll snap layout */
+  .services-section {
+    padding-bottom: 20px !important;
+  }
+  .services-subtitle {
+    margin-bottom: 20px !important;
+  }
+  .services-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding: 10px 16px 0px !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    margin: 0 -16px !important;
+    width: auto !important;
+  }
+  .services-grid::-webkit-scrollbar {
+    display: none !important;
+  }
   .service-card {
-    padding: 28px 20px !important;
+    flex: 0 0 80vw !important; /* Shrunk from 84vw to 80vw to show more of the next card, hinting at swiping */
+    scroll-snap-align: center !important;
+    white-space: normal !important;
+    min-height: auto !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+  }
+  .service-badge-project,
+  .service-badge-retainer,
+  .service-badge-premium {
+    margin-bottom: 12px !important;
+  }
+  .service-title-text {
+    font-size: 1.15rem !important;
+    margin-bottom: 6px !important;
+  }
+  .service-focus-text {
+    font-size: 0.82rem !important;
+    margin-bottom: 16px !important;
+  }
+  .service-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 16px !important;
+  }
+  .service-list {
+    gap: 8px !important;
+    margin-bottom: 20px !important;
+  }
+  .service-list li {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+    padding-left: 18px !important;
+  }
+  .service-list li::before {
+    font-size: 0.8rem !important;
+  }
+  .btn-service {
+    padding: 10px 20px !important;
+    font-size: 0.8rem !important;
+  }
+  .screened-lock-badge {
+    top: 16px !important;
+    right: 16px !important;
+  }
+  .service-lock-note {
+    padding: 10px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Services scroll dots styling */
+  .services-dots-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-top: -2px !important;
+  }
+  .services-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+  }
+  .services-dot.active {
+    width: 20px !important;
+    border-radius: 4px !important;
+    background: var(--color-brand-purple) !important;
+  }
+
+  /* Reduce spacing above Our Work section */
+  .playbook-section {
+    padding-top: 24px !important;
   }
 
   /* Problem cards overrides for extra compact layout */
@@ -4549,6 +4645,38 @@ html.lenis body {
   }
   .playbook-img-container {
     display: none !important;
+  }
+
+  /* Global section spacing overrides for mobile */
+  .leaders-section {
+    padding: 24px 0 12px !important;
+  }
+  .companies-section {
+    padding: 16px 0 12px !important;
+  }
+  .problems-section {
+    padding: 30px 16px !important;
+  }
+  .metrics-section {
+    padding: 30px 16px !important;
+  }
+  .system-section {
+    padding: 35px 16px !important;
+  }
+  .services-section {
+    padding: 30px 16px 16px !important;
+  }
+  .playbook-section {
+    padding: 24px 0 16px !important;
+  }
+  .bio-section {
+    padding: 35px 16px !important;
+  }
+  .testimonials-section {
+    padding: 35px 0 !important;
+  }
+  .assessment-section {
+    padding: 30px 16px !important;
   }
 }
 

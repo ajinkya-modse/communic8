@@ -341,6 +341,7 @@ export default function Home() {
   const [bookedReportData, setBookedReportData] = useState(null);
   const [downloadProgress, setDownloadProgress] = useState("");
   const [activeBioTab, setActiveBioTab] = useState("founder");
+  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
 
   const [heroWordIndex, setHeroWordIndex] = useState(0);
   const [heroWordFading, setHeroWordFading] = useState(false);
@@ -355,6 +356,15 @@ export default function Home() {
     }, 4000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleServicesScroll = (e) => {
+    const scrollLeft = e.target.scrollLeft;
+    const width = e.target.clientWidth;
+    const card = e.target.querySelector('.service-card');
+    const cardWidth = card ? card.getBoundingClientRect().width : width;
+    const idx = Math.round(scrollLeft / (cardWidth + 16));
+    setActiveServiceIdx(idx);
+  };
 
   const loadHtml2Pdf = async () => {
     if (typeof window === "undefined") return null;
@@ -1089,7 +1099,7 @@ export default function Home() {
           <div className="services-container">
             <h2 className="services-title">Services & Retainers</h2>
             
-            <div className="services-grid">
+            <div className="services-grid" onScroll={handleServicesScroll}>
               {/* Card 1: GTM Execution */}
               <div className="service-card recommended" style={{ transitionDelay: "0ms" }}>
                 <div>
@@ -1178,6 +1188,27 @@ export default function Home() {
                   <span className="service-lock-note">Requires Operational Readiness Review</span>
                 </div>
               </div>
+            </div>
+
+            {/* Dynamic scroll indicators for mobile viewports */}
+            <div className="services-dots-container">
+              {[0, 1, 2].map((i) => (
+                <div 
+                  key={i} 
+                  className={`services-dot ${activeServiceIdx === i ? 'active' : ''}`}
+                  onClick={() => {
+                    const grid = document.querySelector('.services-grid');
+                    if (grid) {
+                      const card = grid.querySelector('.service-card');
+                      const cardWidth = card ? card.getBoundingClientRect().width : grid.clientWidth;
+                      grid.scrollTo({
+                        left: i * (cardWidth + 16),
+                        behavior: 'smooth'
+                      });
+                    }
+                  }}
+                />
+              ))}
             </div>
           </div>
         </section>
