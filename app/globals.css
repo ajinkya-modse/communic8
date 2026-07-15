@@ -1554,7 +1554,7 @@ a {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 45px;
+  margin-bottom: 24px;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -1747,6 +1747,7 @@ a {
   }
   .bio-tabs-container {
     max-width: 95% !important;
+    margin-bottom: 16px !important;
   }
   .section-tab-title {
     font-size: 1.35rem !important;
@@ -2026,10 +2027,7 @@ a {
     font-size: 0.68rem !important;
   }
   .bio-content {
-    padding: 24px;
-  }
-  .bio-name {
-    font-size: 1.6rem;
+    padding: 16px;
   }
 }
 
@@ -4864,6 +4862,20 @@ html.lenis body {
     font-size: 0.8rem !important;
     margin: 0 !important;
   }
+
+  /* Founder bio card extra compact layout on mobile */
+  .bio-content {
+    padding: 16px !important;
+  }
+  .bio-title {
+    font-size: 0.95rem !important;
+    margin-bottom: 10px !important;
+  }
+  .bio-description p {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 8px !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -5194,9 +5206,75 @@ html.lenis body {
 }
 
 @media (max-width: 576px) {
+  .footer {
+    padding: 24px 16px 16px !important;
+  }
   .footer-grid-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px 16px !important;
+    margin-bottom: 24px !important;
+  }
+  .footer-column.brand-col {
+    grid-column: 1 / span 2 !important;
+  }
+  .footer-column.links-col {
+    grid-column: 1 !important;
+  }
+  .footer-column.contact-col {
+    grid-column: 1 !important;
+  }
+  .footer-column.address-col {
+    grid-column: 2 !important;
+    grid-row: 2 / span 2 !important;
+  }
+  .footer-brand-logo {
+    height: 28px !important;
+  }
+  .footer-tagline {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+  }
+  .footer-col-title {
+    font-size: 0.8rem !important;
+    margin-bottom: 8px !important;
+    margin-top: 10px !important;
+  }
+  .footer-col-title.second-title {
+    margin-top: 14px !important;
+  }
+  .footer-services-list li {
+    margin-bottom: 4px !important;
+  }
+  .footer-services-list a {
+    font-size: 0.74rem !important;
+  }
+  .footer-address-text {
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+  }
+  .footer-contact-item {
+    font-size: 0.74rem !important;
+    margin-bottom: 4px !important;
+  }
+  .footer-bottom-divider {
+    margin-bottom: 20px !important;
+  }
+  .footer-content {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+  .footer-content p {
+    font-size: 0.72rem !important;
+  }
+  .footer-links {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px 16px !important;
+  }
+  .footer-links a {
+    font-size: 0.72rem !important;
   }
   .privacy-modal-content {
     padding: 20px;

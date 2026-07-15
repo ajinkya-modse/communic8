@@ -1720,7 +1720,6 @@ export default function Home() {
                 <img src="/assets/founder_image.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" />
               </div>
               <div className="bio-content">
-                <h2 className="bio-name">Ajinkya</h2>
                 <h3 className="bio-title">Hello connections! I'm Ajinkya (AJ)</h3>
                 <div className="bio-description">
                   <p>For over a decade I've lived the shop floor... running TOC, Lean and TPS on real factory floors, and learning from the best: ABB, Schneider, Forbes Marshall, Godrej and more.</p>
@@ -1729,7 +1728,7 @@ export default function Home() {
                   <p>It gets handed to whoever's free, done in bursts, never treated as a real function. So real manufacturers with 20-30 years of capability stay invisible, struggle competing on price instead of value.</p>
                   <p>That's why I built Communic8 - a marketing agency working exclusively for the manufacturing ecosystem. We handle Go-to Market Execution, global customer acquisition and reputation management, and we get into your shoes before we do any marketing. No templates. Just honest work in your customers' language.</p>
                   <p>If marketing is your weak spot, let's connect !</p>
-                  <p style={{ fontWeight: "600", marginTop: "16px" }}>- AJ</p>
+                  <p style={{ fontWeight: "600", marginTop: "12px" }}>- AJ</p>
                 </div>
               </div>
             </div>
