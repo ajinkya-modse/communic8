@@ -730,7 +730,7 @@ export default function Home() {
   } else if (totalScore <= 70) {
     archetypeTitle = "The Inconsistent Effort";
     archetypeDesc = "You have started. There is some clarity or some activity. But it is not consistent, and it is not compounding, so results stay unpredictable. You are leaving your best growth on the table not from lack of trying, but from lack of structure. Small fixes here often unlock large jumps.";
-    archetypeNext = "let's find where the leak is. Book a Call.";
+    archetypeNext = "Let's find where the leak is. Book a Call.";
     archetypeClass = "verdict-bottleneck";
   } else {
     archetypeTitle = "The Structured Grower";
