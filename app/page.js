@@ -979,7 +979,7 @@ export default function Home() {
           <div className="problems-container">
             <div className="problems-intro">
               <h2 className="problems-subtitle">
-                You run a busy factory.<br className="desktop-only" />
+                You run a busy factory. <br className="desktop-only" />
                 <span>So why is <span className="problems-highlight">growth still so hard?</span></span>
               </h2>
               <p className="problems-intro-desc">
@@ -993,8 +993,10 @@ export default function Home() {
                   <div className="problem-icon-container">
                     {problem.icon}
                   </div>
-                  <h3 className="problem-title">{problem.title}</h3>
-                  <p className="problem-desc">{problem.desc}</p>
+                  <div className="problem-info">
+                    <h3 className="problem-title">{problem.title}</h3>
+                    <p className="problem-desc">{problem.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
