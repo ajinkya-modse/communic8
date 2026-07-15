@@ -319,7 +319,8 @@ a {
 }
 
 .hero-title {
-  font-size: 4.8rem;
+  font-size: clamp(3.2rem, 5.2vw, 4.8rem);
+  white-space: nowrap;
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 16px;
@@ -602,7 +603,7 @@ a {
   font-weight: 500;
   font-size: 2.25rem;
   text-align: center;
-  color: var(--color-brand-magenta);
+  color: #000000;
   margin-bottom: 30px;
   letter-spacing: -0.5px;
 }
@@ -1971,6 +1972,7 @@ a {
   }
   .hero-title {
     font-size: 3.5rem;
+    white-space: normal;
   }
   .hero-subtitle {
     font-size: 1.8rem;
