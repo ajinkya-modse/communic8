@@ -668,33 +668,33 @@ a {
 }
 
 .leader-avatar-img.avatar-alok {
-  transform: scale(1.25);
+  transform: scale(1.65);
   object-position: center 28%;
 }
 
 .leader-avatar-img.avatar-amruta {
-  transform: scale(1.35);
+  transform: scale(1.55);
   object-position: center 25%;
 }
 
 .leader-avatar-img.avatar-dadasaheb {
-  transform: scale(1.12);
-  object-position: center 42%;
+  transform: scale(1.28) translateY(6px);
+  object-position: center 25%;
 }
 
 .leader-avatar-img.avatar-kasiraj {
-  transform: scale(1.4);
-  object-position: center 28%;
+  transform: scale(1.82) translateY(11px);
+  object-position: center 25%;
 }
 
 .leader-avatar-img.avatar-mayur {
-  transform: scale(1.25);
-  object-position: center 32%;
+  transform: scale(1.55) translate(-4px, -4px);
+  object-position: center center;
 }
 
 .leader-avatar-img.avatar-ruchita {
-  transform: scale(1.12);
-  object-position: center 42%;
+  transform: scale(1.28);
+  object-position: center 3%;
 }
 
 .leader-item:hover .leader-avatar-img {
@@ -707,27 +707,27 @@ a {
 }
 
 .leader-item:hover .leader-avatar-img.avatar-alok {
-  transform: scale(1.31);
+  transform: scale(1.71);
 }
 
 .leader-item:hover .leader-avatar-img.avatar-amruta {
-  transform: scale(1.42);
+  transform: scale(1.62);
 }
 
 .leader-item:hover .leader-avatar-img.avatar-dadasaheb {
-  transform: scale(1.18);
+  transform: scale(1.34) translateY(6px);
 }
 
 .leader-item:hover .leader-avatar-img.avatar-kasiraj {
-  transform: scale(1.47);
+  transform: scale(1.89) translateY(11px);
 }
 
 .leader-item:hover .leader-avatar-img.avatar-mayur {
-  transform: scale(1.31);
+  transform: scale(1.61) translate(-4px, -4px);
 }
 
 .leader-item:hover .leader-avatar-img.avatar-ruchita {
-  transform: scale(1.18);
+  transform: scale(1.34);
 }
 
 .leader-name-container {
