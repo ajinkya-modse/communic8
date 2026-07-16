@@ -1736,6 +1736,17 @@ a {
   object-fit: cover;
 }
 
+.leadership-grid .supporter-img {
+  filter: grayscale(100%);
+  transform: scale(1.5);
+  transform-origin: center 20%;
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.leadership-grid .supporter-card:hover .supporter-img {
+  filter: grayscale(0%);
+}
+
 .supporter-img-placeholder {
   width: 100%;
   height: 100%;

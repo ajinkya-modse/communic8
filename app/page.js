@@ -26,16 +26,26 @@ const SUPPORTERS = [
 ];
 
 const LEADERSHIP = [
-  { name: "Rajesh Kumar", title: "Operations Director", img: "/assets/employee_1.jpg" },
-  { name: "Sneha Sharma", title: "Head of Marketing", img: "/assets/employee_2.jpg" },
-  { name: "Amit Patel", title: "Lead Copywriter", img: "/assets/employee_3.jpg" }
+  { name: "Jacob Leons", title: "Operations Director", img: "/assets/team_images/Leadership 11. Jacob Leons.png" }
 ];
 
 const TEAM = [
-  { name: "Prasad K.", title: "Industrial Copywriter", img: "" },
-  { name: "Sayali G.", title: "GTM Project Lead", img: "" },
-  { name: "Aniket M.", title: "Design Director", img: "" },
-  { name: "Suresh P.", title: "GTM Analyst", img: "" }
+  { name: "Priya Tekale", title: "GTM Project Lead", img: "/assets/team_images/Team 01 Priya Tekale.jpg", imgStyle: { objectPosition: "center 10%", transform: "scale(0.92)", transformOrigin: "center 10%" } },
+  { name: "Shruti Bhegade", title: "Industrial Copywriter", img: "/assets/team_images/Team 02. Shruti Bhegade.png" },
+  { name: "Swapnaja Jagdale", title: "B2B Marketing Consultant", img: "/assets/team_images/Team 03. Swapnaja Jagdale.png" },
+  { name: "Aditya B.", title: "Design Director", img: "/assets/team_images/Team 04. Aditya B.png" },
+  { name: "Vijay C.", title: "Technical Writer", img: "/assets/team_images/Team 05. Vijay C.png", imgStyle: { objectPosition: "center 17%", transform: "scale(2.3)", transformOrigin: "center 17%" } },
+  { name: "Shweta S.", title: "GTM Analyst", img: "/assets/team_images/Team 06. Shweta S.jpg", imgStyle: { objectPosition: "55% 32%", transform: "scale(1.95)", transformOrigin: "55% 32%" } },
+  { name: "Krishnika V.", title: "Account Manager", img: "/assets/team_images/Team 07. Krishnika V.png", imgStyle: { objectPosition: "center 12%", transform: "scale(1.2)", transformOrigin: "center 12%" } },
+  { name: "Rishi J.", title: "SEO Specialist", img: "/assets/team_images/Team 08. Rishi J.png" },
+  { name: "Pranav", title: "Motion Designer", img: "/assets/team_images/Team 09. Pranav_.png" },
+  { name: "Kavita", title: "Visual Designer", img: "/assets/team_images/Team 10. Kavita_.png" },
+  { name: "Riya", title: "Copywriter", img: "/assets/team_images/Team 11. Riya.png", imgStyle: { objectPosition: "center 32%", transform: "scale(1.85)", transformOrigin: "center 32%" } },
+  { name: "Mamta V.", title: "Media Planner", img: "/assets/team_images/Team 12. Mamta V.png", imgStyle: { objectPosition: "center 17%", transform: "scale(1.85)", transformOrigin: "center 17%" } },
+  { name: "Sakshii Z.", title: "Client Success Manager", img: "/assets/team_images/Team 13. Sakshii Z.png" },
+  { name: "Nayana D.", title: "Web Developer", img: "/assets/team_images/Team 14. Nayana D.png", imgStyle: { objectPosition: "center 15%", transform: "scale(1.5)", transformOrigin: "center 15%" } },
+  { name: "Neha", title: "Growth Specialist", img: "/assets/team_images/Team 15. Neha.png", imgStyle: { objectPosition: "center 15%", transform: "scale(1.55)", transformOrigin: "center 15%" } },
+  { name: "Deepali W.", title: "Production Coordinator", img: "/assets/team_images/Team 17. Deepali W.png", imgStyle: { transform: "scale(1.15)", transformOrigin: "center 20%" } }
 ];
 
 const CASE_STUDIES = [
@@ -1863,7 +1873,7 @@ export default function Home() {
                 {LEADERSHIP.map((employee, idx) => (
                   <div key={idx} className="supporter-card">
                     <div className="supporter-img-container">
-                      <img src={employee.img} alt={employee.name} className="supporter-img" />
+                      <img src={employee.img} alt={employee.name} className="supporter-img" style={employee.imgStyle} />
                     </div>
                     <div className="supporter-info">
                       <h4 className="supporter-name">{employee.name}</h4>
@@ -1883,7 +1893,7 @@ export default function Home() {
                   <div key={idx} className="supporter-card">
                     <div className="supporter-img-container">
                       {member.img ? (
-                        <img src={member.img} alt={member.name} className="supporter-img" />
+                        <img src={member.img} alt={member.name} className="supporter-img" style={member.imgStyle} />
                       ) : (
                         <div className="supporter-img-placeholder">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
