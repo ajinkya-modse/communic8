@@ -1556,6 +1556,42 @@ a {
   margin-bottom: 0;
 }
 
+.founder-signature-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.founder-signature {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1d1d1f;
+}
+
+.founder-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #86868b;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 4px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.founder-social-link:hover {
+  color: #0091ff;
+  background: rgba(0, 145, 255, 0.08);
+  transform: scale(1.08);
+}
+
+.founder-social-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
 .btn-consultation {
   display: inline-block;
   align-self: center;
