@@ -11,7 +11,7 @@ export default function SystemSection() {
         <div className="system-header">
           <h2 className="system-title">Meet Buyers Where they are</h2>
           <p className="system-desc-text">
-            To succeed, manufacturers must tailor their <span className="system-text-highlight">communication strategies to Buyer Behaviour</span> and focus on driving <span className="system-text-highlight">Profitable and Capital Efficient Growth</span>.
+            To succeed, manufacturers must tailor their <span className="system-text-highlight">communication strategies to Buyer Behaviour</span> and focus on driving <span className="system-growth-text">Profitable and Capital Efficient Growth</span>.
           </p>
         </div>
         <div className="system-roadmap">

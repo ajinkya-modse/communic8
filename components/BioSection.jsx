@@ -48,7 +48,7 @@ export default function BioSection() {
               <p>Manufacturers have a process for everything; except marketing.</p>
               <p>It gets handed to whoever's free, done in bursts, never treated as a real function. So real manufacturers with 20-30 years of capability stay invisible, struggle competing on price instead of value.</p>
               <p>That's why I built Communic8 - a marketing agency working exclusively for the manufacturing ecosystem. We handle Go-to Market Execution, global customer acquisition and reputation management, and we get into your shoes before we do any marketing. No templates. Just honest work in your customers' language.</p>
-              <p>If marketing is your weak spot, let's connect !</p>
+              <p>If ideas and execution are your weakness and consistent work is your priority, lets connect!</p>
               <div className="founder-signature-social">
                 <span className="founder-signature">- AJ</span>
                 <a 
