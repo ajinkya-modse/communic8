@@ -4,7 +4,7 @@ export default function SystemSection() {
   return (
     <section id="system" className="system-section">
       <div className="system-bg-wrapper">
-        <img src="/assets/factory_interior.jpg" alt="Factory interior background" className="system-bg-img" />
+        <img src="/assets/factory_interior.jpg" alt="Factory interior background" className="system-bg-img" loading="lazy" decoding="async" />
         <div className="system-bg-overlay"></div>
       </div>
       <div className="system-container">

@@ -215,7 +215,7 @@ export default function AssessmentSection() {
     <>
       <section id="assessment" className="assessment-section">
         <div className="assessment-bg-wrapper">
-          <img src="/assets/testimonials_bg_factory.jpg" alt="Assessment background" className="assessment-bg-img" />
+          <img src="/assets/testimonials_bg_factory.jpg" alt="Assessment background" className="assessment-bg-img" loading="lazy" decoding="async" />
           <div className="assessment-bg-overlay"></div>
         </div>
         <div className="assessment-container">

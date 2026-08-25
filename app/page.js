@@ -16,6 +16,7 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import MetricsSection from "../components/MetricsSection";
 import AssessmentSection from "../components/AssessmentSection";
 import BioSection from "../components/BioSection";
+import GallerySection from "../components/GallerySection";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -144,6 +145,7 @@ export default function Home() {
         <MetricsSection />
         <AssessmentSection />
         <BioSection />
+        <GallerySection />
       </main>
 
       <Footer handleSmoothScroll={handleSmoothScroll} />

@@ -2,6 +2,10 @@ import React from "react";
 
 export const CALENDLY_URL = "https://calendly.com/connect_communic/30min";
 
+// Add up to 20 images from public/assets/gallery here as they become available.
+// Example: { src: "/assets/gallery/factory-visit-01.jpg", alt: "Factory visit" }
+export const GALLERY_IMAGES = [];
+
 export const HERO_WORDS = ["Narratives", "Content", "Business"];
 
 export const INDUSTRY_LEADERS = [

@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TESTIMONIALS } from "../data/landingData";
 
 export default function TestimonialsSection() {
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return undefined;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVideoReady(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: "600px 0px" });
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const handleTestimonialsScroll = (e) => {
     const scrollLeft = e.target.scrollLeft;
@@ -14,16 +31,20 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section id="testimonials" className="testimonials-section">
+    <section id="testimonials" className="testimonials-section" ref={sectionRef}>
       <div className="testimonials-bg-wrapper">
-        <video 
-          src="/assets/new_video.mp4" 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="testimonials-bg-video"
-        />
+        {videoReady && (
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            preload="metadata"
+            className="testimonials-bg-video"
+          >
+            <source src="/assets/new_video-optimized.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="testimonials-bg-overlay"></div>
       </div>
       <div className="testimonials-container">
@@ -33,7 +54,7 @@ export default function TestimonialsSection() {
             <div key={idx} className="testimony-card">
               {testimony.image ? (
                 <div className="testimony-img-wrapper">
-                  <img src={testimony.image} alt={testimony.name} className="testimony-img" />
+                  <img src={testimony.image} alt={testimony.name} className="testimony-img" loading="lazy" decoding="async" />
                 </div>
               ) : (
                 <div className="testimony-img-placeholder">

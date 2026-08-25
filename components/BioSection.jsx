@@ -38,7 +38,7 @@ export default function BioSection() {
       {activeBioTab === "founder" && (
         <div className="bio-card tab-content-animate">
           <div className="bio-img-container">
-            <img src="/assets/founder_image.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" />
+            <img src="/assets/founder_image.jpg" alt="Ajinkya, Founder of Communic8" className="bio-img" loading="lazy" decoding="async" />
           </div>
           <div className="bio-content">
             <h3 className="bio-title">Hello connections! I'm Ajinkya (AJ)</h3>
@@ -75,7 +75,7 @@ export default function BioSection() {
             {SUPPORTERS.map((supporter, idx) => (
               <div key={idx} className="supporter-card">
                 <div className="supporter-img-container">
-                  <img src={supporter.img} alt={supporter.name} className="supporter-img" />
+                  <img src={supporter.img} alt={supporter.name} className="supporter-img" loading="lazy" decoding="async" />
                 </div>
                 <div className="supporter-info">
                   <h4 className="supporter-name">{supporter.name}</h4>
@@ -94,7 +94,7 @@ export default function BioSection() {
             {LEADERSHIP.map((employee, idx) => (
               <div key={idx} className="supporter-card">
                 <div className="supporter-img-container">
-                  <img src={employee.img} alt={employee.name} className="supporter-img" style={employee.imgStyle} />
+                  <img src={employee.img} alt={employee.name} className="supporter-img" style={employee.imgStyle} loading="lazy" decoding="async" />
                 </div>
                 <div className="supporter-info">
                   <h4 className="supporter-name">{employee.name}</h4>
@@ -114,7 +114,7 @@ export default function BioSection() {
               <div key={idx} className="supporter-card">
                 <div className="supporter-img-container">
                   {member.img ? (
-                    <img src={member.img} alt={member.name} className="supporter-img" style={member.imgStyle} />
+                  <img src={member.img} alt={member.name} className="supporter-img" style={member.imgStyle} loading="lazy" decoding="async" />
                   ) : (
                     <div className="supporter-img-placeholder">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

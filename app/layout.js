@@ -22,6 +22,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="preload" href="/assets/hero_video-optimized.mp4" as="video" type="video/mp4" />
+      </head>
       <body>{children}</body>
     </html>
   );

@@ -15,6 +15,8 @@ export default function LeadersSection() {
                     src={leader.img} 
                     alt={leader.name} 
                     className={`leader-avatar-img avatar-${leader.avatarClass}`} 
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="leader-name-container">

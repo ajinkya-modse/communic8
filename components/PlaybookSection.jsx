@@ -155,25 +155,25 @@ export default function PlaybookSection() {
                     {study.images && study.images.length > 0 ? (
                       study.images.length === 2 ? (
                         <div className="playbook-collage collage-2">
-                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-half" />
-                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-half" />
+                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-half" loading="lazy" decoding="async" />
+                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-half" loading="lazy" decoding="async" />
                         </div>
                       ) : study.images.length === 4 ? (
                         <div className="playbook-collage collage-4">
-                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-sub" />
-                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
-                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
-                          <img src={study.images[3]} alt={`${study.title} 4`} className="playbook-collage-sub" />
+                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[3]} alt={`${study.title} 4`} className="playbook-collage-sub" loading="lazy" decoding="async" />
                         </div>
                       ) : (
                         <div className="playbook-collage">
-                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-main" />
-                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
-                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
+                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-main" loading="lazy" decoding="async" />
+                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" loading="lazy" decoding="async" />
                         </div>
                       )
                     ) : study.image ? (
-                      <img src={study.image} alt={study.title} className="playbook-img" />
+                      <img src={study.image} alt={study.title} className="playbook-img" loading="lazy" decoding="async" />
                     ) : null}
                   </div>
                 </div>
@@ -226,25 +226,25 @@ export default function PlaybookSection() {
                     {study.images && study.images.length > 0 ? (
                       study.images.length === 2 ? (
                         <div className="playbook-collage collage-2">
-                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-half" />
-                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-half" />
+                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-half" loading="lazy" decoding="async" />
+                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-half" loading="lazy" decoding="async" />
                         </div>
                       ) : study.images.length === 4 ? (
                         <div className="playbook-collage collage-4">
-                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-sub" />
-                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
-                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
-                          <img src={study.images[3]} alt={`${study.title} 4`} className="playbook-collage-sub" />
+                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[3]} alt={`${study.title} 4`} className="playbook-collage-sub" loading="lazy" decoding="async" />
                         </div>
                       ) : (
                         <div className="playbook-collage">
-                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-main" />
-                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" />
-                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" />
+                          <img src={study.images[0]} alt={`${study.title} 1`} className="playbook-collage-main" loading="lazy" decoding="async" />
+                          <img src={study.images[1]} alt={`${study.title} 2`} className="playbook-collage-sub" loading="lazy" decoding="async" />
+                          <img src={study.images[2]} alt={`${study.title} 3`} className="playbook-collage-sub" loading="lazy" decoding="async" />
                         </div>
                       )
                     ) : study.image ? (
-                      <img src={study.image} alt={study.title} className="playbook-img" />
+                      <img src={study.image} alt={study.title} className="playbook-img" loading="lazy" decoding="async" />
                     ) : null}
                   </div>
                 </div>

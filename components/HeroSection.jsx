@@ -21,13 +21,16 @@ export default function HeroSection() {
       <div className="hero-card">
         <div className="hero-bg-overlay"></div>
         <video 
-          src="/assets/hero_video.mp4" 
           autoPlay 
           loop 
           muted 
           playsInline 
+          preload="auto"
+          poster="/assets/hero_video-poster.jpg"
           className="hero-bg-video" 
-        />
+        >
+          <source src="/assets/hero_video-optimized.mp4" type="video/mp4" />
+        </video>
         <div className="hero-content">
           <h1 className="hero-title">
             <span className={`dynamic-word ${heroWordFading ? "fade-out" : "fade-in"}`}>
@@ -52,7 +55,7 @@ export default function HeroSection() {
             <div className="hero-logos-track">
               {[...HERO_COMPANIES, ...HERO_COMPANIES, ...HERO_COMPANIES, ...HERO_COMPANIES].map((company, index) => (
                 <div key={index} className="hero-logo-item" aria-label={company.name}>
-                  <img src={company.logo} alt={company.name} className="hero-logo-img" />
+                  <img src={company.logo} alt={company.name} className="hero-logo-img" loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
