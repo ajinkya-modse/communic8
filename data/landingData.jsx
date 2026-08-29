@@ -86,6 +86,10 @@ export const CASE_STUDIES = [
     images: [
       "/assets/case-studies/case-study-02-1.jpg",
       "/assets/case-studies/case-study-02-2.jpg"
+    ],
+    mobileMetrics: [
+      { value: "76%", label: "Conversion cycle improved" },
+      { value: "6", label: "New dealerships" }
     ]
   },
   {
@@ -104,6 +108,11 @@ export const CASE_STUDIES = [
     images: [
       "/assets/case-studies/case-study-03-1.jpg",
       "/assets/case-studies/case-study-03-2.jpg"
+    ],
+    mobileMetrics: [
+      { value: "2500+", label: "Network of contractors" },
+      { value: "315+", label: "Inbound enquiries" },
+      { value: "39%", label: "Revenue up" }
     ]
   },
   {
@@ -119,6 +128,10 @@ export const CASE_STUDIES = [
     images: [
       "/assets/case-studies/case-study-04-1.jpg",
       "/assets/case-studies/case-study-04-2.jpg"
+    ],
+    mobileMetrics: [
+      { value: "63%", label: "Demo-to-conversion rate" },
+      { value: "161+", label: "Qualified inbound enquiries" }
     ]
   },
   {
@@ -156,6 +169,15 @@ export const CASE_STUDIES = [
       "/assets/case-studies/case-study-06-2.jpg",
       "/assets/case-studies/case-study-06-3.jpg",
       "/assets/case-studies/case-study-06-4.jpg"
+    ],
+    mobileImages: [
+      "/assets/case-studies/case-study-06-1.jpg",
+      "/assets/case-studies/case-study-06-2.jpg"
+    ],
+    mobileMetrics: [
+      { value: "28%", label: "Export revenue" },
+      { value: "3000+", label: "Network of prospects" },
+      { value: "200+", label: "Ongoing Business Conversations" }
     ]
   }
 ];
