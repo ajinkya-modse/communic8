@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { SUPPORTERS, LEADERSHIP, TEAM, CALENDLY_URL } from "../data/landingData";
 
+const SHOW_SUPPORTERS_TAB = false;
+
 export default function BioSection() {
   const [activeBioTab, setActiveBioTab] = useState("founder");
 
@@ -15,12 +17,14 @@ export default function BioSection() {
         >
           Founder
         </button>
-        <button 
-          className={`bio-tab-btn ${activeBioTab === "supporters" ? "active" : ""}`}
-          onClick={() => setActiveBioTab("supporters")}
-        >
-          Supporters
-        </button>
+        {SHOW_SUPPORTERS_TAB && (
+          <button 
+            className={`bio-tab-btn ${activeBioTab === "supporters" ? "active" : ""}`}
+            onClick={() => setActiveBioTab("supporters")}
+          >
+            Supporters
+          </button>
+        )}
         <button 
           className={`bio-tab-btn ${activeBioTab === "leadership" ? "active" : ""}`}
           onClick={() => setActiveBioTab("leadership")}
@@ -68,7 +72,7 @@ export default function BioSection() {
         </div>
       )}
 
-      {activeBioTab === "supporters" && (
+      {SHOW_SUPPORTERS_TAB && activeBioTab === "supporters" && (
         <div className="supporters-grid-container tab-content-animate">
           <h2 className="section-tab-title">Our Supporters</h2>
           <div className="supporters-grid">
